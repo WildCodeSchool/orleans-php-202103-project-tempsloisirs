@@ -44,4 +44,3 @@ class AdminController extends AbstractController
         return $this->twig->render('Admin/informations.html.twig');
     }
 }
-

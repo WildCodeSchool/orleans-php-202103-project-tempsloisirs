@@ -28,7 +28,7 @@ class AdminController extends AbstractController
     {
         return $this->twig->render('Admin/activities.html.twig');
     }
-    
+
     public function events()
     {
         return $this->twig->render('Admin/events.html.twig');

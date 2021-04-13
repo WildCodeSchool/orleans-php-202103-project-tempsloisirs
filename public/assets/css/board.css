@@ -1,0 +1,31 @@
+.m-board {
+    padding: 3em 8em;
+}
+
+.h-board {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+.h-board h1 {
+    margin: 0;
+    padding: 0;
+}
+
+.m-board .links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0.8em 1em 0.8em;
+}
+
+.m-board .links a {
+    width: 50%;
+}
+
+.m-board .links a {
+    margin: 0 0.2em;
+}

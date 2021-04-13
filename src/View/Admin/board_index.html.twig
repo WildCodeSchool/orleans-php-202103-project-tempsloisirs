@@ -1,0 +1,42 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/board.css">
+{% endblock %}
+
+{% block title %}Admin - Conseil d'administration
+{% endblock %}
+
+{% block content %}
+	<main class="m-board">
+
+		<header class="h-board">
+			<h1>Conseil d'administration</h1>
+			<a href="#" class="btn btn-primary">Add a member</a>
+		</header>
+
+		<div class="row row-cols-1 row-cols-md-5 g-4">
+			{% for wizard in wizards %}
+				<div class="col">
+					<div class="card">
+						<img src="https://picsum.photos/1000" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">{{ wizard.firstname }}
+								{{ wizard.lastname }}</h5>
+							<p class="card-text">Président de Temps des Loisirs</p>
+						</div>
+						<div class="links">
+							<a href="#" class="btn btn-primary">Edit</a>
+							<a href="#" class="btn btn-primary">Delete</a>
+						</div>
+						<div class="card-footer">
+							<small class="text-muted">Last updated 3 mins ago</small>
+						</div>
+					</div>
+				</div>
+			{% else %}
+				<li>Nothing to display</li>
+			{% endfor %}
+		</div>
+
+	</main>
+{% endblock %}

@@ -12,8 +12,8 @@ class AdminController extends AbstractController
     public function board(): string
     {
         $adminManager = new AdminManager();
-        $wizards = $adminManager->selectAll('firstname');
+        $boardMembers = $adminManager->selectAll('firstname');
 
-        return $this->twig->render('Admin/board_index.html.twig', ['wizards' => $wizards]);
+        return $this->twig->render('Admin/board_index.html.twig', ['boardMembers' => $boardMembers]);
     }
 }

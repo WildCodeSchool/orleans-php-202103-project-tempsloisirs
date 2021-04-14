@@ -15,6 +15,11 @@
     padding: 0;
 }
 
+.m-board .card-img-top {
+    object-fit: cover;
+    height: 300px;
+}
+
 .m-board .links {
     display: flex;
     align-items: center;

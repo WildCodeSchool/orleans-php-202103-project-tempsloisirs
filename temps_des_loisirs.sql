@@ -31,7 +31,6 @@ CREATE TABLE `activities` (
   `image` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `price` int DEFAULT NULL,
-  `is_membersonly` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -42,7 +41,7 @@ CREATE TABLE `activities` (
 
 LOCK TABLES `activities` WRITE;
 /*!40000 ALTER TABLE `activities` DISABLE KEYS */;
-INSERT INTO `activities` VALUES (1,'danse','lundi','Didier','15:30:00',NULL,'Danse de salon',10,NULL),(2,'bingo','mardi','Jacques','10:30:00',NULL,'incontournable bingo',10,NULL),(3,'dictee','vendredi','Emma','09:00:00',NULL,'attention aux mauvaises notes',5,NULL);
+INSERT INTO `activities` VALUES (1,'danse','lundi','Didier','15:30:00',NULL,'Danse de salon',10),(2,'bingo','mardi','Jacques','10:30:00',NULL,'incontournable bingo',10),(3,'dictee','vendredi','Emma','09:00:00',NULL,'attention aux mauvaises notes',5);
 /*!40000 ALTER TABLE `activities` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -86,7 +85,6 @@ CREATE TABLE `events` (
   `start_date` date NOT NULL,
   `end_date` date DEFAULT NULL,
   `price` int NOT NULL,
-  `is_membersonly` tinyint(1) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ID`)
@@ -99,7 +97,7 @@ CREATE TABLE `events` (
 
 LOCK TABLES `events` WRITE;
 /*!40000 ALTER TABLE `events` DISABLE KEYS */;
-INSERT INTO `events` VALUES (1,'voyage St Malo','2020-06-15',NULL,150,NULL,'nous irons a st malo',NULL),(2,'visite de la cathedrale','2021-02-17',NULL,20,NULL,'nous visiterons la cathedrale d\' Orleans',NULL);
+INSERT INTO `events` VALUES (1,'voyage St Malo','2020-06-15',NULL,150,'nous irons a st malo',NULL),(2,'visite de la cathedrale','2021-02-17',NULL,20,'nous visiterons la cathedrale d\' Orleans',NULL);
 /*!40000 ALTER TABLE `events` ENABLE KEYS */;
 UNLOCK TABLES;
 

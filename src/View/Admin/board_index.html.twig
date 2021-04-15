@@ -9,9 +9,9 @@
 {% block content %}
 	<main class="m-board">
 
-		<header class="h-board">
-			<h1>Gérer les membres du Conseil d'administration</h1>
-			<a href="#" class="btn btn-primary">Add a member</a>
+		<header class="admin-header">
+			<h1>Gérer le Conseil d'administration</h1>
+			<a href="#" class="btn primary-btn">Ajouter un membre</a>
 		</header>
 
 		<div class="row row-cols-1 row-cols-md-5 g-4">
@@ -25,8 +25,8 @@
 							<p class="card-text">{{ boardMember.role }}</p>
 						</div>
 						<div class="links">
-							<a href="#" class="btn btn-primary">Edit</a>
-							<a href="#" class="btn btn-danger">Delete</a>
+							<a href="#" class="btn primary-btn">Modifier</a>
+							<a href="#" class="btn delete">Supprimer</a>
 						</div>
 						<div class="card-footer">
 							<small class="text-muted">Last updated 3 mins ago</small>
@@ -37,6 +37,11 @@
 				<li>Nothing to display</li>
 			{% endfor %}
 		</div>
+
+		<footer class="admin-footer">
+			<a href="#" class="btn primary-btn">Retour au site principal</a>
+			<a href="#" class="btn primary-btn">Accueil Admin</a>
+		</footer>
 
 	</main>
 {% endblock %}

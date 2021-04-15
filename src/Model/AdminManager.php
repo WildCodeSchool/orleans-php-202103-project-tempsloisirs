@@ -4,11 +4,11 @@ namespace App\Model;
 
 class AdminManager extends AbstractManager
 {
-    public const BOARD = 'board';
+    public const TABLE = 'board';
 
     public function insert(array $boardMember)
     {
-        $statement = $this->pdo->prepare("INSERT INTO " . self::BOARD . " (`image`, `firstname`, `surname`, `role`) VALUES (:image, :firstname, :surname, :role)");
+        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`image`, `firstname`, `surname`, `role`) VALUES (:image, :firstname, :surname, :role)");
         $statement->bindValue('image', $boardMember['image'], \PDO::PARAM_STR);
         $statement->bindValue('firstname', $boardMember['firstname'], \PDO::PARAM_STR);
         $statement->bindValue('surname', $boardMember['surname'], \PDO::PARAM_STR);

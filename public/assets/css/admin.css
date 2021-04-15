@@ -51,8 +51,9 @@ h1 {
 
 /* Titre cards */
 
-.card-body h5 {
+.card-body .card-title {
     color: var(--primary-color);
+    font-size: 1.4em;
 }
 
 /* Bouton primaire turquoise */

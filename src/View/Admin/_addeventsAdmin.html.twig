@@ -1,0 +1,55 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Admin - Events{% endblock %}
+{% block stylesheet %}
+<link rel="stylesheet" href="/assets/css/_eventsAdmin.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+{% endblock %}
+ {% block content %}
+ <div class="container">
+    <div class="eventAdm">
+        <div class="eventAdm">
+        <h1>Ajouter un Évènement</h1>
+           
+
+            <form action="" method="POST"> 
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nom d'évènement</label>
+                     <input type="text" class="form-control" id="name" placeholder="Ex: Voyage à Nice" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="startdate" class="form-label">Date de début</label>
+                     <input type="date" class="form-control" id="startdate" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="enddate" class="form-label">Date de fin</label>
+                     <input type="date" class="form-control" id="enddate">
+                </div>
+
+                <div class="mb-3">
+                    <label for="price" class="form-label">Prix</label>
+                     <input type="number" class="form-control" id="price" min="0">
+                </div>
+
+              
+                <div class="mb-3">
+                    <label for="photo" class="form-label">Lien pour l'image</label>
+                     <input type="text" class="form-control" id="photo">
+                </div>
+                
+
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description d'évènement</label>
+                    <textarea class="form-control" id="description" rows="3"></textarea>
+                </div>
+
+                  <div class="col-12">
+                        <button class="btn bg-element" type="submit">Envoyer</button>
+                 </div>
+                                
+            </form>
+
+        </div>
+    </div> 
+ {% endblock %}

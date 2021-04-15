@@ -1,0 +1,65 @@
+:root {
+  --primary-bg-color: #5eaaa8;
+  --secondary-bg-color: #d9e0d9;
+  --element-bg-color: #ecb390;
+  --light-color: #fcf8e8;
+  --dark-color: #595959;
+  --color-danger: #ff7979;
+
+  /* Tailles pour les texts */
+  --parag-size: 1em;
+  --h2-size: 1.3em;
+  --h1-size: 1.6em;
+
+  /* Tailles pour les elements */
+  --spacing: 0.5em;
+  --spacing-2: 1em;
+  --spacing-3: 1.5em;
+  --spacing-4: 3em;
+
+  --font-titre: "Simonetta", cursive;
+  --font-text: "Open Sans", sans-serif;
+}
+
+.color-primary {
+  background-color: var(--primary-bg-color);
+}
+
+.color-danger {
+  background-color: var(--color-danger);
+}
+
+body {
+  background-color: #e5e5e5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--font-titre);
+  margin: var(--spacing-3) 0 var(--spacing-3) 0;
+}
+
+p {
+  font-family: var(--font-text);
+}
+
+.bg-element {
+  background-color: var(--element-bg-color);
+  color: var(--light-color);
+}
+
+.strong {
+  font-weight: 800;
+}
+
+.eventTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.eventTitle a {
+  margin: var(--spacing-4) 0;
+}

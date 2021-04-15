@@ -1,0 +1,17 @@
+.eventAdm {
+  text-align: center;
+}
+
+.btn-ajouter {
+  margin-bottom: var(--spacing-4);
+}
+
+.eventAdm h1 {
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--primary-bg-color);
+}
+
+.listEvents {
+  background-color: var(--primary-bg-color);
+}

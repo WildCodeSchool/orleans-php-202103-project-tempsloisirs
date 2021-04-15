@@ -13,12 +13,12 @@ class AdminController extends AbstractController
         return $this->twig->render('Admin/activities.html.twig', ['activities' => $activities]);
     }
 
-    /* TODO
+
     public function home(): string
     {
         return $this->twig->render('Admin/home.html.twig');
     }
-
+    /* TODO
     public function delete(): string
     {
         $adminManager = new AdminManager();

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+
 use App\Model\AdminManager;
 
 class AdminController extends AbstractController
@@ -9,10 +10,10 @@ class AdminController extends AbstractController
     {
         $adminManager = new AdminManager();
         $activities = $adminManager->selectAll('name');
-        return $this->twig->render('Admin/activities.html.twig', ['activities'=> $activities]);
+        return $this->twig->render('Admin/activities.html.twig', ['activities' => $activities]);
     }
 
-        public function home(): string
+    public function home(): string
     {
         return $this->twig->render('Admin/home.html.twig');
     }
@@ -20,7 +21,6 @@ class AdminController extends AbstractController
 
 
     /* TODO
-    
     public function delete(): string
     {
         $adminManager = new AdminManager();
@@ -41,7 +41,4 @@ class AdminController extends AbstractController
         $activities = $adminManager->selectAll('firstname');
         return $this->twig->render('Admin/activities.html.twig', ['activities'=> $activities]);
     }*/
-
-
 }
-

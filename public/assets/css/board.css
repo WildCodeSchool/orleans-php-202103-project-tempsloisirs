@@ -33,13 +33,4 @@ form {
         margin-top: 1em;
         width: 100%;
     }
-
-    .admin-footer {
-        margin-top: 1em;
-    }
-
-    .admin-footer .btn {
-        margin-left: 0;
-        margin-right: 0;
-    }
 }

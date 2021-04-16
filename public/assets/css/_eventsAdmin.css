@@ -1,12 +1,8 @@
-.eventAdm {
+.eventSection {
   text-align: center;
 }
 
-.btn-ajouter {
-  margin-bottom: var(--spacing-4);
-}
-
-.eventAdm h1 {
+.eventTitle h1 {
   font-weight: 600;
   text-transform: uppercase;
   color: var(--primary-bg-color);
@@ -14,4 +10,32 @@
 
 .listEvents {
   background-color: var(--primary-bg-color);
+}
+
+.eventTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.eventTitle a {
+  margin: var(--spacing-4) 0;
+}
+
+@media screen and (max-width: 768px) {
+  .eventTitle {
+    flex-direction: column;
+  }
+
+  .eventTitle a {
+    margin: var(--spacing-3) 0;
+    padding: var(--spacing-2);
+    font-size: var(--spacing-2);
+
+  }
+
+  .eventTitle h1 {
+    margin: var(--spacing-2) 0 var(--spacing) 0;
+  }
+
 }

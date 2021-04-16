@@ -1,15 +1,17 @@
 {% extends 'layout.html.twig' %}
-{% block title %}Admin - Events{% endblock %}
+{% block title %}Admin - Ajouter un évènement{% endblock %}
 {% block stylesheet %}
 <link rel="stylesheet" href="/assets/css/_eventsAdmin.css">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 {% endblock %}
  {% block content %}
  <div class="container">
-    <div class="eventAdm">
-        <div class="eventAdm">
-        <h1>Ajouter un Évènement</h1>
-           
+    <div class="eventSection">
+        <div class="eventSection">
+                    <header class="eventTitle"> 
+                     <h1>Ajouter un Évènement</h1>
+                         <a class="btn color-primary text-light" href="/AdminEvent/index" role="button">Gérer les évènements</a>              
+                            </header>      
 
             <form action="" method="POST"> 
                 <div class="mb-3">

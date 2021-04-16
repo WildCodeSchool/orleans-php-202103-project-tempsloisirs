@@ -54,12 +54,3 @@ p {
 .strong {
   font-weight: 800;
 }
-
-.eventTitle {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.eventTitle a {
-  margin: var(--spacing-4) 0;
-}

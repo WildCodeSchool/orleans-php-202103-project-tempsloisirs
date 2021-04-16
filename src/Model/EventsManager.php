@@ -2,12 +2,22 @@
 
 namespace App\Model;
 
-use App\Model\Connection;
 use PDO;
 
 class EventsManager extends AbstractManager
 {
-    public const TABLE = 'events';
+    public const TABLE = 'event';
+
+    public function selectAll(string $orderBy = '', string $direction = 'ASC'): array
+    {
+        $query = 'SELECT * FROM ' . static::TABLE;
+        if ($orderBy) {
+            $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
+        }
+        $events = $this->pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
+        return $events;
+    }
+
     public function getEventById(int $id)
     {
 
@@ -17,19 +27,4 @@ class EventsManager extends AbstractManager
         $event = $statement->fetch(PDO::FETCH_ASSOC);
         return $event;
     }
-  /*   public function saveEvent(array $event): void
-    {
-        $query =
-        'INSERT INTO events(name, start_date, end_date, price, image, description)
-        VALUES (:name, :start_date, :end_date, :price, :image, :description)';
-        $statement = $this->connection->prepare($query);
-        $statement->bindValue(':name', $event['name'], PDO::PARAM_STR);
-        $statement->bindValue('')
-
-    }
-
-    public function updateEvent(array $event): void
-    {
-
-    } */
 }

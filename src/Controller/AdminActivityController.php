@@ -2,15 +2,15 @@
 
 namespace App\Controller;
 
-use App\Model\AdminManager;
+use App\Model\AdminActivityManager;
 
-class AdminController extends AbstractController
+class AdminActivityController extends AbstractController
 {
-    public function activities(): string
+    public function index(): string
     {
-        $adminManager = new AdminManager();
-        $activities = $adminManager->selectAll('name');
-        return $this->twig->render('Admin/activities.html.twig', ['activities' => $activities]);
+        $adminActivityManager = new AdminActivityManager();
+        $activities = $adminActivityManager->selectAll('name');
+        return $this->twig->render('Admin/AdminActivity/index.html.twig', ['activities' => $activities]);
     }
 
     /* TODO

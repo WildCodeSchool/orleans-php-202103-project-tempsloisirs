@@ -1,0 +1,63 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    Admin - Activités
+{% endblock %}
+
+{% block stylesheet %}
+    <!--Bootstrap: remove once merged-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link href="/assets/css/style.css" rel="stylesheet">
+    <link href="/assets/css/admin_activities.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<div class="container">  
+    
+    <header class="row d-flex flex-row justify-content-between mt-4">
+        <!--<div >-->
+            <div class="col-sm">
+                <h1>Gérer les activités</h1>
+            </div>
+            <div class="col-sm d-flex justify-content-end">
+                <a class="btn btn-primary" href="#" role="button">Ajouter une activité</a>
+            </div>
+        <!--</div>-->
+    </header>
+ 
+    <div class="row">
+        {% for activity in activities %}
+        <div class="col-12 col-sm">
+            <div class="card h-100 mr-auto">
+                <img class="card-img-top" src="https://picsum.photos/id/1/200/300" alt="Card image cap">
+                <div class="card-body d-flex flex-column justify-content-around">
+                    <h5 class="card-title">{{ activity.name }}</h5>
+                    <p class="card-text">{{ activity.description }}</p>
+                    <div class="d-flex flex-row justify-content-around">
+                        <a href="#" class="btn btn-primary align-self-end">Editer</a>
+                        <a href="#" class="btn btn-danger align-self-end">Supprimer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <footer class="row mt-4">
+        <div class="col d-flex justify-content-end">
+            <button type="button" class="btn btn-outline-primary">Retour au site principal</button>
+        </div>
+        <div class="col d-flex justify-content-start">
+            <button type="button" class="btn btn-outline-primary">Accueil admin</button>
+        </div>
+    </footer>
+
+    
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+{% endblock %}

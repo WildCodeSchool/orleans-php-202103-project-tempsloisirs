@@ -1,10 +1,6 @@
 @import 'style.css';
 @import 'admin.css';
 
-.m-board {
-    padding: 3em 8em;
-}
-
 @media screen and (max-width: 800px) {
     .m-board {
         padding: 1em;

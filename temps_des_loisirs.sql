@@ -24,9 +24,9 @@ DROP TABLE IF EXISTS `board`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `board` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `firstname` varchar(255) NOT NULL,
-  `surname` varchar(255) NOT NULL,
-  `role` varchar(255) DEFAULT NULL,
+  `firstname` varchar(80) NOT NULL,
+  `surname` varchar(80) NOT NULL,
+  `role` varchar(80) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

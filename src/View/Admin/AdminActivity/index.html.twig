@@ -17,10 +17,10 @@
     
     <header class="row d-flex flex-row justify-content-between mt-4">
         <!--<div >-->
-            <div class="col-sm">
+            <div class="col">
                 <h1>Gérer les activités</h1>
             </div>
-            <div class="col-sm d-flex justify-content-end">
+            <div class="col d-flex justify-content-end align-items-baseline">
                 <a class="btn btn-primary" href="#" role="button">Ajouter une activité</a>
             </div>
         <!--</div>-->
@@ -34,9 +34,9 @@
                 <div class="card-body d-flex flex-column justify-content-around">
                     <h5 class="card-title">{{ activity.name }}</h5>
                     <p class="card-text">{{ activity.description }}</p>
-                    <div class="d-flex flex-row justify-content-around">
-                        <a href="#" class="btn btn-primary align-self-end">Editer</a>
-                        <a href="#" class="btn btn-danger align-self-end">Supprimer</a>
+                    <div class="col d-flex flex-row justify-content-around">
+                        <a href="#" class="btn btn-primary align-self-end w-50 me-1">Editer</a>
+                        <a href="#" class="btn btn-danger align-self-end w-50 ms-1">Supprimer</a>
                     </div>
                 </div>
             </div>
@@ -46,10 +46,10 @@
 
     <footer class="row mt-4">
         <div class="col d-flex justify-content-end">
-            <button type="button" class="btn btn-outline-primary">Retour au site principal</button>
+            <button type="button" class="btn btn-outline-primary m-50">Retour au site principal</button>
         </div>
         <div class="col d-flex justify-content-start">
-            <button type="button" class="btn btn-outline-primary">Accueil admin</button>
+            <button type="button" class="btn btn-outline-primary m-50">Accueil admin</button>
         </div>
     </footer>
 

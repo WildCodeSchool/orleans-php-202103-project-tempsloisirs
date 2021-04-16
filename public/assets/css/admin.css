@@ -1,24 +1,14 @@
 @import 'style.css';
-/* Admin Header */
-
-.admin-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2em;
-}
 
 /* Style h1 */
 
-h1 {
+.h1 {
     margin: 0;
     padding: 0;
     font-family: var(--title-font);
     text-transform: uppercase;
     font-weight: bold;
     color: var(--primary-color);
-    font-size: var(--title-size);
 }
 
 /* Card Image style */
@@ -33,20 +23,6 @@ h1 {
 .card-body .card-text {
     font-weight: 650;
     color: var(--dark-color);
-}
-
-/* Div cards buttons */
-
-.links {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 0.8em 1em 0.8em;
-}
-
-.links a {
-    width: 50%;
-    margin: 0 0.2em;
 }
 
 /* Titre cards */
@@ -92,10 +68,4 @@ h1 {
 
 .btn-danger:active {
     filter: brightness(90%);
-}
-
-/* Footer pages admin */
-
-.admin-footer {
-    margin-top: calc(var(--third-spacing) * 2);
 }

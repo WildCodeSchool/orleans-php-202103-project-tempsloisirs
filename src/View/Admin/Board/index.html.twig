@@ -1,7 +1,7 @@
 {% extends 'layout.html.twig' %}
 
 {% block stylesheet %}
-	<link rel="stylesheet" href="/assets/css/board.css">
+	<link rel="stylesheet" href="/assets/css/admin.css">
 {% endblock %}
 
 {% block title %}
@@ -9,14 +9,14 @@
 {% endblock %}
 
 {% block content %}
-	<main class="m-board py-5 px-5">
+	<main class="m-board py-lg-5 px-lg-5 py-3 px-3">
 
-		<header class="admin-header px-5">
-			<h1 class="text-center">Gérer le Conseil d'administration</h1>
-			<a href="/adminBoard/add" class="btn btn-primary">Ajouter un membre</a>
+		<header class="admin-header d-flex justify-content-lg-between flex-lg-row align-items-lg-center flex-column px-lg-5 mb-lg-5 mb-3">
+			<h1 class="text-center h1">Gérer le Conseil d'administration</h1>
+			<a href="/adminBoard/add" class="btn btn-primary mt-3">Ajouter un membre</a>
 		</header>
 
-		<div class="row row-cols-1 row-cols-md-5 g-4 px-5">
+		<div class="row row-cols-1 row-cols-md-5 g-4 px-lg-5">
 			{% for boardMember in boardMembers %}
 				<div class="col">
 					<div class="card">
@@ -26,9 +26,9 @@
 								{{ boardMember.surname }}</h2>
 							<p class="card-text">{{ boardMember.role }}</p>
 						</div>
-						<div class="links">
-							<a href="#" class="btn btn-primary">Modifier</a>
-							<a href="#" class="btn btn-danger">Supprimer</a>
+						<div class="links d-flex justify-content-center align-items-center px-3 pb-3">
+							<a href="#" class="btn btn-primary me-1 w-50">Modifier</a>
+							<a href="#" class="btn btn-danger ms-1 w-50">Supprimer</a>
 						</div>
 					</div>
 				</div>
@@ -37,7 +37,7 @@
 			{% endfor %}
 		</div>
 
-		<footer class="admin-footer d-flex justify-content-center flex-md-row flex-column">
+		<footer class="admin-footer d-flex justify-content-center flex-md-row flex-column mt-lg-5 mt-2">
 			<a href="#" class="btn btn-primary btn-lg mx-1 my-1">Retour au site principal</a>
 			<a href="#" class="btn btn-primary btn-lg mx-1 my-1">Accueil Admin</a>
 		</footer>

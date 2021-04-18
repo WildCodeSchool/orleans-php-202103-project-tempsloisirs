@@ -13,13 +13,13 @@ class AdminActivityController extends AbstractController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
-            $item = array_map('trim', $_POST);
+            $activities = array_map('trim', $_POST);
 
             // TODO validations (length, format...)
 
             // if validation is ok, insert and redirection
-            $itemManager = new ItemManager();
-            $id = $itemManager->insert($item);
+            $adminActivityManager = new AdminActivityManager();
+            $id = $adminActivityManager->insert($activities);
             header('Location:/item/show/' . $id);
         }
 

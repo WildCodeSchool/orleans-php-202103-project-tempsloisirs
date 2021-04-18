@@ -10,8 +10,10 @@ class AdminActivityController extends AbstractController
     {
         $adminActivityManager = new AdminActivityManager();
         $activities = $adminActivityManager->selectAll('name');
-        return $this->twig->render('Admin/AdminActivity/index.html.twig', ['activities' => $activities]);
+        return $this->twig->render('Admin/Activity/index.html.twig', ['activities' => $activities]);
     }
+
+
 
     /* TODO
     public function home(): string
@@ -26,12 +28,13 @@ class AdminActivityController extends AbstractController
         return $this->twig->render('Admin/activities.html.twig', ['activities'=> $activities]);
     }
 
-    public function addActivity(): string
+    public function add(): string
     {
-        $adminManager = new AdminManager();
-        $activities = $adminManager->selectAll('firstname');
+        $adminManager = new AdminActivityManager();
+        $activities = $adminManager->selectAll('name');
         return $this->twig->render('Admin/activities.html.twig', ['activities'=> $activities]);
     }
+
 
     public function editActivity(): string
     {

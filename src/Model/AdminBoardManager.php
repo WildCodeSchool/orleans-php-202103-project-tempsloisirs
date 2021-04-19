@@ -6,7 +6,7 @@ class AdminBoardManager extends AbstractManager
 {
     public const TABLE = 'board';
 
-    public function insert(array $boardMember): int
+    public function insert(array $boardMember)
     {
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " 
         (`firstname`, `surname`, `role`, `image`) VALUES (:firstname, :surname, :role, :image)");

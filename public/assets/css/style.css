@@ -1,56 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Simonetta:ital,wght@0,400;0,900;1,400;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
 :root {
-  --primary-bg-color: #5eaaa8;
-  --secondary-bg-color: #d9e0d9;
-  --element-bg-color: #ecb390;
-  --light-color: #fcf8e8;
+  --primary-color: #5eaaa8;
+  --secondary-color: #ecb390;
+  --danger-color: #ff7979;
+  --light-color: #f1ffff;
   --dark-color: #595959;
-  --color-danger: #ff7979;
+  --grey-color: #c4c4c4;
+  --page-color: #e5e5e5;
 
-  /* Tailles pour les texts */
-  --parag-size: 1em;
-  --h2-size: 1.3em;
-  --h1-size: 1.6em;
+  --text-font: 'Open Sans', sans-serif;
+  --title-font: 'Simonetta', cursive;
+  --title-size: 2.3em;
 
-  /* Tailles pour les elements */
-  --spacing: 0.5em;
-  --spacing-2: 1em;
-  --spacing-3: 1.5em;
-  --spacing-4: 3em;
-
-  --font-titre: "Simonetta", cursive;
-  --font-text: "Open Sans", sans-serif;
-}
-
-.color-primary {
-  background-color: var(--primary-bg-color);
-}
-
-.color-danger {
-  background-color: var(--color-danger);
+  --primary-spacing: 8px;
+  --secondary-spacing: 16px;
+  --third-spacing: 24px;
 }
 
 body {
-  background-color: #e5e5e5;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5 {
-  font-family: var(--font-titre);
-  margin: var(--spacing-3) 0 var(--spacing-3) 0;
-}
-
-p {
-  font-family: var(--font-text);
-}
-
-.bg-element {
-  background-color: var(--element-bg-color);
-  color: var(--light-color);
-}
-
-.strong {
-  font-weight: 800;
+  background-color: var(--page-color);
+  font-family: var(--text-font);
+  scroll-behavior: smooth;
 }

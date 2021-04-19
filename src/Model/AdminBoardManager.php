@@ -16,6 +16,5 @@ class AdminBoardManager extends AbstractManager
         $statement->bindValue('image', $boardMember['image'], \PDO::PARAM_STR);
 
         return $statement->execute();
-        return (int)$this->pdo->lastInsertId();
     }
 }

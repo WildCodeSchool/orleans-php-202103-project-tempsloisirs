@@ -1,7 +1,7 @@
 {% extends 'layout.html.twig' %}
 
 {% block stylesheet %}
-	<link rel="stylesheet" href="/assets/css/board.css">
+	<link rel="stylesheet" href="/assets/css/admin.css">
 {% endblock %}
 
 {% block title %}
@@ -10,11 +10,11 @@
 
 {% block content %}
 
-	<main class="d-flex justify-content-center flex-column">
+	<main class="m-board py-lg-5 px-lg-5 py-3 px-3 d-flex justify-content-center flex-column">
 
-		<header class="admin-header">
-			<h1 class="text-center">Ajouter un membre au CA</h1>
-			<a href="/adminBoard/index" class="btn btn-primary">Gérer conseil d'administration</a>
+		<header class="admin-header d-flex justify-content-lg-between flex-lg-row align-items-lg-center flex-column px-lg-5 mb-lg-5 mb-3">
+			<h1 class="text-center h1">Ajouter un membre au CA</h1>
+			<a href="/adminBoard/index" class="btn btn-primary mt-3 mt-lg-0">Gérer conseil d'administration</a>
 		</header>
 
 		{% include 'Admin/Board/_form.html.twig' %}

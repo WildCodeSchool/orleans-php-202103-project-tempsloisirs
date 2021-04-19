@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Nova+Oval&family=Roboto:wght@100;400;700&display=swap');
+
+:root {
+    --primary: rgb(41, 168, 162);
+    --button: #ddae2e;
+    --secondary:#c5c0c0;
+    --dark:#080100;
+    --intermediary:#7a7574;
+
+    --main-font: 'Roboto', sans-serif;
+    --title-font: 'Nova Oval', cursive;
+
+    --navbar-height: 70px;
+
+}
+
+body {
+    padding-top: var(--navbar-height);
+}
+
+h1{
+    color: var(--primary);
+    font-family: var(--title-font);
+}
+
+.nav {
+background: var(--primary);
+}
+
+header {
+color: var(--light);
+display: flex;
+justify-content: center;
+align-items: center;
+background-color; var(--primay);
+background-size: cover;
+height: 500px;
+}

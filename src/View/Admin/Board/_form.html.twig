@@ -1,7 +1,13 @@
 <form method="post">
 
-	{% if errors is defined %}
-		{% for error in errors %}
+	{% if errorsEmpty is defined %}
+		{% for error in errorsEmpty %}
+			<div class="alert alert-danger col col-lg-6 col-md-12 mx-auto" role="alert">{{ error }}</div>
+		{% endfor %}
+	{% endif %}
+
+	{% if errorsLength is defined %}
+		{% for error in errorsLength %}
 			<div class="alert alert-danger col col-lg-6 col-md-12 mx-auto" role="alert">{{ error }}</div>
 		{% endfor %}
 	{% endif %}

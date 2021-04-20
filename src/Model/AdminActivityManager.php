@@ -4,18 +4,17 @@ namespace App\Model;
 
 class AdminActivityManager extends AbstractManager
 {
-    public const TABLE = 'activities';
+    public const TABLE = 'activity';
 
     /**
      * Insert new item in database
      */
-    public function insert(array $item): int
+    public function insert(array $activity)
     {
-        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`title`) VALUES (:title)");
-        $statement->bindValue('title', $item['title'], \PDO::PARAM_STR);
+        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`name`) VALUES (:name)");
+        $statement->bindValue('name', $item['name'], \PDO::PARAM_STR);
 
-        $statement->execute();
-        return (int) $this->pdo->lastInsertId();
+        return $statement->execute(); 
     }
 
     /**

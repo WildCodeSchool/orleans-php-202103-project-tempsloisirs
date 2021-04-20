@@ -42,7 +42,11 @@ class AdminBoardController extends AbstractController
             }
         }
 
-        return $this->twig->render('Admin/Board/edit.html.twig', ['boardMember' => $boardMember, 'errorsEmpty' => $errorsEmpty, 'errorsLength' => $errorsLength]);
+        return $this->twig->render('Admin/Board/edit.html.twig', [
+            'boardMember' => $boardMember,
+            'errorsEmpty' => $errorsEmpty,
+            'errorsLength' => $errorsLength
+            ]);
     }
 
     private function validateEmpty($boardMember)

@@ -1,0 +1,13 @@
+@import 'style.css';
+
+/*backgroundcolor*/
+
+.navbar-nav{
+    background-color: var(--primary-color);
+    font-family: var(--title-font);
+    font-weight: 650;
+}
+
+.nav-link{
+    color: var(--light-color);
+}

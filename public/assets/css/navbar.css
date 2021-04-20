@@ -1,17 +1,38 @@
 @import 'style.css';
 
-/*backgroundcolor*/
-
-.navbar-nav{
+.navbar {
     background-color: var(--primary-color);
-    font-family: var(--title-font);
-    font-weight: 650;
 }
 
-.nav-link{
+.navbar-brand {
+    font-family: var(--title-font);
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--secondary-color);
+    filter: brightness(120%);
+}
+
+.navbar-brand:hover {
     color: var(--light-color);
 }
 
-.nav-link:hover{
+.nav-link {
+    font-family: var(--text-font);
+    text-transform: uppercase;
+    font-weight: 650;
+    color: var(--light-color);
+}
+
+.nav-link:hover {
+    color: var(--secondary-color) !important;
+    filter: brightness(120%);
+}
+
+.nav-link:active {
     color: var(--secondary-color);
+    filter: brightness(90%);
+}
+
+.navbar-toggler {
+    border: none !important;
 }

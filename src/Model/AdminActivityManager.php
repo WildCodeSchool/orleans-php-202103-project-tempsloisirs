@@ -12,9 +12,9 @@ class AdminActivityManager extends AbstractManager
     public function insert(array $activity)
     {
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`name`) VALUES (:name)");
-        $statement->bindValue('name', $item['name'], \PDO::PARAM_STR);
+        $statement->bindValue('name', $activity['name'], \PDO::PARAM_STR);
 
-        return $statement->execute(); 
+        return $statement->execute();
     }
 
     /**

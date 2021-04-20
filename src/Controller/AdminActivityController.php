@@ -13,7 +13,7 @@ class AdminActivityController extends AbstractController
     {
         $errors = [];
         $activity = [];
-        
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
             $activities = array_map('trim', $_POST);
@@ -48,16 +48,10 @@ class AdminActivityController extends AbstractController
                 $adminActivityManager = new AdminActivityManager();
                 $id = $adminActivityManager->insert($activities);
                 header('Location:/Item/show' . $id);
-
             }
-
         }
 
         return $this->twig->render('Admin/Activity/add.html.twig', ['errors' => $errors,
             'activity' => $activity]);
-
-        // TODO validations (length, format...)
-
     }
-
 }

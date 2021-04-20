@@ -25,8 +25,7 @@ class AdminBoardController extends AbstractController
         $adminManager = new AdminBoardManager();
         $boardMember = $adminManager->selectOneById($id);
 
-        $errorsEmpty = [];
-        $errorsLength = [];
+        $errorsEmpty = $errorsLength = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data

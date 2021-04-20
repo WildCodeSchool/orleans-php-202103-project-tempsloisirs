@@ -4,5 +4,5 @@ namespace App\Model;
 
 class AdminActivityManager extends AbstractManager
 {
-    public const TABLE = 'activities';
+    public const TABLE = 'activity';
 }

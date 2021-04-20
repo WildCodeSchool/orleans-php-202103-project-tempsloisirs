@@ -11,3 +11,7 @@
 .nav-link{
     color: var(--light-color);
 }
+
+.nav-link:hover{
+    color: var(--secondary-color);
+}

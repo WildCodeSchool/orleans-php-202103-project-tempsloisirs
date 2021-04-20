@@ -1,0 +1,46 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/admin.css">
+{% endblock %}
+
+{% block title %}
+	Admin - Conseil d'administration
+{% endblock %}
+
+{% block content %}
+	<main class="m-board py-lg-5 px-lg-5 py-3 px-3">
+
+		<header class="admin-header d-flex justify-content-lg-between flex-lg-row align-items-lg-center flex-column px-lg-5 mb-lg-5 mb-3">
+			<h1 class="text-center h1">Gérer le Conseil d'administration</h1>
+			<a href="/adminBoard/add" class="btn btn-primary mt-3 mt-lg-0">Ajouter un membre</a>
+		</header>
+
+		<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4 px-lg-5">
+			{% for boardMember in boardMembers %}
+				<div class="col">
+					<div class="card">
+						<img src={{ boardMember.image }} class="card-img-top" alt="photo portrait">
+						<div class="card-body px-3">
+							<h2 class="card-title">{{ boardMember.firstname }}
+								{{ boardMember.surname }}</h2>
+							<p class="card-text">{{ boardMember.role }}</p>
+						</div>
+						<div class="links d-flex justify-content-center align-items-center px-3 pb-3">
+							<a href="#" class="btn btn-primary me-1 w-50">Modifier</a>
+							<a href="#" class="btn btn-danger ms-1 w-50">Supprimer</a>
+						</div>
+					</div>
+				</div>
+			{% else %}
+				<li>Nothing to display</li>
+			{% endfor %}
+		</div>
+
+		<footer class="admin-footer d-flex justify-content-center flex-md-row flex-column mt-lg-5 mt-3">
+			<a href="#" class="btn btn-primary btn-lg mx-1 my-1">Retour au site principal</a>
+			<a href="#" class="btn btn-primary btn-lg mx-1 my-1">Accueil Admin</a>
+		</footer>
+
+	</main>
+{% endblock %}

@@ -50,6 +50,8 @@ class AdminBoardController extends AbstractController
 
     private function validateEmpty($boardMember)
     {
+        $errorsEmpty = [];
+
         if (empty($boardMember['firstname'])) {
             $errorsEmpty[] = 'Le prénom est obligatoire';
         }
@@ -66,11 +68,13 @@ class AdminBoardController extends AbstractController
             $errorsEmpty[] = 'Une image est obligatoire';
         }
 
-        return $errorsEmpty ?? [];
+        return $errorsEmpty;
     }
 
     public function validateLength($boardMember)
     {
+        $errorsLength = [];
+
         $firstnameLength = 80;
         if (strlen($boardMember['firstname']) > $firstnameLength) {
             $errorsLength[] = 'Le prénom doit faire moins de ' . $firstnameLength . ' caractères';
@@ -91,6 +95,6 @@ class AdminBoardController extends AbstractController
             $errorsLength[] = 'Le lien de l\'image doit faire moins de ' . $imageLength . ' caractères';
         }
 
-        return $errorsLength ?? [];
+        return $errorsLength;
     }
 }

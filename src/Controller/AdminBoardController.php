@@ -25,7 +25,7 @@ class AdminBoardController extends AbstractController
         $adminManager = new AdminBoardManager();
         $boardMember = $adminManager->selectOneById($id);
 
-        $errorsEmpty = $errorsLength = [];
+        $errorsEmpty = $errorsLength = $errorsFilter = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
@@ -34,8 +34,9 @@ class AdminBoardController extends AbstractController
 
             $errorsEmpty = $this->validateEmpty($boardMember);
             $errorsLength = $this->validateLength($boardMember);
+            $errorsFilter = $this->validateFilter($boardMember);
 
-            if (empty($errorsEmpty) && empty($errorsLength)) {
+            if (empty($errorsEmpty) && empty($errorsLength) && empty($errorsFilter)) {
                 $adminManager->update($boardMember);
                 header('Location:/adminBoard/index');
             }
@@ -44,8 +45,9 @@ class AdminBoardController extends AbstractController
         return $this->twig->render('Admin/Board/edit.html.twig', [
             'boardMember' => $boardMember,
             'errorsEmpty' => $errorsEmpty,
-            'errorsLength' => $errorsLength
-            ]);
+            'errorsLength' => $errorsLength,
+            'errorsFilter' => $errorsFilter
+        ]);
     }
 
     private function validateEmpty($boardMember)
@@ -96,5 +98,16 @@ class AdminBoardController extends AbstractController
         }
 
         return $errorsLength;
+    }
+
+    public function validateFilter($boardMember)
+    {
+        $errorsFilter = [];
+
+        if (!filter_var($boardMember['image'], FILTER_VALIDATE_URL)) {
+            $errorsFilter[] = 'L\'image doit être un URL';
+        }
+
+        return $errorsFilter;
     }
 }

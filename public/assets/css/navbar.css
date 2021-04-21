@@ -12,10 +12,6 @@
     filter: brightness(120%);
 }
 
-.navbar-brand:hover {
-    color: var(--light-color);
-}
-
 .nav-link {
     font-family: var(--text-font);
     text-transform: uppercase;
@@ -24,7 +20,7 @@
 }
 
 .nav-link:hover {
-    color: var(--secondary-color) !important;
+    color: var(--secondary-color);
     filter: brightness(120%);
 }
 
@@ -34,5 +30,5 @@
 }
 
 .navbar-toggler {
-    border: none !important;
+    border: none;
 }

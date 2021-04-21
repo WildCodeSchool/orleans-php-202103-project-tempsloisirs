@@ -1,23 +1,10 @@
 <form method="post">
 
-	{% if errorsEmpty is defined %}
-		{% for error in errorsEmpty %}
+	{% if errors is defined %}
+		{% for error in errors %}
 			<div class="alert alert-danger col col-lg-6 col-md-12 mx-auto" role="alert">{{ error }}</div>
 		{% endfor %}
 	{% endif %}
-
-	{% if errorsLength is defined %}
-		{% for error in errorsLength %}
-			<div class="alert alert-danger col col-lg-6 col-md-12 mx-auto" role="alert">{{ error }}</div>
-		{% endfor %}
-	{% endif %}
-
-	{% if errorsFilter is defined %}
-		{% for error in errorsFilter %}
-			<div class="alert alert-danger col col-lg-6 col-md-12 mx-auto" role="alert">{{ error }}</div>
-		{% endfor %}
-	{% endif %}
-
 
 	<div class="form-row mt-sm-0 px-xs-0 py-sm-0">
 		<div class="form-group col col-lg-6 col-md-12 mx-auto">

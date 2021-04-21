@@ -6,6 +6,11 @@ use App\Model\AdminBoardManager;
 
 class AdminBoardController extends AbstractController
 {
+    const FIRSTNAMELENGTH = 80;
+    const LASTNAMELENGTH = 80;
+    const ROLELENGTH = 80;
+    const IMAGELENGTH = 255;
+
     /**
      * Show informations for a specific item
      **/
@@ -22,7 +27,7 @@ class AdminBoardController extends AbstractController
      */
     public function add()
     {
-        $errorsEmpty = $errorsLength = $errorsFilter = [];
+        $errorsEmpty = $errorsLength = $errorsFilter = $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
@@ -32,7 +37,9 @@ class AdminBoardController extends AbstractController
             $errorsLength = $this->validateLength($boardMember);
             $errorsFilter = $this->validateFilter($boardMember);
 
-            if (empty($errorsEmpty) && empty($errorsLength) && empty($errorsFilter)) {
+            $errors = array_merge($errorsEmpty, $errorsFilter, $errorsLength);
+
+            if (empty($errors)) {
                 $adminBoardManager = new AdminBoardManager();
                 $adminBoardManager->insert($boardMember);
                 header('Location:/adminBoard/index');
@@ -40,9 +47,7 @@ class AdminBoardController extends AbstractController
         }
 
         return $this->twig->render('Admin/Board/add.html.twig', [
-            'errorsEmpty' => $errorsEmpty,
-            'errorsLength' => $errorsLength,
-            'errorsFilter' => $errorsFilter]);
+            'errors' => $errors]);
     }
 
     private function validateEmpty($boardMember)
@@ -72,24 +77,21 @@ class AdminBoardController extends AbstractController
     {
         $errorsLength = [];
 
-        $firstnameLength = 80;
-        if (strlen($boardMember['firstname']) > $firstnameLength) {
-            $errorsLength[] = 'Le prénom doit faire moins de ' . $firstnameLength . ' caractères';
+        if (strlen($boardMember['firstname']) > self::FIRSTNAMELENGTH) {
+            $errorsLength[] = 'Le prénom doit faire moins de ' . self::FIRSTNAMELENGTH . ' caractères';
         }
 
-        $lastnameLength = 80;
-        if (strlen($boardMember['surname']) > $lastnameLength) {
-            $errorsLength[] = 'Le nom doit faire moins de ' . $lastnameLength . ' caractères';
+        if (strlen($boardMember['surname']) > self::LASTNAMELENGTH) {
+            $errorsLength[] = 'Le nom doit faire moins de ' . self::LASTNAMELENGTH . ' caractères';
         }
 
-        $roleLength = 80;
-        if (strlen($boardMember['role']) > $roleLength) {
-            $errorsLength[] = 'La fonction doit faire moins de ' . $roleLength . ' caractères';
+        if (strlen($boardMember['role']) > self::ROLELENGTH) {
+            $errorsLength[] = 'La fonction doit faire moins de ' . self::ROLELENGTH . ' caractères';
         }
 
         $imageLength = 255;
-        if (strlen($boardMember['image']) > $imageLength) {
-            $errorsLength[] = 'Le lien de l\'image doit faire moins de ' . $imageLength . ' caractères';
+        if (strlen($boardMember['image']) > self::IMAGELENGTH) {
+            $errorsLength[] = 'Le lien de l\'image doit faire moins de ' . self::IMAGELENGTH . ' caractères';
         }
 
         return $errorsLength;

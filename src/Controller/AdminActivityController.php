@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Model\AdminActivityManager;
+use App\Model\ActivityManager;
 
 class AdminActivityController extends AbstractController
 {

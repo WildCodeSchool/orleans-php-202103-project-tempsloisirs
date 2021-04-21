@@ -19,8 +19,8 @@
 		<table class="table table-hover bg-light">
 			<thead>
 				<tr>
-					<th class="text-center">DATE</th>
-					<th class="text-center">INFORMATION</th>
+					<th class="col-2 text-center">DATE</th>
+					<th class="col-8 text-center">INFORMATION</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -28,10 +28,10 @@
 					<tr>
 						<td class="text-center">{{ information.date }}</td>
 						<td class="text-left">{{ information.content }}</td>
-                        <td class='d-flex'>
-							<a class="btn btn-primary me-1 w-25" href="/adminInformation/edit/{{ information.id }}">Modifier</a>
+                        <td class='col-2 d-flex'>
+							<a class="btn btn-primary me-1 w-auto" href="/adminInformation/edit/{{ information.id }}">Modifier</a>
 							<form method="POST" onSubmit="return confirm('Voulez vous supprimer ?');" action="/adminInformation/delete/{{information.id}}">
-								<button class="btn btn-danger ms-1 w-100">Supprimer</button>
+								<button class="btn btn-danger ms-1 w-auto">Supprimer</button>
 							</form>
 						</td>
                     </tr>
@@ -43,7 +43,7 @@
 
 		<footer class="admin-footer d-flex justify-content-center flex-md-row flex-column mt-lg-5 mt-3">
 			<a href="#" class="btn btn-primary btn-lg mx-1 my-1">Retour au site principal</a>
-			<a href="#" class="btn btn-primary btn-lg mx-1 my-1">Accueil Admin</a>
+			<a href="/Admin/home" class="btn btn-primary btn-lg mx-1 my-1">Accueil Admin</a>
 		</footer>
 	</main>
 {% endblock %}

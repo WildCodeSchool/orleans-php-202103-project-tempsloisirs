@@ -39,6 +39,38 @@ class AdminEventController extends AbstractController
         ]);
     }
 
+    public function edit(int $id): string
+    {
+        $errorsDateValue = $errorsEmptyLength = $errorsIdNotFound = [];
+
+        $eventManager = new EventManager();
+        $event = $eventManager->selectOneById($id);
+
+
+        if ($event === false) {
+            $errorsIdNotFound[] = "L'évènement sélectionné n\'existe pas.";
+        }
+
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $event = array_map('trim', $_POST);
+            $event['id'] = $id;
+            $errorsEmptyLength = $this->validateEmptyLength($event);
+            $errorsDateValue = $this->validateDateValue($event);
+
+            if (empty($errorsEmptyLength) && empty($errorsDateValue) && empty($errorsIdNotFound)) {
+                $eventManager->updateEvent($event);
+
+                header('Location:/adminEvent/index');
+            }
+        }
+            return $this->twig->render('Admin/Event/edit.html.twig', [
+            'errorsEmptyLength' => $errorsEmptyLength,
+            'errorsDateValue' => $errorsDateValue,
+            'errorsIdNotFound' => $errorsIdNotFound,
+            'event' => $event,
+            ]);
+    }
+
     public function validateEmptyLength($event)
     {
         $errorsEmptyLength = [];
@@ -77,7 +109,7 @@ class AdminEventController extends AbstractController
             $errorsDateValue[] = "L'événement ne peut pas avoir lieu à une date passée.";
         }
 
-        if ($event['end_date'] < $event['start_date']) {
+        if (isset($event['end_date']) < $event['start_date']) {
             $errorsDateValue[] = "La date de fin de l'événement ne peut pas être précédent à date de début.";
         }
 

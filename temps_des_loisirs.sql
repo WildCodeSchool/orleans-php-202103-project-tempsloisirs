@@ -1,6 +1,9 @@
 -- SQL Dump
+-- version 4.9.5deb2
+-- https://www.phpmyadmin.net/
+--
 -- Host: localhost:3306
--- Generation Time: Apr 19, 2021 at 01:53 PM
+-- Generation Time: Apr 21, 2021 at 03:10 PM
 -- Server version: 8.0.23-0ubuntu0.20.04.1
 -- PHP Version: 7.4.3
 
@@ -26,7 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `event` (
-  `ID` int NOT NULL,
+  `id` int NOT NULL,
   `name` varchar(255) NOT NULL,
   `start_date` date NOT NULL,
   `end_date` date DEFAULT NULL,
@@ -39,13 +42,16 @@ CREATE TABLE `event` (
 -- Dumping data for table `event`
 --
 
-INSERT INTO `event` (`ID`, `name`, `start_date`, `end_date`, `price`, `description`, `image`) VALUES
-(1, 'Voyage St Malo', '2020-06-15', NULL, 150, 'nous irons a st malo', 'https://picsum.photos/200'),
-(2, 'Visite de la cathedrale', '2021-02-17', NULL, 20, 'nous visiterons la cathedrale d`Orleans', 'https://picsum.photos/200'),
+INSERT INTO `event` (`id`, `name`, `start_date`, `end_date`, `price`, `description`, `image`) VALUES
+(1, 'Voyage Saint Maloo', '2021-06-17', NULL, 150, 'nous irons a st malo', 'https://picsum.photos/200'),
+(2, 'Visite de la cathedrale', '2021-02-17', NULL, 20, 'nous visiterons la cathedrale d\' Orleans', 'https://picsum.photos/200'),
 (3, 'Voyage Nice', '2021-07-16', '2020-08-17', 150, 'Nous irons à Nice.', 'https://picsum.photos/200'),
 (4, 'Visit Parc de Potyl', '2021-09-15', NULL, 20, 'nous visiterons le parc de potyl', 'https://picsum.photos/200'),
 (5, 'Loto et Karaoke', '2021-08-09', NULL, 20, 'Soirée avec loto et karaoke', 'https://picsum.photos/200'),
-(6, 'Voyage à Mont-Saint-Michel', '2021-06-09', '2021-06-12', 800, 'Voyage à Mont-Saint-Michel.', 'https://picsum.photos/200');
+(6, 'Voyage à Mont-Saint-Michel', '2021-06-09', '2021-06-12', 800, 'Voyage à Mont-Saint-Michel.', 'https://picsum.photos/200'),
+(7, 'Voyage au Brésil', '2021-04-22', '2021-04-30', 5500, 'Voyage à Rio de Janeiro.', 'https://picsum.photos/200'),
+(8, 'Journée à Nantes', '2021-05-28', NULL, 300, 'On va passer la journée à Nantes.', 'https://picsum.photos/200'),
+(9, 'Loto de prinstemps', '2021-05-19', NULL, 10, 'Loto d\'habitude pour les membres et famille.', 'https://picsum.photos/200');
 
 --
 -- Indexes for dumped tables
@@ -55,7 +61,7 @@ INSERT INTO `event` (`ID`, `name`, `start_date`, `end_date`, `price`, `descripti
 -- Indexes for table `event`
 --
 ALTER TABLE `event`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -65,7 +71,7 @@ ALTER TABLE `event`
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

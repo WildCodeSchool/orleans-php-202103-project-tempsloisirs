@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-class AdminActivityManager extends AbstractManager
+class ActivityManager extends AbstractManager
 {
     public const TABLE = 'activity';
 }

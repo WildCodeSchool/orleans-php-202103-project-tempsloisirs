@@ -10,26 +10,4 @@ class AdminController extends AbstractController
     {
         return $this->twig->render('Admin/home.html.twig');
     }
-
-    /* TODO
-    public function delete(): string
-    {
-        $adminManager = new AdminManager();
-        $activities = $adminManager->selectAll('firstname');
-        return $this->twig->render('Admin/activities.html.twig', ['activities'=> $activities]);
-    }
-
-    public function addActivity(): string
-    {
-        $adminManager = new AdminManager();
-        $activities = $adminManager->selectAll('firstname');
-        return $this->twig->render('Admin/activities.html.twig', ['activities'=> $activities]);
-    }
-
-    public function editActivity(): string
-    {
-        $adminManager = new AdminManager();
-        $activities = $adminManager->selectAll('firstname');
-        return $this->twig->render('Admin/activities.html.twig', ['activities'=> $activities]);
-    }*/
 }

@@ -1,2 +1,16 @@
 @import 'style.css';
 @import 'admin.css';
+
+/* Texte d'information cards */
+
+.card-body .card-text {
+    font-weight: 400;
+    color: var(--dark-color);
+}
+
+/* Warning color class bootstrap */
+
+.card-header {
+    color: var(--secondary-color);
+    font-weight: 700;
+}

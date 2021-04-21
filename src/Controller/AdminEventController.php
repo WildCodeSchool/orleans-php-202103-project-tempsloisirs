@@ -2,21 +2,15 @@
 
 namespace App\Controller;
 
-use App\Model\EventsManager;
+use App\Model\EventManager;
 
 class AdminEventController extends AbstractController
 {
 
-
     public function index(): string
     {
-        $eventsManager = new EventsManager();
-        $events = $eventsManager->selectAll();
+        $eventManager = new EventManager();
+        $events = $eventManager->selectAll();
         return $this->twig->render('Admin/Event/index.html.twig', ['events' => $events]);
-    }
-
-    public function add(): string
-    {
-        return $this->twig->render('Admin/Event/add.html.twig');
     }
 }

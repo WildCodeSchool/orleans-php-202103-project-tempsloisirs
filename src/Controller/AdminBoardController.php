@@ -6,10 +6,10 @@ use App\Model\AdminBoardManager;
 
 class AdminBoardController extends AbstractController
 {
-    const FIRSTNAMELENGTH = 80;
-    const LASTNAMELENGTH = 80;
-    const ROLELENGTH = 80;
-    const IMAGELENGTH = 255;
+    private const FIRSTNAMELENGTH = 80;
+    private const LASTNAMELENGTH = 80;
+    private const ROLELENGTH = 80;
+    private const IMAGELENGTH = 255;
 
     /**
      * Show informations for a specific item
@@ -89,7 +89,6 @@ class AdminBoardController extends AbstractController
             $errorsLength[] = 'La fonction doit faire moins de ' . self::ROLELENGTH . ' caractères';
         }
 
-        $imageLength = 255;
         if (strlen($boardMember['image']) > self::IMAGELENGTH) {
             $errorsLength[] = 'Le lien de l\'image doit faire moins de ' . self::IMAGELENGTH . ' caractères';
         }

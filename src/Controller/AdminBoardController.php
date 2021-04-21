@@ -32,7 +32,7 @@ class AdminBoardController extends AbstractController
             $errorsLength = $this->validateLength($boardMember);
             $errorsFilter = $this->validateFilter($boardMember);
 
-            if (empty($errorsEmpty) && empty($errorsLength)) {
+            if (empty($errorsEmpty) && empty($errorsLength) && empty($errorsFilter)) {
                 $adminBoardManager = new AdminBoardManager();
                 $adminBoardManager->insert($boardMember);
                 header('Location:/adminBoard/index');

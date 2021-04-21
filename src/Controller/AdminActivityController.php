@@ -19,7 +19,6 @@ class AdminActivityController extends AbstractController
             $activityManager = new ActivityManager();
             $activityManager->delete($id);
             header('Location:/AdminActivity/index');
-
         }
     }
 }

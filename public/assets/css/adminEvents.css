@@ -17,6 +17,10 @@
   align-items: center;
 }
 
+.errorsMessage {
+  list-style-type: none;
+}
+
 .btn-primary,
 .btn-primary:hover,
 .btn-primary:active,

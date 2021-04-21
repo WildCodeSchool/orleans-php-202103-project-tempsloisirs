@@ -14,7 +14,7 @@ class AdminActivityController extends AbstractController
      */
     public function add(): string
     {
-        $errors =[];
+        $errors = [];
         $errorsLength = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -27,25 +27,22 @@ class AdminActivityController extends AbstractController
             $errorsLength = $this->validateLength($activities);
 
             if (empty($errors)) {
-            // if validation is ok, insert and redirection
-            $activityManager = new ActivityManager();
-            $activityManager->insert($activities);
-            header('Location:/adminActivity/index');
-            }
-
-                   
-            if (empty($errorsLength)) {
                 // if validation is ok, insert and redirection
                 $activityManager = new ActivityManager();
                 $activityManager->insert($activities);
                 header('Location:/adminActivity/index');
             }
 
+            if (empty($errorsLength)) {
+                // if validation is ok, insert and redirection
+                $activityManager = new ActivityManager();
+                $activityManager->insert($activities);
+                header('Location:/adminActivity/index');
+            }
         }
 
-        return $this->twig->render('Admin/Activity/add.html.twig',
-            ['errors' => $errors,
-            'errorsLength' =>$errorsLength]);
+        return $this->twig->render('Admin/Activity/add.html.twig', [
+            'errors' => $errors, 'errorsLength' => $errorsLength]);
     }
 
 /**
@@ -71,9 +68,8 @@ class AdminActivityController extends AbstractController
         }
 
         if (empty($activities['end_time'])) {
-        $errors[] = "Veuillez indiquer une heure de début pour cette activité";
+            $errors[] = "Veuillez indiquer une heure de début pour cette activité";
         }
-
 
         if (filter_var($activities['image'], FILTER_VALIDATE_URL)) {
             $errors[] = "Cette URL n'est pas valide.";
@@ -81,8 +77,7 @@ class AdminActivityController extends AbstractController
 
         if ($activities['start_time'] > $activities['end_time']) {
             $errors[] = 'L\'heure de fin de l\'activité doit être postérieure à l\'heure de début.';
-}
-
+        }
 
         return $errors;
     }
@@ -91,7 +86,6 @@ class AdminActivityController extends AbstractController
     {
         $errorsLength = [];
 
-        // Max field length
         if (strlen($activities['name']) > self::MAX_FIELD_LENGTH) {
             $errorsLength[] = 'Le nom de l\'activité ne peut pas dépasser' . self::MAX_FIELD_LENGTH . ' caractères';
         }
@@ -105,11 +99,10 @@ class AdminActivityController extends AbstractController
         }
 
         if (strlen($activities['description']) < self::MAX_FIELD_LENGTH) {
-            $errorsLength[] = 'La description de l\'activité ne peut pas dépasser' . self::MAX_FIELD_LENGTH . 
-            ' caractères';
+            $errorsLength[] = 'La description de l\'activité ne peut pas dépasser' . self::MAX_FIELD_LENGTH .
+                ' caractères';
         }
 
-        // Min field length
         if (strlen($activities['name']) < self::MIN_FIELD_LENGTH) {
             $errorsLength[] = 'Le nom de l\'activité doit faire plus de' . self::MIN_FIELD_LENGTH . ' caractères';
         }
@@ -120,5 +113,4 @@ class AdminActivityController extends AbstractController
 
         return $errorsLength;
     }
-
 }

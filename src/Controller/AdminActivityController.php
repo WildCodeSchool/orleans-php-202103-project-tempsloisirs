@@ -116,13 +116,9 @@ class AdminActivityController extends AbstractController
     {
         $errors = [];
 
-        if($activities['startTime'] > $activities['endTime']) {
+        if ($activities['startTime'] > $activities['endTime']) {
             $errors[] = 'L\'heure de fin de l\'activité doit être postérieure à l\'heure de début.';
         }
         return $errors;
     }
-
-
-
-        //Time checks
 }

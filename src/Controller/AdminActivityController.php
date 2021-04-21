@@ -25,7 +25,7 @@ class AdminActivityController extends AbstractController
             // TODO validations (length, format...)
 
             // if validation is ok, update and redirection
-            $activityManager->update($activity);
+            $activityManager->update($activities);
             header('Location: /AdminActivity/show/' . $id);
         }
 

@@ -6,10 +6,10 @@ use App\Model\AdminBoardManager;
 
 class AdminBoardController extends AbstractController
 {
-    private const FIRSTNAMELENGTH = 80;
-    private const LASTNAMELENGTH = 80;
-    private const ROLELENGTH = 80;
-    private const IMAGELENGTH = 255;
+    private const FIRSTNAME_LENGTH = 80;
+    private const LASTNAME_LENGTH = 80;
+    private const ROLE_LENGTH = 80;
+    private const IMAGE_LENGTH = 255;
 
     /**
      * Show informations for a specific item
@@ -82,20 +82,20 @@ class AdminBoardController extends AbstractController
     {
         $errorsLength = [];
 
-        if (strlen($boardMember['firstname']) > self::FIRSTNAMELENGTH) {
-            $errorsLength[] = 'Le prénom doit faire moins de ' . self::FIRSTNAMELENGTH . ' caractères';
+        if (strlen($boardMember['firstname']) > self::FIRSTNAME_LENGTH) {
+            $errorsLength[] = 'Le prénom doit faire moins de ' . self::FIRSTNAME_LENGTH . ' caractères';
         }
 
-        if (strlen($boardMember['surname']) > self::LASTNAMELENGTH) {
-            $errorsLength[] = 'Le nom doit faire moins de ' . self::LASTNAMELENGTH . ' caractères';
+        if (strlen($boardMember['surname']) > self::LASTNAME_LENGTH) {
+            $errorsLength[] = 'Le nom doit faire moins de ' . self::LASTNAME_LENGTH . ' caractères';
         }
 
-        if (strlen($boardMember['role']) > self::ROLELENGTH) {
-            $errorsLength[] = 'La fonction doit faire moins de ' . self::ROLELENGTH . ' caractères';
+        if (strlen($boardMember['role']) > self::ROLE_LENGTH) {
+            $errorsLength[] = 'La fonction doit faire moins de ' . self::ROLE_LENGTH . ' caractères';
         }
 
-        if (strlen($boardMember['image']) > self::IMAGELENGTH) {
-            $errorsLength[] = 'Le lien de l\'image doit faire moins de ' . self::IMAGELENGTH . ' caractères';
+        if (strlen($boardMember['image']) > self::IMAGE_LENGTH) {
+            $errorsLength[] = 'Le lien de l\'image doit faire moins de ' . self::IMAGE_LENGTH . ' caractères';
         }
 
         return $errorsLength;

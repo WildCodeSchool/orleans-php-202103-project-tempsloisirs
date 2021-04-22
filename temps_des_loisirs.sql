@@ -16,6 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `board`
+--
+
+DROP TABLE IF EXISTS `board`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `board` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `firstname` varchar(80) NOT NULL,
+  `surname` varchar(80) NOT NULL,
+  `role` varchar(80) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `board`
+--
+
+LOCK TABLES `board` WRITE;
+/*!40000 ALTER TABLE `board` DISABLE KEYS */;
+INSERT INTO `board` VALUES (1,'Jeanine','Armand','Secrétaire','https://images.unsplash.com/photo-1543430720-fa600c67e423 '),(2,'Michel','Webert','Vice-président','https://images.unsplash.com/photo-1484684096794-03e03b5e713e '),(3,'René','Saquefouille','Président','https://images.unsplash.com/photo-1560031788-093b3a661715 '),(4,'Hilaire','Tronchacake','Trésorier','https://images.unsplash.com/photo-1468218457742-ee484fe2fe4c '),(5,'Henry','Pasissaimple','Adjoint','https://images.unsplash.com/photo-1484611941511-3628849e90f7 ');
+/*!40000 ALTER TABLE `board` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `activity`
 --
 
@@ -45,6 +72,53 @@ LOCK TABLES `activity` WRITE;
 INSERT INTO `activity` VALUES (1,'danse','lundi','Didier','15:30:00',NULL,'Danse de salon',10,NULL),(2,'bingo','mardi','Jacques','10:30:00',NULL,'incontournable bingo',10,NULL),(3,'dictee','vendredi','Emma','09:00:00',NULL,'attention aux mauvaises notes',5,NULL);
 /*!40000 ALTER TABLE `activity` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `event`
+--
+
+CREATE TABLE `event` (
+  `id` int NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date DEFAULT NULL,
+  `price` int NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `event`
+--
+
+INSERT INTO `event` (`id`, `name`, `start_date`, `end_date`, `price`, `description`, `image`) VALUES
+(1, 'Voyage Saint Malo', '2021-05-13', '2021-05-27', 150, 'nous irons a st malo', 'https://picsum.photos/200'),
+(3, 'Voyage Nice', '2021-07-16', '2020-08-17', 150, 'Nous irons à Nice.', 'https://picsum.photos/200'),
+(4, 'Visit Parc de Potyl', '2021-09-15', NULL, 20, 'Nous visiterons le parc de potyl pour prendre des photos.', 'https://picsum.photos/200'),
+(6, 'Voyage à Mont-Saint-Michel', '2021-06-09', '2021-06-12', 800, 'Voyage à Mont-Saint-Michel.', 'https://picsum.photos/200'),
+(7, 'Voyage au Brésil', '2021-04-22', '2021-04-29', 5500, 'Voyage à Rio de Janeiro.', 'https://picsum.photos/200');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `event`
+--
+ALTER TABLE `event`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `event`
+--
+ALTER TABLE `event`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+COMMIT;
+
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -55,4 +129,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-21 11:32:58
+-- Dump completed on 2021-04-14 12:34:28

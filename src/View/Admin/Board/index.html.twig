@@ -30,8 +30,10 @@
 							<p class="card-text">{{ boardMember.role }}</p>
 						</div>
 						<div class="links d-flex justify-content-center align-items-center px-3 pb-3">
-							<a href="#" class="btn btn-primary me-1 w-50">Modifier</a>
-							<a href="#" class="btn btn-danger ms-1 w-50">Supprimer</a>
+							<form class="w-50 me-1" onSubmit="return confirm('Voulez vous vraiment supprimer ?')" action="/adminBoard/delete/{{boardMember.id}}" method="POST">
+								<button class="btn btn-danger w-100">Supprimer</button>
+							</form>
+							<a href="/adminBoard/edit/{{boardMember.id}}" class="btn btn-primary w-50 ms-1">Modifier</a>
 						</div>
 					</div>
 				</div>

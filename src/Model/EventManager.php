@@ -11,6 +11,7 @@ class EventManager extends AbstractManager
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " 
         (`name`, `start_date`, `end_date`, `price`, `image`, `description`) 
         VALUES (:name, :start_date, :end_date, :price, :image, :description)");
+
         $statement->bindValue('name', $event['name'], \PDO::PARAM_STR);
         $statement->bindValue('start_date', $event['start_date'], \PDO::PARAM_STR);
         $statement->bindValue('end_date', $event['end_date'], \PDO::PARAM_STR);

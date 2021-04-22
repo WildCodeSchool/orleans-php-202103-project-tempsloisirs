@@ -18,7 +18,7 @@
 
 	<div class="mb-3">
 		<label for="end_date" class="form-label">Date de fin</label>
-		<input type="date" value="{{ event.end_date }}" class="form-control" id="end_date" name="end_date">
+		<input type="date" value="{{ event.end_date }}" class="form-control" id="end_date" name="end_date" required>
 	</div>
 
 	<div class="mb-3">
@@ -28,7 +28,7 @@
 
 	<div class="mb-3">
 		<label for="image" class="form-label">Lien pour l'image</label>
-		<input type="text" value="{{ event.image }}" class="form-control" id="image" name="image" placeholder="Ex: Voyage à Nice">
+		<input type="text" value="{{ event.image }}" class="form-control" id="image" name="image" placeholder="Ex: https://www.picsum.photos/200">
 	</div>
 
 

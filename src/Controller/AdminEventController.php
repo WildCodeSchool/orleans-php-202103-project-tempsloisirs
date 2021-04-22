@@ -66,13 +66,18 @@ class AdminEventController extends AbstractController
             $errorsDateValue[] = "Vous devez mettre une date de début pour l'évènement.";
         }
 
+        if (empty($event['end_date'])) {
+            $errorsDateValue[] = "Vous devez mettre une date de fin pour l'évènement.";
+        }
+
         if ($event['start_date'] < date("Y-m-d")) {
             $errorsDateValue[] = "L'événement ne peut pas avoir lieu à une date passée.";
         }
 
-        if (isset($event['end_date']) < $event['start_date']) {
+        if ($event['end_date'] < $event['start_date']) {
             $errorsDateValue[] = "La date de fin de l'événement ne peut pas être précédent à date de début.";
         }
+
 
         if ($event['price'] < 0) {
             $errorsDateValue[] = "Le prix d'évènement doit être 0 (gratuit) ou plus.";
@@ -83,5 +88,11 @@ class AdminEventController extends AbstractController
         }
 
         return $errorsDateValue ?? [];
+    }
+    public function index(): string
+    {
+        $eventManager = new EventManager();
+        $events = $eventManager->selectAll();
+        return $this->twig->render('Admin/Event/index.html.twig', ['events' => $events]);
     }
 }

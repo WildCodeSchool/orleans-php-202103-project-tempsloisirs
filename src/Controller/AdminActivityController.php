@@ -7,7 +7,7 @@ use App\Model\ActivityManager;
 class AdminActivityController extends AbstractController
 {
     public const MAX_FIELD_LENGTH = 255;
-    public const MIN_FIELD_LENGTH = 1;
+    public const MIN_FIELD_LENGTH = 2;
 
     /**
      * Add a new item
@@ -16,7 +16,7 @@ class AdminActivityController extends AbstractController
     {
         $errorsEmpty = $errorsURL = $errorsTime = $errorsLength = $errors = [];
 
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
             $activities = array_map('trim', $_POST);
             $activities = array_map('ucfirst', $activities);

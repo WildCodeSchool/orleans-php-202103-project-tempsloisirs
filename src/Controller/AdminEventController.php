@@ -108,8 +108,7 @@ class AdminEventController extends AbstractController
         if ($event['start_date'] < date("Y-m-d")) {
             $errorsDateValue[] = "L'événement ne peut pas avoir lieu à une date passée.";
         }
-
-        if (isset($event['end_date']) < $event['start_date']) {
+        if (!empty($event['end_date']) && ($event['end_date'] < $event['start_date'])) {
             $errorsDateValue[] = "La date de fin de l'événement ne peut pas être précédent à date de début.";
         }
 

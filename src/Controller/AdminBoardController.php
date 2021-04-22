@@ -21,7 +21,7 @@ class AdminBoardController extends AbstractController
 
         return $this->twig->render('Admin/Board/index.html.twig', ['boardMembers' => $boardMembers]);
     }
-    
+
     /**
      * Delete informations for a specific item
      **/
@@ -33,7 +33,7 @@ class AdminBoardController extends AbstractController
             header('Location:/adminBoard/index');
         }
     }
-  
+
     /**
      * Add an item
      */

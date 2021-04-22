@@ -74,8 +74,10 @@ class AdminActivityController extends AbstractController
     {
         $errorsURL = [];
 
-        if (!filter_var($activities['image'], FILTER_VALIDATE_URL)) {
-            $errorsURL[] = "Cette URL n'est pas valide.";
+        if (empty(!$activities['image'])) {
+            if (!filter_var($activities['image'], FILTER_VALIDATE_URL)) {
+                $errorsURL[] = "Cette URL n'est pas valide.";
+            }
         }
 
         return $errorsURL;

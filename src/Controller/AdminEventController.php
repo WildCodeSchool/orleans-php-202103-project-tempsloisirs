@@ -9,39 +9,9 @@ class AdminEventController extends AbstractController
 
     public const MAX_FIELD_LENGTH = 255;
 
-    public function index(): string
-    {
-        $eventsManager = new EventManager();
-        $events = $eventsManager->selectAll();
-        return $this->twig->render('Admin/Event/index.html.twig', ['events' => $events]);
-    }
-
-    public function add()
-    {
-        $errorsDateValue = $errorsEmptyLength = $event = [];
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $event = array_map('trim', $_POST);
-
-            $errorsEmptyLength = $this->validateEmptyLength($event);
-            $errorsDateValue = $this->validateDateValue($event);
-
-            if (empty($errorsEmptyLength) && empty($errorsDateValue)) {
-                $eventManager = new EventManager();
-                $eventManager->saveEvent($event);
-                header('Location:/adminEvent/index');
-            }
-        }
-        return $this->twig->render('Admin/Event/add.html.twig', [
-            'errorsEmptyLength' => $errorsEmptyLength,
-            'errorsDateValue' => $errorsDateValue,
-            'event' => $event,
-        ]);
-    }
-
     public function edit(int $id): string
     {
-        $errorsDateValue = $errorsEmptyLength = $errorsIdNotFound = [];
+        $errorsDateValue = $errorsEmptyLength = $errorsIdNotFound = $errors = [];
 
         $eventManager = new EventManager();
         $event = $eventManager->selectOneById($id);
@@ -56,19 +26,18 @@ class AdminEventController extends AbstractController
             $event['id'] = $id;
             $errorsEmptyLength = $this->validateEmptyLength($event);
             $errorsDateValue = $this->validateDateValue($event);
+            $errors = array_merge($errorsEmptyLength, $errorsDateValue, $errorsIdNotFound);
 
-            if (empty($errorsEmptyLength) && empty($errorsDateValue) && empty($errorsIdNotFound)) {
+            if (empty($errors)) {
                 $eventManager->updateEvent($event);
 
                 header('Location:/adminEvent/index');
             }
         }
-            return $this->twig->render('Admin/Event/edit.html.twig', [
-            'errorsEmptyLength' => $errorsEmptyLength,
-            'errorsDateValue' => $errorsDateValue,
-            'errorsIdNotFound' => $errorsIdNotFound,
-            'event' => $event,
-            ]);
+           return $this->twig->render('Admin/Event/edit.html.twig', [
+           'errors' => $errors,
+           'event' => $event,
+           ]);
     }
 
     public function validateEmptyLength($event)
@@ -114,6 +83,10 @@ class AdminEventController extends AbstractController
 
         if ($event['price'] < 0) {
             $errorsDateValue[] = "Le prix d'évènement doit être 0 (gratuit) ou plus.";
+        }
+
+        if (!filter_var($event['image'], FILTER_VALIDATE_URL)) {
+            $errorsDateValue[] = 'L\'image doit être un URL';
         }
 
         return $errorsDateValue ?? [];

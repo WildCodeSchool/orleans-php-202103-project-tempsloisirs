@@ -6,62 +6,67 @@ use App\Model\InformationManager;
 
 class AdminInformationController extends AbstractController
 {
-    /*
-     Show informations for a specific item
-     */
-    public const MAX_FIELD_LENGTH = 255;
-    public function index(): string
-    {
-        $informationManager = new InformationManager();
-        $informations = $informationManager->selectAll('informations');
+    private const MAX_CONTENT_LENGTH = 255;
+    private const MAX_DATE_LENGTH = 12;
 
-        return $this->twig->render('Admin/Information/index.html.twig', ['informations' => $informations]);
-    }
     /**
      * Add a new item
      */
-
     public function add(): string
     {
-        $errors = $informations = [];
+        $errorsEmpty = $errorsLength = $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $errors = [];
-            // clean $_POST data
             $informations = array_map('trim', $_POST);
 
-            if (empty($informations['date'])) {
-                $errors[] = 'le champs date est obligatoire';
-            }
+            $errorsEmpty = $this->validateEmpty($informations);
+            $errorsLength = $this->validateLength($informations);
 
-            if (empty($informations['content'])) {
-                $errors[] = 'le champs information est obligatoire';
-            }
-            if (empty($informations['type'])) {
-                $errors[] = 'le champs type est obligatoire';
-            }
-
-            if (strlen($informations['type']) > 20) {
-                $errors[] = 'le champs type doit doit faire moins de 20 caractères';
-            }
-
-            if (strlen($informations['content']) > self::MAX_FIELD_LENGTH) {
-                $errors[] = 'le champs information doit faire moins de ' . self::MAX_FIELD_LENGTH . 'caractères';
-            }
+            $errors = array_merge($errorsEmpty, $errorsLength);
 
             if (empty($errors)) {
-                //insert en database
                 $informationManager = new InformationManager();
                 $informationManager->insert($informations);
-
-                //redirection
-                header('Location: /dminInformation/index');
+                header('Location:/adminInformation/index');
             }
         }
 
         return $this->twig->render('Admin/Information/add.html.twig', [
             'errors' => $errors,
-            'informations' => $informations,
         ]);
+    }
+
+    private function validateEmpty($informations)
+    {
+        $errorsEmpty = [];
+
+        if (empty($informations['type'])) {
+            $errorsEmpty[] = 'Un type est obligatoire';
+        }
+
+        if (empty($informations['date'])) {
+            $errorsEmpty[] = 'Une date est obligatoire';
+        }
+
+        if (empty($informations['content'])) {
+            $errorsEmpty[] = 'Une description est obligatoire';
+        }
+
+        return $errorsEmpty;
+    }
+
+    public function validateLength($informations)
+    {
+        $errorsLength = [];
+
+        if (strlen($informations['date']) > self::MAX_DATE_LENGTH) {
+            $errorsLength[] = 'La date doit faire moins de ' . self::MAX_DATE_LENGTH . ' caractères';
+        }
+
+        if (strlen($informations['content']) > self::MAX_CONTENT_LENGTH) {
+            $errorsLength[] = 'La description doit faire moins de ' . self::MAX_CONTENT_LENGTH . ' caractères';
+        }
+
+        return $errorsLength;
     }
 }

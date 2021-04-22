@@ -25,4 +25,11 @@ class AdminActivityController extends AbstractController
 
         return $this->twig->render('Admin/Activity/add.html.twig');
     }
+
+    public function index(): string
+    {
+        $activityManager = new ActivityManager();
+        $activities = $activityManager->selectAll('name');
+        return $this->twig->render('Admin/Activity/index.html.twig', ['activities' => $activities]);
+    }
 }

@@ -17,13 +17,18 @@
                 </label>
                     <div class="col">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" value="Lundi" type="radio" name="weekday" id="weekday" checked required>
+                        {# Loop sur les jours #}
+                        {% for day in days %}
+
+                            <input class="form-check-input" value="{{ }}" type="radio" name="weekday" id="weekday" checked required>
+
                             <label class="form-check-label" for="weekday">
-                                Lundi
+                                {{day}}
                             </label>
+                            {% endfor %}
                         </div>
                     </div>
-                    <div class="col">
+                    {# <div class="col">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" value="Mardi" type="radio" name="weekday" id="weekday">
                             <label class="form-check-label" for="weekday">
@@ -55,7 +60,7 @@
                             </label>
                         </div>
                     </div>
-            </div>
+            </div> #}
             
                 
                 

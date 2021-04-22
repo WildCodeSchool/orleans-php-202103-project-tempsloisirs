@@ -8,13 +8,14 @@ class AdminActivityController extends AbstractController
 {
     public const MAX_FIELD_LENGTH = 255;
     public const MIN_FIELD_LENGTH = 2;
+    public const DAYS = ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi'];
 
     /**
      * Add a new item
      */
     public function add(): string
     {
-        $errorsEmpty = $errorsURL = $errorsTime = $errorsLength = $errors = [];
+        $errorsEmpty = $errorsURL = $errorsTime = $errorsLength = $errorsDays = $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
@@ -26,8 +27,9 @@ class AdminActivityController extends AbstractController
             $errorsLength = $this->validateLength($activities);
             $errorsURL = $this->validateURL($activities);
             $errorsTime = $this->validateTime($activities);
+            $errorsDays = $this->validateDays($activities);
 
-            $errors = array_merge($errorsEmpty, $errorsLength, $errorsURL, $errorsTime);
+            $errors = array_merge($errorsEmpty, $errorsLength, $errorsURL, $errorsTime, $errorsDays);
 
             if (empty($errors)) {
                 // if validation is ok, insert and redirection
@@ -126,10 +128,29 @@ class AdminActivityController extends AbstractController
         return $errorsLength;
     }
 
+    public function validateDays(array $activities): array
+    {
+        $errorsDays = [];
+        if (!in_array($activities['weekday'], self::DAYS)) {
+            $errorsDays[] = 'Veuillez sélectionner un jour de la semaine parmi les options proposées';
+        }
+        return $errorsDays;
+
+    }
+
     public function index(): string
     {
         $activityManager = new ActivityManager();
         $activities = $activityManager->selectAll('name');
         return $this->twig->render('Admin/Activity/index.html.twig', ['activities' => $activities]);
+    }
+
+    public function delete($id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $activityManager = new ActivityManager();
+            $activityManager->delete($id);
+            header('Location:/AdminActivity/index');
+        }
     }
 }

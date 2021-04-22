@@ -1,7 +1,13 @@
 {% extends 'layout.html.twig' %}
 
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/admin.css">{% endblock %}
+
 {% block content %}
-    <h1>Edit item {{ item.title }}</h1>
-    {% include 'Item/_form.html.twig' %}
-    <a href="/item/show/{{ item.id }}">Back</a>
+
+<main class="container d-flex flex-column">
+    <h1 class="h1">Modifier l'activité: {{ activity.name }}</h1>
+
+    {% include 'Admin/Activity/_form.html.twig' with {buttonName: "Modifier l'activité"} %}
+
+<main cmass="container">
 {% endblock %}

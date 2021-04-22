@@ -20,11 +20,11 @@
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
         {% for activity in activities %}
         <div class="col card-group">
-            <div class="card">
+            <div class="card mb-3">
                 <img class="card-img-top h-50" src="https://picsum.photos/id/1/200/300" alt="Card image cap">
                 <div class="card-body h-50 d-flex flex-column justify-content-around">
                     <h2 class="card-title">{{ activity.name }}</h2>
-                    <p class="card-text">{{ activity.description }}</p>
+                    <p class="card-subtitle">{{ activity.description }}</p>
                     <div class="row">
                         <div class="col d-flex flex-row justify-content-around">
                             <a href="/AdminActivity/edit/{{activity.id}}" class="btn btn-primary align-self-end w-100 my-1">Editer</a>

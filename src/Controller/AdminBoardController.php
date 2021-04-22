@@ -21,7 +21,7 @@ class AdminBoardController extends AbstractController
 
         return $this->twig->render('Admin/Board/index.html.twig', ['boardMembers' => $boardMembers]);
     }
-  
+
     /**
      * Add an item
      */
@@ -47,7 +47,8 @@ class AdminBoardController extends AbstractController
         }
 
         return $this->twig->render('Admin/Board/add.html.twig', [
-            'errors' => $errors]);
+            'errors' => $errors
+        ]);
     }
 
     /**
@@ -81,29 +82,6 @@ class AdminBoardController extends AbstractController
             'boardMember' => $boardMember,
             'errors' => $errors
         ]);
-    }
-
-    private function validateEmpty($boardMember)
-    {
-        $errorsEmpty = [];
-
-        if (empty($boardMember['firstname'])) {
-            $errorsEmpty[] = 'Le prénom est obligatoire';
-        }
-
-        if (empty($boardMember['surname'])) {
-            $errorsEmpty[] = 'Le nom est obligatoire';
-        }
-
-        if (empty($boardMember['role'])) {
-            $errorsEmpty[] = 'Une fonction est obligatoire';
-        }
-
-        if (empty($boardMember['image'])) {
-            $errorsEmpty[] = 'Une image est obligatoire';
-        }
-
-        return $errorsEmpty;
     }
 
     private function validateEmpty($boardMember)

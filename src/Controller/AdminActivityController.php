@@ -135,7 +135,6 @@ class AdminActivityController extends AbstractController
             $errorsDays[] = 'Veuillez sélectionner un jour de la semaine parmi les options proposées';
         }
         return $errorsDays;
-
     }
 
     public function index(): string

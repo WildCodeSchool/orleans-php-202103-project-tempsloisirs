@@ -113,4 +113,11 @@ class AdminActivityController extends AbstractController
 
         return $errorsLength;
     }
+    
+    public function index(): string
+    {
+        $activityManager = new ActivityManager();
+        $activities = $activityManager->selectAll('name');
+        return $this->twig->render('Admin/Activity/index.html.twig', ['activities' => $activities]);
+    }
 }

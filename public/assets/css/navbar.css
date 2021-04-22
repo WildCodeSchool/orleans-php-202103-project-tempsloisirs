@@ -1,0 +1,34 @@
+@import 'style.css';
+
+.navbar {
+    background-color: var(--primary-color);
+}
+
+.navbar-brand {
+    font-family: var(--title-font);
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--secondary-color);
+    filter: brightness(120%);
+}
+
+.nav-link {
+    font-family: var(--text-font);
+    text-transform: uppercase;
+    font-weight: 650;
+    color: var(--light-color);
+}
+
+.nav-link:hover {
+    color: var(--secondary-color);
+    filter: brightness(120%);
+}
+
+.nav-link:active {
+    color: var(--secondary-color);
+    filter: brightness(90%);
+}
+
+.navbar-toggler {
+    border: none;
+}

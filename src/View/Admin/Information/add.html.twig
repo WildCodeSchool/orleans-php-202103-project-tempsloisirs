@@ -1,0 +1,67 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/information.css">
+{% endblock %}
+
+{% block title %}Ajouter une information
+{% endblock %}
+
+{% block content %}
+
+	<main class="container m-board py-lg-5 px-lg-5 py-3 px-3">
+		<h1 class="text-center h1">Ajouter les information</h1>
+
+		<form method="post">
+
+			{% if errors is defined %}
+				{% for error in errors %}
+					<div class="alert alert-danger col col-lg-6 col-md-12 mx-auto" role="alert">{{ error }}</div>
+				{% endfor %}
+			{% endif %}
+
+			<div class="form-row mt-sm-0 px-xs-0 py-sm-0">
+				<div class="form-group col col-lg-6 col-md-12 mx-auto">
+					<label class="col-sm-2 col-form-label col-form-label-lg" for="date">Date</label>
+					<input type="date" value="{{ information.date }}" name="date" class="form-control shadow-sm p-3 mb-1 bg-white rounded" id="date" placeholder="01/01/2021">
+				</div>
+				<div class="form-group col col-lg-6 col-md-12 mx-auto">
+					<label class="col-sm-2 col-form-label col-form-label-lg" for="type">Type</label>
+					<input type="text" value="{{ information.type }}" name="type" class="form-control shadow-sm p-3 mb-1 bg-white rounded" id="type" placeholder="Alerte">
+				</div>
+				<div class="form-group col col-lg-6 col-md-12 mx-auto">
+					<label class="col-sm-2 col-form-label col-form-label-lg" for="content">Description</label>
+					<textarea value="{{ information.content }}" name="content" class="form-control shadow-sm p-3 mb-1 bg-white rounded" id="content" placeholder="Description"></textarea>
+				</div>
+
+				<div class="form-group col col-lg-6 col-md-12 mx-auto">
+					<button type="submit" class="btn btn-primary btn-lg w-100" value="Valider">Ajouter un membre</button>
+				</div>
+			</div>
+
+		</form>
+		{#<form class="form-group bg-light" method="POST" novalidate>
+					<div class="d-flex justify-content-center mt-5 mb-3">
+						<label class="align-self-start" for="date">DATE</label>
+						<input class="w-75 mb-3" type="date" id="date" name="date" placeholder="01/01/2021" value="{{ information.date }}" required>
+					</div>
+		            <div class="d-flex justify-content-center mb-3">
+						<label class="align-self-start" for="type">TYPE</label>
+						<input class="w-75 mb-3" type="text" id="type" name="type" value="{{ information.type }}"required>
+					</div>
+					<div class="d-flex justify-content-center mb-3">
+						<label class="align-self-start" for="information">INFORMATION</label>
+						<textarea class="w-75 mb-3" name="information" id="information" cols="30" rows="10" placeholder="Information" required>
+		                    {{- informations.infrormation -}}
+		                </textarea>
+					</div>
+					<div class="d-flex justify-content-center mb-5 form-check">
+						<button type="submit" class="btn btn-primary mb-3 w-auto">Ajouter l'information</button>
+					</div>
+				</form>#}
+		<footer class="admin-footer d-flex justify-content-center flex-md-row flex-column mt-lg-5 mt-3">
+			<a href="#" class="btn btn-primary btn-lg mx-1 my-1">Retour au site principal</a>
+			<a href="/Admin/home" class="btn btn-primary btn-lg mx-1 my-1">Accueil Admin</a>
+		</footer>
+	</main>
+{% endblock %}

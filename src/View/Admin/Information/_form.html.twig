@@ -1,0 +1,23 @@
+<ul class="alert alert-danger list-unstyled empty">
+	{%- for error in errors -%}
+		<li>{{ error }}</li>
+	{%- endfor -%}
+</ul>
+
+<form method="POST" novalidate>
+	<main class="container m-board py-lg-5 px-lg-5 py-3 px-3">
+		<h1 class="text-center h1">Ajouter les information</h1>
+
+        <form method="POST">
+
+        <label for="date">DATE</label>
+        <input type="text" id="date" name="date" required>
+
+        <label for="information">INFORMATION</label>
+        <textarea name="information" id="information" cols="30" rows="10" placeholder="Description" required></textarea>
+
+		<footer class="admin-footer d-flex justify-content-center flex-md-row flex-column mt-lg-5 mt-3">
+			<a href="#" class="btn btn-primary btn-lg mx-1 my-1">Retour au site principal</a>
+			<a href="/Admin/home" class="btn btn-primary btn-lg mx-1 my-1">Accueil Admin</a>
+		</footer>
+	</main>

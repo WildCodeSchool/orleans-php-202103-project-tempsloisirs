@@ -24,9 +24,9 @@ DROP TABLE IF EXISTS `board`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `board` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `firstname` varchar(255) NOT NULL,
-  `surname` varchar(255) NOT NULL,
-  `role` varchar(255) DEFAULT NULL,
+  `firstname` varchar(80) NOT NULL,
+  `surname` varchar(80) NOT NULL,
+  `role` varchar(80) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -43,29 +43,81 @@ INSERT INTO `board` VALUES (1,'Jeanine','Armand','Secrétaire','https://images.u
 UNLOCK TABLES;
 
 --
--- Table structure for table `information`
+-- Table structure for table `activity`
 --
 
-DROP TABLE IF EXISTS `information`;
+DROP TABLE IF EXISTS `activity`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `information` (
+CREATE TABLE `activity` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `content` varchar(255) NOT NULL,
-  `date` date NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `weekday` varchar(50) NOT NULL,
+  `instructor_name` varchar(255) DEFAULT NULL,
+  `schedule` time NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `price` int DEFAULT NULL,
+  `is_membersonly` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `information`
+-- Dumping data for table `activity`
 --
 
-LOCK TABLES `information` WRITE;
-/*!40000 ALTER TABLE `information` DISABLE KEYS */;
-INSERT INTO `information` VALUES (1,'En raison du Covid, le club Bingo est annulé','2021-02-07'),(2,"L'atelier danse se fera en visioconférence",'2021-02-17'),(3,'Jeanine est malade','2021-02-18');
-/*!40000 ALTER TABLE `information` ENABLE KEYS */;
+LOCK TABLES `activity` WRITE;
+/*!40000 ALTER TABLE `activity` DISABLE KEYS */;
+INSERT INTO `activity` VALUES (1,'danse','lundi','Didier','15:30:00',NULL,'Danse de salon',10,NULL),(2,'bingo','mardi','Jacques','10:30:00',NULL,'incontournable bingo',10,NULL),(3,'dictee','vendredi','Emma','09:00:00',NULL,'attention aux mauvaises notes',5,NULL);
+/*!40000 ALTER TABLE `activity` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `event`
+--
+
+CREATE TABLE `event` (
+  `id` int NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date DEFAULT NULL,
+  `price` int NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `event`
+--
+
+INSERT INTO `event` (`id`, `name`, `start_date`, `end_date`, `price`, `description`, `image`) VALUES
+(1, 'Voyage Saint Malo', '2021-05-13', '2021-05-27', 150, 'nous irons a st malo', 'https://picsum.photos/200'),
+(3, 'Voyage Nice', '2021-07-16', '2020-08-17', 150, 'Nous irons à Nice.', 'https://picsum.photos/200'),
+(4, 'Visit Parc de Potyl', '2021-09-15', NULL, 20, 'Nous visiterons le parc de potyl pour prendre des photos.', 'https://picsum.photos/200'),
+(6, 'Voyage à Mont-Saint-Michel', '2021-06-09', '2021-06-12', 800, 'Voyage à Mont-Saint-Michel.', 'https://picsum.photos/200'),
+(7, 'Voyage au Brésil', '2021-04-22', '2021-04-29', 5500, 'Voyage à Rio de Janeiro.', 'https://picsum.photos/200');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `event`
+--
+ALTER TABLE `event`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `event`
+--
+ALTER TABLE `event`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+COMMIT;
 
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

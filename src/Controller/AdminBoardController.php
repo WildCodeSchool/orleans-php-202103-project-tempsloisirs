@@ -59,7 +59,41 @@ class AdminBoardController extends AbstractController
         }
 
         return $this->twig->render('Admin/Board/add.html.twig', [
-            'errors' => $errors]);
+            'errors' => $errors
+        ]);
+    }
+
+    /**
+     * Edit a specific item
+     */
+    public function edit(int $id): string
+    {
+        $adminManager = new AdminBoardManager();
+        $boardMember = $adminManager->selectOneById($id);
+
+        $errorsEmpty = $errorsLength = $errorsFilter = $errors = [];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // clean $_POST data
+            $boardMember = array_map('trim', $_POST);
+            $boardMember['id'] = $id;
+
+            $errorsEmpty = $this->validateEmpty($boardMember);
+            $errorsLength = $this->validateLength($boardMember);
+            $errorsFilter = $this->validateFilter($boardMember);
+
+            $errors = array_merge($errorsEmpty, $errorsFilter, $errorsLength);
+
+            if (empty($errors)) {
+                $adminManager->update($boardMember);
+                header('Location:/adminBoard/index');
+            }
+        }
+
+        return $this->twig->render('Admin/Board/edit.html.twig', [
+            'boardMember' => $boardMember,
+            'errors' => $errors
+        ]);
     }
 
     private function validateEmpty($boardMember)

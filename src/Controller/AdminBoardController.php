@@ -23,6 +23,18 @@ class AdminBoardController extends AbstractController
     }
 
     /**
+     * Delete informations for a specific item
+     **/
+    public function delete(int $id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $adminBoardManager = new AdminBoardManager();
+            $adminBoardManager->delete($id);
+            header('Location:/adminBoard/index');
+        }
+    }
+
+    /**
      * Add an item
      */
     public function add()

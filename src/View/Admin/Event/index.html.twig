@@ -2,6 +2,7 @@
 {% block title %}Admin - Events
 {% endblock %}
 {% block stylesheet %}<link rel="stylesheet" href="/assets/css/adminEvents.css">
+<link rel="stylesheet" href="/assets/css/admin.css">
 {% endblock %}
 {% block content %}
 	<main class="py-lg-5 px-lg-5 py-3 px-3">
@@ -38,7 +39,7 @@
 										<strong>Description:</strong>
 										{{ event.description }}</p>
 										<div class="d-inline-flex">
-									<a class="btn me-1 btn-primary" href="/adminEvent/edit/{{- event.id -}}">Modifier</a>
+									<a class="btn me-1 btn-primary" href="/adminEvent/edit/{{ event.id }}">Modifier</a>
 									<form method="POST" onSubmit="return confirm('Voulez vous supprimer ?');" action="/adminEvent/delete/{{event.id}}">
 									<button class="btn btn-danger">Supprimer</button>
 									</form>

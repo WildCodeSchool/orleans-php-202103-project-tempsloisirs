@@ -9,14 +9,6 @@ class AdminEventController extends AbstractController
 
     public const MAX_FIELD_LENGTH = 255;
 
-    public function index(): string
-    {
-        $eventsManager = new EventManager();
-        $events = $eventsManager->selectAll();
-        return $this->twig->render('Admin/Event/index.html.twig', ['events' => $events]);
-    }
-
-
     public function delete(int $id)
     {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -25,5 +17,11 @@ class AdminEventController extends AbstractController
 
             header('Location:/adminEvent/index');
         }
+    }
+    public function index(): string
+    {
+        $eventManager = new EventManager();
+        $events = $eventManager->selectAll();
+        return $this->twig->render('Admin/Event/index.html.twig', ['events' => $events]);
     }
 }

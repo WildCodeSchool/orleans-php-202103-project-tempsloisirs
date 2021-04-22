@@ -10,7 +10,6 @@
 
 /* Warning color class bootstrap */
 
-.card-header {
-    color: var(--secondary-color);
+.alerts .card-header, .alerts .card-title {
     font-weight: 700;
 }

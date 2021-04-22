@@ -51,6 +51,7 @@ DROP TABLE IF EXISTS `information`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `information` (
   `id` int NOT NULL AUTO_INCREMENT,
+  `type` varchar(80) NOT NULL,
   `content` varchar(255) NOT NULL,
   `date` date NOT NULL,
   PRIMARY KEY (`id`)
@@ -63,7 +64,7 @@ CREATE TABLE `information` (
 
 LOCK TABLES `information` WRITE;
 /*!40000 ALTER TABLE `information` DISABLE KEYS */;
-INSERT INTO `information` VALUES (1,'En raison du Covid, le club Bingo est annulé','2021-02-07'),(2,"L'atelier danse se fera en visioconférence",'2021-02-17'),(3,'Jeanine est malade','2021-02-18');
+INSERT INTO `information` VALUES (1,'Alerte','En raison du Covid, le club Bingo est annulé','2021-02-07'),(2,'Avertissement',"L'atelier danse se fera en visioconférence",'2021-02-17'),(3,'Information','Jeanine est malade','2021-02-18');
 /*!40000 ALTER TABLE `information` ENABLE KEYS */;
 UNLOCK TABLES;
 

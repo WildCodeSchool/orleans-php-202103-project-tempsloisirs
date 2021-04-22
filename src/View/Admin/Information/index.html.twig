@@ -16,46 +16,45 @@
 			<a href="/adminInformation/add" class="btn btn-primary mt-3 mt-lg-0">Ajouter une information</a>
 		</header>
 
-		{# <table class="table table-hover bg-light">
-											<thead>
-												<tr>
-													<th class="col-2 text-center">DATE</th>
-													<th class="col-8 text-center">INFORMATION</th>
-												</tr>
-											</thead>
-											<tbody>
-												{% for information in informations %}
-													<tr>
-														<td class="text-center align-middle">{{ information.date }}</td>
-														<td class="text-left align-middle">{{ information.content }}</td>
-								                        <td class='w-100'>
-															<a class="btn btn-primary btn-sm w-auto" href="/adminInformation/edit/{{ information.id }}">Modifier</a>
-															<form method="POST" onSubmit="return confirm('Voulez vous supprimer ?');" action="/adminInformation/delete/{{information.id}}">
-																<button class="btn btn-danger btn-sm w-auto">Supprimer</button>
-															</form>
-														</td>
-								                    </tr>
-												{% else %}
-													<li>Nothing to display</li>
-												{% endfor %}
-											</tbody>
-										</table> #}
-
-			{% for information in informations %}
-				<div class="card mb-2">
-					<div class="card-header">
-						Alerte
+		{% for information in informations %}
+			<div class="card mb-2 alerts">
+				{% if information.type == 'Avertissement' %}
+					<div class="card-header warning-color text-white">
+						{{ information.type }}
 					</div>
 					<div class="card-body">
-						<h5 class="card-title">{{ information.date }}</h5>
+						<h5 class="card-title text-warning">{{ information.date|date("d/m/Y") }}</h5>
 						<p class="card-text">{{ information.content }}</p>
 						<a href="#" class="btn btn-primary">Modifier</a>
 						<a href="#" class="btn btn-danger">Supprimer</a>
 					</div>
-				</div>
-			{% else %}
-				<li>Nothing to display</li>
-			{% endfor %}
+				{% endif %}
+				{% if information.type == 'Alerte' %}
+					<div class="card-header danger-color text-white">
+						{{ information.type }}
+					</div>
+					<div class="card-body">
+						<h5 class="card-title text-danger">{{ information.date|date("d/m/Y") }}</h5>
+						<p class="card-text">{{ information.content }}</p>
+						<a href="#" class="btn btn-primary">Modifier</a>
+						<a href="#" class="btn btn-danger">Supprimer</a>
+					</div>
+				{% endif %}
+				{% if information.type == 'Information' %}
+					<div class="card-header primary-color text-white">
+						{{ information.type }}
+					</div>
+					<div class="card-body">
+						<h5 class="card-title">{{ information.date|date("d/m/Y") }}</h5>
+						<p class="card-text">{{ information.content }}</p>
+						<a href="#" class="btn btn-primary">Modifier</a>
+						<a href="#" class="btn btn-danger">Supprimer</a>
+					</div>
+				{% endif %}
+			</div>
+		{% else %}
+			<li>Nothing to display</li>
+		{% endfor %}
 
 		<footer class="admin-footer d-flex justify-content-center flex-md-row flex-column mt-lg-5 mt-3">
 			<a href="#" class="btn btn-primary btn-lg mx-1 my-1">Retour au site principal</a>

@@ -12,7 +12,7 @@ class AdminInformationController extends AbstractController
     public function index(): string
     {
         $informationManager = new InformationManager();
-        $informations = $informationManager->selectAll('date');
+        $informations = $informationManager->selectAll();
 
         return $this->twig->render('Admin/Information/index.html.twig', ['informations' => $informations]);
     }

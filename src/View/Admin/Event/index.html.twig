@@ -18,18 +18,20 @@
 				<div class="row row-cols-1 row-cols-sm-12 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
 
 					{% for event in events %}
-						<div class="col mb-5">
+						<div class="col mb-5 card-group">
 							<div class="card eventCards">
 								<img src={{ event.image }} class="card-img-top" alt="...">
-								<div class="card-body">
+								<div class="card-body d-flex flex-column justify-content-between">
 									<h3 class="card-title strong">{{ event.name }}</h3>
 									<p><strong>Date de début:</strong> {{ event.start_date}}</p>
                                     {% if event.end_date is not null %}
 									<p class="text-left"><strong>Date de fin:</strong> {{event.end_date}}</p>
                                      {% endif %}
 									<p class="card-text"><strong>Description:</strong> {{ event.description }}</p>
-									<a href="#" class="btn btn-primary">Modifier</a>
-									<a href="#" class="btn btn-danger">Supprimer</a>
+									<div class = "row">
+										<a href="#" class="btn btn-primary col mx-1">Modifier</a>
+										<a href="#" class="btn btn-danger col mx-1">Supprimer</a>
+									</div>
 								</div>
 							</div>
 

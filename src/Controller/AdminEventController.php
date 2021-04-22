@@ -9,33 +9,26 @@ class AdminEventController extends AbstractController
 
     public const MAX_FIELD_LENGTH = 255;
 
-    public function index(): string
-    {
-        $eventsManager = new EventManager();
-        $events = $eventsManager->selectAll();
-        return $this->twig->render('Admin/Event/index.html.twig', ['events' => $events]);
-    }
-
     public function add()
     {
-        $errorsDateValue = $errorsEmptyLength = $event = [];
+        $eventManager = new EventManager();
+        $errorsDateValue = $errorsEmptyLength = $event = $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $event = array_map('trim', $_POST);
 
             $errorsEmptyLength = $this->validateEmptyLength($event);
             $errorsDateValue = $this->validateDateValue($event);
+            $errors = array_merge($errorsEmptyLength, $errorsDateValue);
 
-            if (empty($errorsEmptyLength) && empty($errorsDateValue)) {
-                $eventManager = new EventManager();
+            if (empty($errors)) {
                 $eventManager->saveEvent($event);
                 header('Location:/adminEvent/index');
             }
         }
         return $this->twig->render('Admin/Event/add.html.twig', [
-            'errorsEmptyLength' => $errorsEmptyLength,
-            'errorsDateValue' => $errorsDateValue,
-            'event' => $event,
+            'errors' => $errors,
+             'event' => $event,
         ]);
     }
 
@@ -83,6 +76,10 @@ class AdminEventController extends AbstractController
 
         if ($event['price'] < 0) {
             $errorsDateValue[] = "Le prix d'évènement doit être 0 (gratuit) ou plus.";
+        }
+
+        if (!filter_var($event['image'], FILTER_VALIDATE_URL)) {
+            $errorsDateValue[] = 'L\'image doit être un URL';
         }
 
         return $errorsDateValue ?? [];

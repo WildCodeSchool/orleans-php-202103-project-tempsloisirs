@@ -119,7 +119,6 @@ ALTER TABLE `event`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
-<<<<<<< HEAD
 --
 -- Table structure for table `information`
 --
@@ -142,12 +141,10 @@ CREATE TABLE `information` (
 
 LOCK TABLES `information` WRITE;
 /*!40000 ALTER TABLE `information` DISABLE KEYS */;
-INSERT INTO `information` VALUES (1,'Alerte','En raison du Covid, le club Bingo est annulé','2021-02-07'),(2,'Avertissement',"L'atelier danse se fera en visioconférence",'2021-02-17'),(3,'Information','Jeanine est malade','2021-02-18');
+INSERT INTO `information` VALUES (1,'alert','En raison du Covid, le club Bingo est annulé','2021-02-07'),(2,'warning',"L'atelier danse se fera en visioconférence",'2021-02-17'),(3,'info','Jeanine est malade','2021-02-18');
 /*!40000 ALTER TABLE `information` ENABLE KEYS */;
 UNLOCK TABLES;
 
-=======
->>>>>>> 7b9c5e0919ce101d20123df031f5c1f1dfdd7ce7
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;

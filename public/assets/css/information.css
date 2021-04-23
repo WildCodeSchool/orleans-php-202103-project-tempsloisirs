@@ -10,6 +10,11 @@
 
 /* Warning color class bootstrap */
 
-.alerts .card-header, .alerts .card-title {
+.alerts .card-header {
     font-weight: 700;
+}
+
+.alerts .title-card {
+    font-weight: 700;
+    font-size: 1.4em;
 }

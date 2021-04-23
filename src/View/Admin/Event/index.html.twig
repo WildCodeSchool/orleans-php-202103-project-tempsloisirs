@@ -27,9 +27,9 @@
                                     {% if event.end_date is not null and event.end_date != event.start_date %}
 									<p class="text-left"><strong>Date de fin:</strong> {{event.end_date}}</p>
                                      {% endif %}
-									<p class="card-text"><strong>Description:</strong> {{ event.description }}</p>
-									<div class = "row">
-										<a href="#" class="btn btn-primary col mx-1">Modifier</a>
+									<p class="text-left"><strong>Description:</strong> {{ event.description }}</p>
+									<div class="links d-flex justify-content-center align-items-center px-3 pb-3">
+										<a class="btn btn-primary" href="/adminEvent/edit/{{ event.id }}">Modifier</a>
 										<a href="#" class="btn btn-danger col mx-1">Supprimer</a>
 									</div>
 								</div>

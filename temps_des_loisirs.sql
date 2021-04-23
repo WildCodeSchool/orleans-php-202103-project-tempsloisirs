@@ -119,6 +119,7 @@ ALTER TABLE `event`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
+<<<<<<< HEAD
 --
 -- Table structure for table `information`
 --
@@ -145,6 +146,8 @@ INSERT INTO `information` VALUES (1,'Alerte','En raison du Covid, le club Bingo 
 /*!40000 ALTER TABLE `information` ENABLE KEYS */;
 UNLOCK TABLES;
 
+=======
+>>>>>>> 7b9c5e0919ce101d20123df031f5c1f1dfdd7ce7
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;

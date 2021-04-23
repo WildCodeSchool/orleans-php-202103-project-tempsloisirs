@@ -8,7 +8,7 @@ class AdminActivityController extends AbstractController
 {
     public const MAX_FIELD_LENGTH = 255;
     public const MIN_FIELD_LENGTH = 2;
-    public const DAYS = ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi'];
+    public const DAYS = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi'];
 
     /**
      * Add a new item

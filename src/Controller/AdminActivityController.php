@@ -40,7 +40,8 @@ class AdminActivityController extends AbstractController
         }
 
         return $this->twig->render('Admin/Activity/add.html.twig', [
-            'errors' => $errors]);
+            'errors' => $errors,
+            ]);
     }
 
 /**

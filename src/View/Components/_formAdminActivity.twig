@@ -15,54 +15,19 @@
             <div class="mb-3 row">                
                 <label for="weekday" class="form-label">Jour de la semaine :
                 </label>
+                    
+                    {# Loop sur les jours #}
+                    {% for day in constant('App\\Controller\\AdminActivityController::DAYS' ) %}
                     <div class="col">
-                        <div class="form-check form-check-inline">
-                        {# Loop sur les jours #}
-                        {% for day in constant('App\Controller\\AdminActivityController::DAYS' ) %}
-
-
-                            <input class="form-check-input" value="{{day}}" type="radio" name="weekday" id="weekday" checked required>
-
+                        <div class="form-check">
+                            <input class="form-check-input" value="{{activity.weekday}}" type="radio" name="weekday" id="weekday" required>
                             <label class="form-check-label" for="weekday">
                                 {{day}}
                             </label>
                             {% endfor %}
                         </div>
                     </div>
-                    {# <div class="col">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" value="Mardi" type="radio" name="weekday" id="weekday">
-                            <label class="form-check-label" for="weekday">
-                                Mardi
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" value="Mercredi" type="radio" name="weekday" id="weekday">
-                            <label class="form-check-label" for="weekday">
-                                Mercredi
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" value="Jeudi" name="weekday" id="weekday">
-                            <label class="form-check-label" for="weekday">
-                                Jeudi
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" value="Vendredi" name="weekday" id="weekday">
-                            <label class="form-check-label" for="weekday">
-                                Vendredi
-                            </label>
-                        </div>
-                    </div>
-            </div> #}
-            
+            </div>
                 
                 
             <!--Instructor-->

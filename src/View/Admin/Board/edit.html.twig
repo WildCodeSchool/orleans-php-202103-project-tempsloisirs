@@ -17,7 +17,8 @@
 			<a href="/adminBoard/index" class="btn btn-primary mt-3 mt-lg-0">Gérer conseil d'administration</a>
 		</header>
 
-		{% include 'Admin/Board/_form.html.twig' %}
+		{% include 'Admin/Board/_form.html.twig' with {buttonName: 'Modifier ce membre'} %}
+
 
 	</main>
 

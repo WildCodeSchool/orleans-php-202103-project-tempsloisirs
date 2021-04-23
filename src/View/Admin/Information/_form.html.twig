@@ -1,0 +1,39 @@
+<form method="post">
+
+	{% if errors is defined %}
+		{% for error in errors %}
+			<div class="alert alert-danger col col-lg-6 col-md-12 mx-auto" role="alert">{{ error }}</div>
+		{% endfor %}
+	{% endif %}
+
+	<div class="form-row mt-sm-0 px-xs-0 py-sm-0">
+		<div class="form-group col col-lg-6 col-md-12 mx-auto">
+			<label class="col-sm-2 col-form-label col-form-label-lg" for="type">Type</label>
+		</div>
+		<div class="form-group form-check col col-lg-6 col-md-12 mx-auto">
+			<input class="form-check-input" type="radio" name="type" id="typeAlert" value="Alerte">
+			<label class="form-check-label" for="typeAlert">Alerte</label>
+		</div>
+		<div class="form-group form-check col col-lg-6 col-md-12 mx-auto">
+			<input class="form-check-input" type="radio" name="type" id="typeWarning" value="Avertissement">
+			<label class="form-check-label" for="typeWarning">Avertissement</label>
+		</div>
+		<div class="form-group form-check col col-lg-6 col-md-12 mx-auto">
+			<input class="form-check-input" type="radio" name="type" id="typeInfo" value="Information">
+			<label class="form-check-label" for="typeInfo">Information</label>
+		</div>
+		<div class="form-group col col-lg-6 col-md-12 mx-auto">
+			<label class="col-sm-2 col-form-label col-form-label-lg" for="date">Date</label>
+			<input type="date" value="{{ information.date }}" name="date" class="form-control shadow-sm p-3 mb-1 bg-white rounded" id="date" placeholder="01/01/2021">
+		</div>
+		<div class="form-group col col-lg-6 col-md-12 mx-auto">
+			<label class="col-sm-2 col-form-label col-form-label-lg" for="content">Description</label>
+			<textarea value="{{ information.content }}" name="content" class="form-control shadow-sm p-3 mb-3 bg-white rounded" id="content" placeholder="Description"></textarea>
+		</div>
+
+		<div class="form-group col col-lg-6 col-md-12 mx-auto">
+			<button type="submit" class="btn btn-primary btn-lg w-100" value="Valider">Ajouter une information</button>
+		</div>
+	</div>
+
+</form>

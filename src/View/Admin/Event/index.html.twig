@@ -25,28 +25,36 @@
 								<img src={{ event.image }} class="card-img-top" alt="...">
 								<div class="card-body">
 									<h3 class="card-title strong">{{ event.name }}</h3>
-									<p>
-									<strong>{{ event.id }}</strong>
-										<strong>Date de début:</strong>
+									<p>	<strong>Date de début:</strong>
 										{{ event.start_date}}</p>
 									{% if event.end_date is not null %}
 										<p class="text-left">
 											<strong>Date de fin:</strong>
 											{{event.end_date}}</p>
-											
 									{% endif %}
 									<p class="card-text">
 										<strong>Description:</strong>
 										{{ event.description }}</p>
 										<div class="d-inline-flex">
+                    
 									<a class="btn me-1 btn-primary" href="/adminEvent/edit/{{ event.id }}">Modifier</a>
+                  
 									<form method="POST" onSubmit="return confirm('Voulez vous supprimer ?');" action="/adminEvent/delete/{{event.id}}">
 									<button class="btn btn-danger">Supprimer</button>
 									</form>
+                  
 									</div>
+
+									<p><strong>Date de début:</strong> {{ event.start_date}}</p>
+                                    {% if event.end_date is not null and event.end_date != event.start_date %}
+									<p class="text-left"><strong>Date de fin:</strong> {{event.end_date}}</p>
+                                     {% endif %}
+									<p class="text-left"><strong>Description:</strong> {{ event.description }}</p>
+									<a href="#" class="btn btn-primary">Modifier</a>
+									<a href="#" class="btn btn-danger">Supprimer</a>
+
 								</div>
 							</div>
-
 						</div>
 					{% endfor %}
 

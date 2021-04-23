@@ -24,7 +24,7 @@
                 <img class="card-img-top h-50" src="https://picsum.photos/id/1/200/300" alt="Card image cap">
                 <div class="card-body h-50 d-flex flex-column justify-content-around">
                     <h2 class="card-title">{{ activity.name }}</h2>
-                    <p class="card-text">{{ activity.instructor_name }}</p>
+                    <p class="card-text">Moniteur/Monitrice: {{activity.instructor_name}}</p>
                     <p class="card-subtitle">{{ activity.description }}</p>
                     <div class="row">
                         <div class="col d-flex flex-row justify-content-around">
@@ -46,8 +46,7 @@
 			<a href="#" class="btn btn-primary btn-lg mx-1 my-1">Retour au site principal</a>
 			<a href="#" class="btn btn-primary btn-lg mx-1 my-1">Accueil Admin</a>
 		</footer>
-
-    
+        
 </div>
 
 {% endblock %}

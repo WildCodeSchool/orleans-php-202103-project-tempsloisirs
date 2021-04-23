@@ -6,6 +6,138 @@ use App\Model\ActivityManager;
 
 class AdminActivityController extends AbstractController
 {
+    public const MAX_FIELD_LENGTH = 255;
+    public const MIN_FIELD_LENGTH = 2;
+    public const DAYS = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi'];
+
+    /**
+     * Add a new item
+     */
+    public function add(): string
+    {
+        $errorsEmpty = $errorsURL = $errorsTime = $errorsLength = $errorsDays = $errors = [];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // clean $_POST data
+            $activities = array_map('trim', $_POST);
+            $activities = array_map('ucfirst', $activities);
+
+            // data checks
+            $errorsEmpty = $this->validateEmpty($activities);
+            $errorsLength = $this->validateLength($activities);
+            $errorsURL = $this->validateURL($activities);
+            $errorsTime = $this->validateTime($activities);
+            $errorsDays = $this->validateDays($activities);
+
+            $errors = array_merge($errorsEmpty, $errorsLength, $errorsURL, $errorsTime, $errorsDays);
+
+            if (empty($errors)) {
+                // if validation is ok, insert and redirection
+                $activityManager = new ActivityManager();
+                $activityManager->insert($activities);
+                header('Location:/adminActivity/index');
+            }
+        }
+
+        return $this->twig->render('Admin/Activity/add.html.twig', [
+            'errors' => $errors,
+            ]);
+    }
+
+/**
+ * Data checks
+ */
+    public function validateEmpty(array $activities): array
+    {
+        $errorsEmpty = [];
+        if (empty($activities['name'])) {
+            $errorsEmpty[] = "Le nom de l'activité est obligatoire.";
+        }
+
+        if (empty($activities['weekday'])) {
+            $errorsEmpty[] = "Vous devez indiquer le jour.";
+        }
+
+        if (empty($activities['instructor_name'])) {
+            $errorsEmpty[] = "Le nom de l'animateur est obligatoire";
+        }
+
+        if (empty($activities['start_time'])) {
+            $errorsEmpty[] = "Veuillez indiquer une heure de début pour cette activité";
+        }
+
+        if (empty($activities['end_time'])) {
+            $errorsEmpty[] = "Veuillez indiquer une heure de début pour cette activité";
+        }
+
+        return $errorsEmpty;
+    }
+
+    public function validateURL(array $activities): array
+    {
+        $errorsURL = [];
+
+        if (empty(!$activities['image'])) {
+            if (!filter_var($activities['image'], FILTER_VALIDATE_URL)) {
+                $errorsURL[] = "Cette URL n'est pas valide.";
+            }
+        }
+
+        return $errorsURL;
+    }
+
+    public function validateTime(array $activities): array
+    {
+        $errorsTime = [];
+
+        if ($activities['start_time'] > $activities['end_time']) {
+            $errorsTime[] = 'L\'heure de fin de l\'activité doit être postérieure à l\'heure de début.';
+        }
+
+        return $errorsTime;
+    }
+
+    public function validateLength(array $activities): array
+    {
+        $errorsLength = [];
+
+        if (strlen($activities['name']) > self::MAX_FIELD_LENGTH) {
+            $errorsLength[] = 'Le nom de l\'activité ne peut pas dépasser ' . self::MAX_FIELD_LENGTH . ' caractères';
+        }
+
+        if (strlen($activities['instructor_name']) > self::MAX_FIELD_LENGTH) {
+            $errorsLength[] = 'Le nom du moniteur ne peut pas dépasser ' . self::MAX_FIELD_LENGTH . ' caractères';
+        }
+
+        if (strlen($activities['image']) > self::MAX_FIELD_LENGTH) {
+            $errorsLength[] = 'L\'url de l\' image ne peut pas dépasser ' . self::MAX_FIELD_LENGTH . ' caractères';
+        }
+
+        if (strlen($activities['description']) > self::MAX_FIELD_LENGTH) {
+            $errorsLength[] = 'La description de l\'activité ne peut pas dépasser ' . self::MAX_FIELD_LENGTH .
+                ' caractères';
+        }
+
+        if (strlen($activities['name']) < self::MIN_FIELD_LENGTH) {
+            $errorsLength[] = 'Le nom de l\'activité doit faire plus de ' . self::MIN_FIELD_LENGTH . ' caractères';
+        }
+
+        if (strlen($activities['instructor_name']) < self::MIN_FIELD_LENGTH) {
+            $errorsLength[] = 'Le nom du moniteur doit faire plus de ' . self::MIN_FIELD_LENGTH . ' caractères';
+        }
+
+        return $errorsLength;
+    }
+
+    public function validateDays(array $activities): array
+    {
+        $errorsDays = [];
+        if (!in_array($activities['weekday'], self::DAYS)) {
+            $errorsDays[] = 'Veuillez sélectionner un jour de la semaine parmi les options proposées';
+        }
+        return $errorsDays;
+    }
+
     public function index(): string
     {
         $activityManager = new ActivityManager();

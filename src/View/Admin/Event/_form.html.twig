@@ -4,7 +4,7 @@
 			<div class="alert alert-danger errorsMessage">{{ error }}</div>
 		{% endfor %}
 	{% endif %}
-	
+
 <form action="" method="POST">
 
 	<div class="mb-3">
@@ -29,7 +29,7 @@
 
 	<div class="mb-3">
 		<label for="image" class="form-label">Lien pour l'image</label>
-		<input type="text" value="{{ event.image }}" class="form-control" id="image" name="image">
+		<input type="text" value="{{ event.image }}" class="form-control" id="image" name="image" placeholder="Ex: https://www.picsum.photos/200">
 	</div>
 
 
@@ -39,7 +39,9 @@
 	</div>
 
 	<div class="col-12">
+
 		<button class="btn btn-primary btn-lg mx-1 my-1" value="valider">Valider</button>
+
 	</div>
 
 </form>

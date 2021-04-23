@@ -38,6 +38,31 @@ class AdminEventController extends AbstractController
            'errors' => $errors,
            'event' => $event,
            ]);
+
+    }  
+      
+    public function add()
+    {
+        $eventManager = new EventManager();
+        $errorsDateValue = $errorsEmptyLength = $event = $errors = [];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $event = array_map('trim', $_POST);
+
+            $errorsEmptyLength = $this->validateEmptyLength($event);
+            $errorsDateValue = $this->validateDateValue($event);
+            $errors = array_merge($errorsEmptyLength, $errorsDateValue);
+
+            if (empty($errors)) {
+                $eventManager->saveEvent($event);
+                header('Location:/adminEvent/index');
+            }
+        }
+        return $this->twig->render('Admin/Event/add.html.twig', [
+            'errors' => $errors,
+            'event' => $event,
+        ]);
+
     }
 
     public function validateEmptyLength($event)
@@ -51,10 +76,6 @@ class AdminEventController extends AbstractController
             $errorsEmptyLength[] = "Le nom d'évènement doit avoir moins de " . self::MAX_FIELD_LENGTH . " caracteres.";
         }
 
-        if (empty($event['start_date'])) {
-            $errorsEmptyLength[] = "Vous devez mettre une date de début pour l'évènement.";
-        }
-
         if (!empty($event['description']) && strlen($event['description']) > self::MAX_FIELD_LENGTH) {
             $errorsEmptyLength[] = "Le nom d'évènement doit avoir moins de " . self::MAX_FIELD_LENGTH . " caracteres.";
         }
@@ -62,23 +83,27 @@ class AdminEventController extends AbstractController
         if (empty($event['price'])) {
             $errorsEmptyLength[] = "Vous devez mettre un prix pour l'évènement.";
         }
+
+        if (empty($event['start_date']) || empty($event['end_date'])) {
+            $errorsEmptyLength[] = "Vous devez mettre une date de début et fin pour l'évènement.";
+        }
+
         return $errorsEmptyLength ?? [];
     }
+      
 
     public function validateDateValue($event)
     {
-
         $errorsDateValue = [];
 
-        if (empty($event['start_date'])) {
-            $errorsDateValue[] = "Vous devez mettre une date de début pour l'évènement.";
-        }
-
         if ($event['start_date'] < date("Y-m-d")) {
+          
             $errorsDateValue[] = "L'événement ne peut pas avoir lieu à une date passée.";
         }
-        if (!empty($event['end_date']) && ($event['end_date'] < $event['start_date'])) {
-            $errorsDateValue[] = "La date de fin de l'événement ne peut pas être précédent à date de début.";
+
+        if ($event['end_date'] < $event['start_date']) {
+          
+           $errorsDateValue[] = "La date de fin de l'événement ne peut pas être précédent à date de début.";
         }
 
         if ($event['price'] < 0) {
@@ -91,6 +116,7 @@ class AdminEventController extends AbstractController
 
         return $errorsDateValue ?? [];
     }
+      
     public function index(): string
     {
         $eventManager = new EventManager();

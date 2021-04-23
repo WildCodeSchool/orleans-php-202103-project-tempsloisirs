@@ -27,10 +27,10 @@
 								<div class="card-body">
 									<h3 class="card-title strong">{{ event.name }}</h3>
 									<p><strong>Date de début:</strong> {{ event.start_date}}</p>
-                                    {% if event.end_date is not null %}
+                                    {% if event.end_date is not null and event.end_date != event.start_date %}
 									<p class="text-left"><strong>Date de fin:</strong> {{event.end_date}}</p>
                                      {% endif %}
-									<p class="card-text"><strong>Description:</strong> {{ event.description }}</p>
+									<p class="text-left"><strong>Description:</strong> {{ event.description }}</p>
 									<a href="#" class="btn btn-primary">Modifier</a>
 									<a href="#" class="btn btn-danger">Supprimer</a>
 								</div>

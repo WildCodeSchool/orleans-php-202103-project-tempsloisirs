@@ -1,0 +1,53 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    Admin - Activités
+{% endblock %}
+
+{% block stylesheet %}
+    <link href="/assets/css/admin.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+<div class="container">  
+    
+		<header class="admin-header d-flex justify-content-lg-between flex-lg-row align-items-lg-center flex-column px-lg-5 mb-lg-5 mb-3">
+			<h1 class="text-center h1">Gérer les activités</h1>
+			<a href="/AdminActivity/add" class="btn btn-primary mt-3">Ajouter une activité</a>
+		</header>
+ 
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
+        {% for activity in activities %}
+        <div class="col card-group">
+            <div class="card mb-3">
+                <img class="card-img-top h-50" src="https://picsum.photos/id/1/200/300" alt="Card image cap">
+                <div class="card-body h-50 d-flex flex-column justify-content-around">
+                    <h2 class="card-title">{{ activity.name }}</h2>
+                    <p class="card-text">{{ activity.instructor_name }}</p>
+                    <p class="card-subtitle">{{ activity.description }}</p>
+                    <div class="row">
+                        <div class="col d-flex flex-row justify-content-around">
+                            <a href="AdminActivity/edit" class="btn btn-primary align-self-end w-100 my-1">Editer</a>
+                        </div>
+                        <div class="col d-flex flex-row justify-content-around">
+                            	<form method="POST" onSubmit="return confirm('Êtes-vous sûr(e) de vouloir supprimer ?');" action="/AdminActivity/delete/{{activity.id}}">
+								<button class="btn btn-danger delete align-self-end w-100 my-1">Supprimer</button>
+							</form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+		<footer class="admin-footer d-flex justify-content-center flex-md-row flex-column mt-lg-5 mt-2">
+			<a href="#" class="btn btn-primary btn-lg mx-1 my-1">Retour au site principal</a>
+			<a href="#" class="btn btn-primary btn-lg mx-1 my-1">Accueil Admin</a>
+		</footer>
+
+    
+</div>
+
+{% endblock %}

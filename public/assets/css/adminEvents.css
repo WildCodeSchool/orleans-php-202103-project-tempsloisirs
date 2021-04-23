@@ -1,0 +1,20 @@
+.eventSection {
+  text-align: center;
+}
+
+.eventTitle h1 {
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  font-family: var(--title-font);
+}
+
+.eventTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.errorsMessage {
+  list-style-type: none;
+}

@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Simonetta:ital,wght@0,400;0,900;1,400;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
+:root {
+  --primary-color: #5eaaa8;
+  --secondary-color: #ecb390;
+  --danger-color: #ff7979;
+  --light-color: #f1ffff;
+  --dark-color: #595959;
+  --grey-color: #c4c4c4;
+  --page-color: #e5e5e5;
+
+  --text-font: 'Open Sans', sans-serif;
+  --title-font: 'Simonetta', cursive;
+  --title-size: 2.3em;
+
+  --primary-spacing: 8px;
+  --secondary-spacing: 16px;
+  --third-spacing: 24px;
+}
+
+body {
+  background-color: var(--page-color);
+  font-family: var(--text-font);
+  scroll-behavior: smooth;
+}

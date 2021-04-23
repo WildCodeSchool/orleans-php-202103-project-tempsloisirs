@@ -4,8 +4,7 @@ namespace App\Controller;
 
 use App\Model\EventManager;
 
-class AdminEventController extends AbstractController
-{
+class AdminEventController extends AbstractController {
 
     public const MAX_FIELD_LENGTH = 255;
 
@@ -15,7 +14,6 @@ class AdminEventController extends AbstractController
 
         $eventManager = new EventManager();
         $event = $eventManager->selectOneById($id);
-
 
         if ($event === false) {
             $errorsIdNotFound[] = "L'évènement sélectionné n\'existe pas.";
@@ -38,7 +36,6 @@ class AdminEventController extends AbstractController
            'errors' => $errors,
            'event' => $event,
            ]);
-
     }  
       
     public function add()
@@ -91,36 +88,42 @@ class AdminEventController extends AbstractController
         return $errorsEmptyLength ?? [];
     }
       
-
     public function validateDateValue($event)
     {
         $errorsDateValue = [];
 
         if ($event['start_date'] < date("Y-m-d")) {
-          
-            $errorsDateValue[] = "L'événement ne peut pas avoir lieu à une date passée.";
+            
+           $errorsDateValue[] = "L'événement ne peut pas avoir lieu à une date passée.";
+            
         }
 
-        if ($event['end_date'] < $event['start_date']) {
-          
+        if ($event['end_date'] < $event['start_date']) {       
+            
            $errorsDateValue[] = "La date de fin de l'événement ne peut pas être précédent à date de début.";
+            
         }
 
         if ($event['price'] < 0) {
+            
             $errorsDateValue[] = "Le prix d'évènement doit être 0 (gratuit) ou plus.";
+            
         }
 
         if (!filter_var($event['image'], FILTER_VALIDATE_URL)) {
+            
             $errorsDateValue[] = 'L\'image doit être un URL';
         }
 
         return $errorsDateValue ?? [];
+        
     }
       
     public function index(): string
     {
         $eventManager = new EventManager();
         $events = $eventManager->selectAll();
+        
         return $this->twig->render('Admin/Event/index.html.twig', ['events' => $events]);
     }
 }

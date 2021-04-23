@@ -1,4 +1,5 @@
-{% extends 'layout.html.twig' %}
+{% extends 'layoutAdmin.html.twig' %}
+
 {% block title %}Admin - Events
 {% endblock %}
 {% block stylesheet %}<link rel="stylesheet" href="/assets/css/adminEvents.css">
@@ -24,10 +25,10 @@
 								<div class="card-body">
 									<h3 class="card-title strong">{{ event.name }}</h3>
 									<p><strong>Date de début:</strong> {{ event.start_date}}</p>
-                                    {% if event.end_date is not null %}
+                                    {% if event.end_date is not null and event.end_date != event.start_date %}
 									<p class="text-left"><strong>Date de fin:</strong> {{event.end_date}}</p>
                                      {% endif %}
-									<p class="card-text"><strong>Description:</strong> {{ event.description }}</p>
+									<p class="text-left"><strong>Description:</strong> {{ event.description }}</p>
 									<a href="#" class="btn btn-primary">Modifier</a>
 									<a href="#" class="btn btn-danger">Supprimer</a>
 								</div>
@@ -39,10 +40,6 @@
 	            {# Closing div row tag #}
 				</div>
 			
-				<footer class="admin-footer d-flex justify-content-center flex-md-row flex-column mt-lg-5 mt-2">
-					<a class="btn btn-primary btn-lg mx-1 my-1" href="#">Retour au site principal</a>
-					<a class="btn btn-primary btn-lg mx-1 my-1" href="#">Accueil Admin</a>
-				</footer>
 			</div>
 		</div>
 	</main>

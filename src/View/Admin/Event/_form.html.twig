@@ -1,0 +1,44 @@
+	{% if errors is not null %}
+		{% for error in errors %}
+			<div class="alert alert-danger errorsMessage">{{ error }}</div>
+		{% endfor %}
+	{% endif %}
+
+<form action="" method="POST">
+
+	<div class="mb-3">
+		<label for="name" class="form-label">Nom d'évènement</label>
+		<input type="text" value="{{ event.name }}" class="form-control" id="name" name="name" placeholder="Ex: Voyage à Nice" required>
+	</div>
+
+	<div class="mb-3">
+		<label for="start_date" class="form-label">Date de début</label>
+		<input type="date" value="{{ event.start_date }}" class="form-control" id="start_date" name="start_date" required>
+	</div>
+
+	<div class="mb-3">
+		<label for="end_date" class="form-label">Date de fin</label>
+		<input type="date" value="{{ event.end_date }}" class="form-control" id="end_date" name="end_date" required>
+	</div>
+
+	<div class="mb-3">
+		<label for="price" class="form-label">Prix</label>
+		<input type="number" value="{{ event.price }}" class="form-control" id="price" name="price" min="0">
+	</div>
+
+	<div class="mb-3">
+		<label for="image" class="form-label">Lien pour l'image</label>
+		<input type="text" value="{{ event.image }}" class="form-control" id="image" name="image" placeholder="Ex: https://www.picsum.photos/200">
+	</div>
+
+
+	<div class="mb-3">
+		<label for="description" class="form-label">Description d'évènement</label>
+		<textarea class="form-control" name="description" id="description">{{ event.description }}</textarea>
+	</div>
+
+	<div class="col-12">
+		<button class="btn btn-primary btn-lg mx-1 my-1" value="valider">Envoyer</button>
+	</div>
+
+</form>

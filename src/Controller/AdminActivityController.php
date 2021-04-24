@@ -9,6 +9,7 @@ class AdminActivityController extends AbstractController
     // delete
     public const MAX_FIELD_LENGTH = 255;
     public const MIN_FIELD_LENGTH = 2;
+    public const DAYS = ['test1', 'test2'];
 
     public function index(): string
     {
@@ -23,12 +24,17 @@ class AdminActivityController extends AbstractController
         $activities = $activityManager->selectOneById($id);
         $errors = [];
 
+        if (!$activities) {
+            $errors[] = "Cette activité n'existe pas";
+        }
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
             $activities = array_map('trim', $_POST);
             $activities = array_map('ucfirst', $activities);
 
             // TODO validations (length, format...)
+
             $errorsEmpty = $this->validateEmpty($activities);
             $errorsLength = $this->validateLength($activities);
             $errorsURL = $this->validateURL($activities);
@@ -37,13 +43,13 @@ class AdminActivityController extends AbstractController
 
             if (empty($errors)) {
                 //$activityManager = new ActivityManager();
-                $id = $activities['id'];
+                 $activities['id'] = $id;
                 $activityManager->update($activities);
-                header('Location: /Admin/Activity/index');
+                header('Location: /AdminActivity/index');
             }
         }
         return $this->twig->render('Admin/Activity/edit.html.twig', [
-            'activities' => $activities, 'errors' => $errors,
+            'activity' => $activities, 'errors' => $errors,
         ]);
     }
     // Delete everything past this before committing

@@ -11,9 +11,9 @@ class ActivityManager extends AbstractManager
      */
     public function update(array $activities): bool
     {
-        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `name`, `weekday`, `instructor_name`, 
-        `start_time`, `end_time`, `image`, `description` = :name, :weekday, :instructor_name, :start_time, :end_time,
-        :image, :description WHERE id=:id");
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `name`= :name, `weekday`=:weekday,
+        `instructor_name`=:instructor_name,`start_time`=:start_time,`end_time`=:end_time,`image`=:image,
+        `description`=:description WHERE id=:id");
         $statement->bindValue('name', $activities['name'], \PDO::PARAM_STR);
         $statement->bindValue('weekday', $activities['weekday'], \PDO::PARAM_STR);
         $statement->bindValue('instructor_name', $activities['instructor_name'], \PDO::PARAM_STR);

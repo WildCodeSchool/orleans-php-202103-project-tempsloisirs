@@ -5,9 +5,9 @@
 {% block content %}
 
 <main class="container d-flex flex-column">
-    <h1 class="h1">Modifier l'activité: {{ activity.name }}</h1>
+    <h1 class="h1">Modifier {{ activity.name }}</h1>
 
-    {% include 'Components/_formAdminActivity.html.twig' with {buttonName: "Modifier l'activité"} %}
+    {% include 'Admin/Activity/_form.html.twig' with {buttonName: "Modifier l'activité"} %}
 
-<main cmass="container">
+</main>
 {% endblock %}

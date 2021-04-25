@@ -8,6 +8,18 @@ class AdminInformationController extends AbstractController
 {
     private const MAX_CONTENT_LENGTH = 255;
     private const MAX_DATE_LENGTH = 12;
+    public const LAST_INFORMATIONS = ['alert' => 'Alerte', 'warning' => 'Avertissement', 'info' => 'Information'];
+
+    /**
+     * Show informations for a specific item
+     **/
+    public function index(): string
+    {
+        $informationManager = new InformationManager();
+        $informations = $informationManager->selectAll('date');
+
+        return $this->twig->render('Admin/Information/index.html.twig', ['informations' => $informations]);
+    }
 
     /**
      * Add a new item

@@ -5,6 +5,7 @@
   --primary-color: #5eaaa8;
   --secondary-color: #ecb390;
   --danger-color: #ff7979;
+  --warning-color: #ffd13b;
   --light-color: #f1ffff;
   --dark-color: #595959;
   --grey-color: #c4c4c4;
@@ -12,8 +13,8 @@
 
   --text-font: 'Open Sans', sans-serif;
   --title-font: 'Simonetta', cursive;
-  --title-size: 2.3em;
 
+  --title-size: 2.3em;
   --primary-spacing: 8px;
   --secondary-spacing: 16px;
   --third-spacing: 24px;

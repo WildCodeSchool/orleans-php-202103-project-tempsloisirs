@@ -33,7 +33,9 @@
 									<p class="card-text"><strong>Description:</strong> {{ event.description }}</p>
 									<div class = "row">
 										<a href="#" class="btn btn-primary col mx-1">Modifier</a>
-										<a href="#" class="btn btn-danger col mx-1">Supprimer</a>
+										<form method="POST" onSubmit="return confirm('Voulez vous supprimer ?');" action="/adminEvent/delete/{{event.id}}">
+										<button class="btn btn-danger">Supprimer</button>
+										</form>
 									</div>
 								</div>
 							</div>

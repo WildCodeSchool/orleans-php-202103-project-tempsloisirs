@@ -9,14 +9,6 @@ class AdminActivityController extends AbstractController
     // delete
     public const MAX_FIELD_LENGTH = 255;
     public const MIN_FIELD_LENGTH = 2;
-    public const DAYS = ['test1', 'test2'];
-
-    public function index(): string
-    {
-        $activityManager = new ActivityManager();
-        $activities = $activityManager->selectAll('name');
-        return $this->twig->render('Admin/Activity/index.html.twig', ['activities' => $activities]);
-    }
 
     public function edit($id): string
     {
@@ -42,8 +34,8 @@ class AdminActivityController extends AbstractController
             $errors = array_merge($errorsEmpty, $errorsLength, $errorsURL, $errorsTime);
 
             if (empty($errors)) {
-                //$activityManager = new ActivityManager();
-                 $activities['id'] = $id;
+                $activityManager = new ActivityManager();
+                $activities['id'] = $id;
                 $activityManager->update($activities);
                 header('Location: /AdminActivity/index');
             }

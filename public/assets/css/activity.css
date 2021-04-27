@@ -11,6 +11,12 @@
     margin: 0;
 }
 
+.card-img-top{
+    height: auto;
+    width: 150px;
+}
+
+
 /*.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:focus {
     background-color: var(--primary-color);
     color: var(--light-color);

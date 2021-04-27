@@ -19,7 +19,7 @@ class InformationManager extends AbstractManager
 
     public function update(array $informations): void
     {
-        $query = "UPDATE " . self::TABLE . " (`date`, `type`, `content`) VALUES (:date,:type ,:content)
+        $query = "UPDATE " . self::TABLE . " (`date`, `type`, `content`) SET (:date,:type ,:content)
                   WHERE id=:id";
         $statement = $this->pdo->prepare($query);
         $statement->bindValue('date', $informations['date'], \PDO::PARAM_STR);

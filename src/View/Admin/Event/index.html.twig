@@ -31,15 +31,14 @@
 									<p class="text-left"><strong>Date de fin:</strong> {{event.end_date}}</p>
                                      {% endif %}
 									<p class="card-text"><strong>Description:</strong> {{ event.description }}</p>
-									<div class = "row">
-										<a href="#" class="btn btn-primary col mx-1">Modifier</a>
+										<div class="links d-flex justify-content-center align-items-center px-3 pb-3">
+										<a class="btn btn-primary" href="/adminEvent/edit/{{ event.id }}">Modifier</a>
 										<form method="POST" onSubmit="return confirm('Voulez vous supprimer ?');" action="/adminEvent/delete/{{event.id}}">
 										<button class="btn btn-danger">Supprimer</button>
 										</form>
 									</div>
 								</div>
 							</div>
-
 						</div>
 					{% endfor %}
 

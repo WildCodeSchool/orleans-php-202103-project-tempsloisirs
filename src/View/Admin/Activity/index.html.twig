@@ -24,11 +24,10 @@
                 <img class="card-img-top h-50" src="https://picsum.photos/id/1/200/300" alt="Card image cap">
                 <div class="card-body h-50 d-flex flex-column justify-content-around">
                     <h2 class="card-title">{{ activity.name }}</h2>
-                    <p class="card-text">Moniteur/Monitrice: {{activity.instructor_name}}</p>
                     <p class="card-subtitle">{{ activity.description }}</p>
                     <div class="row">
                         <div class="col d-flex flex-row justify-content-around">
-                            <a href="AdminActivity/edit" class="btn btn-primary align-self-end w-100 my-1">Editer</a>
+                            <a href="/AdminActivity/edit/{{activity.id}}" class="btn btn-primary align-self-end w-100 my-1">Editer</a>
                         </div>
                         <div class="col d-flex flex-row justify-content-around">
                             	<form method="POST" onSubmit="return confirm('Êtes-vous sûr(e) de vouloir supprimer ?');" action="/AdminActivity/delete/{{activity.id}}">

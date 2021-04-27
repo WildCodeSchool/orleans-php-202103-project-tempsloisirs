@@ -1,0 +1,39 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/information.css">
+{% endblock %}
+
+{% block title %}
+	Admin - Information
+{% endblock %}
+
+{% block content %}
+
+	{% include "Components/_navbarAdmin.html.twig" %}
+
+	<main class="container py-lg-5 px-lg-5 py-3 px-3">
+
+		<header class="admin-header d-flex justify-content-lg-between flex-lg-row align-items-lg-center flex-column px-lg-5 mb-lg-5 mb-3">
+			<h1 class="text-center h1">Gérer les informations</h1>
+			<a href="/adminInformation/add" class="btn btn-primary mt-3 mt-lg-0">Ajouter une information</a>
+		</header>
+
+		{% for information in informations %}
+			<div class="card mb-2 alerts">
+				<div class="card-header {{ information.type }}-color text-white">
+					{{ constant('App\\Controller\\AdminInformationController::LAST_INFORMATIONS')[information.type] }}
+				</div>
+				<div class="card-body">
+					<h2 class="title-card color-text-{{ information.type }}">{{ information.date|date("d/m/Y") }}</h2>
+					<p class="card-text">{{ information.content }}</p>
+					<a href="#" class="btn btn-primary">Modifier</a>
+					<a href="#" class="btn btn-danger">Supprimer</a>
+				</div>
+			</div>
+		{% else %}
+			<li>Nothing to display</li>
+		{% endfor %}
+
+	</main>
+{% endblock %}

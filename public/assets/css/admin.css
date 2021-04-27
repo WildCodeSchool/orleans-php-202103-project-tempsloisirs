@@ -69,3 +69,29 @@
 .btn-danger:active {
     filter: brightness(90%);
 }
+
+/* Each class for bg and text */
+
+.info-color {
+    background-color: var(--primary-color);
+}
+
+.color-text-info {
+    color: var(--primary-color);
+}
+
+.warning-color {
+    background-color: var(--warning-color);
+}
+
+.color-text-warning {
+    color: var(--warning-color);
+}
+
+.alert-color {
+    background-color: var(--danger-color);
+}
+
+.color-text-alert {
+    color: var(--danger-color);
+}

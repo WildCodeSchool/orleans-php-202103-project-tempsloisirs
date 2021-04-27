@@ -1,7 +1,0 @@
-{% extends 'layout.html.twig' %}
-
-{% block content %}
-    <h1>Editer l'activité {{ activity.name }}</h1>
-    {% include 'AdminActivity/_form.html.twig' %}
-    <a href="/AdminActivity/show/{{ item.id }}">Back</a>
-{% endblock %}

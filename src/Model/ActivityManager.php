@@ -6,7 +6,6 @@ class ActivityManager extends AbstractManager
 {
     public const TABLE = 'activity';
     public const DAYS = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi'];
-    
 
     /**
      * Update item in database

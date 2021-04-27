@@ -1,0 +1,35 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %} Activités | Le temps des loisirs{% endblock %}
+
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/activity.css">
+{% endblock %}
+
+
+{% block content %}
+<main class="container">
+
+    <h1 class="h1 text-align">Toutes nos activités</h1>
+
+    <div class="row d-flex justify-content-around flex-nowrap">   {# A retravailler#}
+            {% for day in constant('App\\Controller\\AdminActivityController::DAYS' ) %}
+                <div class ="col">
+                    <a class="btn btn-primary" href="#" role="button"> {{ day }}</a> 
+                </div>
+            {% endfor %}
+    </div>
+
+
+
+    {% for activity in activities %}
+        <h2>{{ activity.weekday }}</h2>
+
+    {% endfor %}
+
+
+
+    <h2></h2>
+
+</main>
+{% endblock %}
+

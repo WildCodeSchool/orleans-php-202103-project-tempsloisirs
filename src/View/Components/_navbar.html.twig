@@ -1,0 +1,33 @@
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/navbar.css">
+{% endblock %}
+
+{% block content %}
+	<nav class="navbar fixed-top navbar-expand-lg navbar-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/admin/home">Temps des Loisirs</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="nav navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="/adminInformation/index">Accueil</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/adminBoard/index">À propos</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/adminActivity/index">Activités</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/adminEvent/index">Évènements</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/adminBoard/index">Contact</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+{% endblock %}

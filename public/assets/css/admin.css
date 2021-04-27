@@ -80,10 +80,28 @@
     filter: brightness(90%);
 }
 
-.btn-dark:hover {
-    filter: brightness(110%);
+/* Each class for bg and text */
+
+.info-color {
+    background-color: var(--primary-color);
 }
 
-.btn-dark:active {
-    filter: brightness(90%);
+.color-text-info {
+    color: var(--primary-color);
+}
+
+.warning-color {
+    background-color: var(--warning-color);
+}
+
+.color-text-warning {
+    color: var(--warning-color);
+}
+
+.alert-color {
+    background-color: var(--danger-color);
+}
+
+.color-text-alert {
+    color: var(--danger-color);
 }

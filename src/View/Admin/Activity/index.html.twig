@@ -10,7 +10,7 @@
 
 {% block content %}
 
-<div class="container">  
+<div class="container py-lg-5 px-lg-5 py-3 px-3">  
     
 		<header class="admin-header d-flex justify-content-lg-between flex-lg-row align-items-lg-center flex-column px-lg-5 mb-lg-5 mb-3">
 			<h1 class="text-center h1">Gérer les activités</h1>
@@ -24,7 +24,7 @@
                 <img class="card-img-top h-50" src="https://picsum.photos/id/1/200/300" alt="Card image cap">
                 <div class="card-body h-50 d-flex flex-column justify-content-around">
                     <h2 class="card-title">{{ activity.name }}</h2>
-                    <p class="card-text">{{ activity.instructor_name }}</p>
+                    <p class="card-text">Moniteur/Monitrice: {{activity.instructor_name}}</p>
                     <p class="card-subtitle">{{ activity.description }}</p>
                     <div class="row">
                         <div class="col d-flex flex-row justify-content-around">

@@ -11,7 +11,7 @@ h2, h3{
     color: var(--primary-color);
 }
 
-.list-group-item, .list-group-item-action, .list-group-item.active {
+.btn, .btn-primary, .btn:hover, .btn-primary:hover, .btn:active, .btn-primary:active  {
     background-color: var(--secondary-color);
     color: var(--light-color);
     font-weight: 650;
@@ -19,11 +19,11 @@ h2, h3{
     border-radius: 5px;
 }
 
-.list-group-item:hover, .list-group-item-action:hover{
+.btn:hover, .btn-primary:hover{
     filter: brightness(110%);
 }
 
-.btn-primary:active {
+.btn:active, .btn-primary:active {
     filter: brightness(90%);
 }
 

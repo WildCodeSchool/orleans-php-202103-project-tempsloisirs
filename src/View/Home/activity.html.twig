@@ -6,11 +6,8 @@
 {% endblock %}
 
 {# TODO
-- Sort weekdays Monday < Friday
 - Fix design of day buttons
-- Fix time display
-- Fix responsiveness
-- Fix alternative image#}
+- Fix responsiveness#}
 
 
 {% block content %}
@@ -21,53 +18,49 @@
     {# Center text inside buttons#}
     {# Fix grid #}
 
-<div id="list-weekday" class="row list-group d-flex flex-row justify-content-around">
+    <div id="list-weekday" class="row list-group d-flex flex-row justify-content-around">
 
-        {% for day in constant('App\\Controller\\AdminActivityController::DAYS' ) %}
-            <div class="col-12 col-sm-4 m-1">
-                <a class="list-group-item list-group-item-action" href="#{{day}}">
-                    {{ day }}
-                </a>
-            </div>
-        {% endfor %}
-    </div>
-
-
-<section data-bs-spy="scroll" data-bs-target="#list-weekday" data-bs-offset="0" class="scrollspy-example" tabindex="0">
-    {% for day in constant('App\\Controller\\AdminActivityController::DAYS' ) %}
-
-        <h2 id="{{day}}" class="h2 my-lg-5 my-3 mx-3">{{ day }}</h2>
-
-            {% for activity in activities %}
-                {% if activity.weekday == day %}
-                    <div class="card d-flex flex-row align-items-center">
-                        {% if activity.image %}
-                            <img src="{{activity.image}}" class="card-img-top m-4 ratio" alt="{{activity.name}}">
-                        {% else %}
-                            <img src="/assets/images/no-img.png" class="card-img-top m-4 ratio" alt="L'image n'existe pas">
-                        {% endif %}
-
-                    <div class="card-body d-flex justify-content-between">
-                        <div class = "card-info">
-                            <h3>{{activity.name | capitalize }}</h3>
-                            <p class="card-text"> avec <strong>{{activity.instructor_name}}</strong></p>
-                            <p class="card-subtitle"><em>{{activity.description | capitalize}}</em></p>
-                        </div>
-                    <div class="activity-time align-self-center p-1 d-flex flex-row align-items-baseline">
-                        <p>{{ activity.start_time | date('H:i')}}</p>
-                        <img src="/assets/images/icon_time.svg.png" alt="clock icon">
-                    </div>
-
-                    </div>
+            {% for day in constant('App\\Controller\\AdminActivityController::DAYS' ) %}
+                <div class="col m-1">
+                    <a class="btn btn-primary" href="#{{day}}">
+                            {{ day }}
+                    </a>
                 </div>
-                {% endif %}
+            {% endfor %}
+        </div>
+
+
+    <section data-bs-spy="scroll" data-bs-target="#list-weekday" data-bs-offset="0" class="scrollspy-example" tabindex="0">
+        {% for day in constant('App\\Controller\\AdminActivityController::DAYS' ) %}
+
+            <h2 id="{{day}}" class="h2 my-lg-5 my-3 mx-3">{{ day }}</h2>
+
+                {% for activity in activities %}
+                    {% if activity.weekday == day %}
+                        <div class="card d-flex flex-row align-items-center">
+                            {% if activity.image %}
+                                <img src="{{activity.image}}" class="card-img-top m-4 ratio" alt="{{activity.name}}">
+                            {% else %}
+                                <img src="/assets/images/no-img.png" class="card-img-top m-4 ratio" alt="L'image n'existe pas">
+                            {% endif %}
+
+                        <div class="card-body d-flex justify-content-between">
+                            <div class = "card-info">
+                                <h3>{{activity.name | capitalize }}</h3>
+                                <p class="card-text"> avec <strong>{{activity.instructor_name}}</strong></p>
+                                <p class="card-subtitle"><em>{{activity.description | capitalize}}</em></p>
+                            </div>
+                        <div class="activity-time align-self-center p-1 d-flex flex-row align-items-baseline">
+                            <p>{{ activity.start_time | date('H:i')}}</p>
+                            <img src="/assets/images/icon_time.svg.png" alt="clock icon">
+                        </div>
+
+                        </div>
+                    </div>
+                    {% endif %}
+            {% endfor %}
         {% endfor %}
-
-    {% endfor %}
-
-    
-{{ dump(activities)}}
-</section>
+    </section>
 
 
     <h2>Les Photos</h2>

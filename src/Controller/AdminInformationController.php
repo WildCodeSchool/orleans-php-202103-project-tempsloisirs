@@ -22,6 +22,18 @@ class AdminInformationController extends AbstractController
     }
 
     /**
+     * Delete informations for a specific item
+     **/
+    public function delete(int $id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $informationManager = new InformationManager();
+            $informationManager->delete($id);
+            header('Location:/adminInformation/index');
+        }
+    }
+
+    /**
      * Add a new item
      */
     public function add(): string

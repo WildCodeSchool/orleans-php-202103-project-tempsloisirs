@@ -6,8 +6,7 @@
 {% endblock %}
 
 {# TODO
-- Fix design of day buttons
-- Fix responsiveness#}
+- clock time #}
 
 
 {% block content %}
@@ -15,14 +14,11 @@
 
     <h1 class="h1 text-align my-lg-5 my-3">Toutes nos activités</h1>
 
-    {# Center text inside buttons#}
-    {# Fix grid #}
-
     <div id="list-weekday" class="row list-group d-flex flex-column flex-md-row justify-content-around">
 
             {% for day in constant('App\\Controller\\AdminActivityController::DAYS' ) %}
                 <div class="col m-1">
-                    <a class="btn btn-primary w-100 h-100" href="#{{day}}">{{ day }}</a>
+                    <a class="btn btn-primary w-100 h-100 py-md-5" href="#{{day}}">{{ day }}</a>
                 </div>
             {% endfor %}
         </div>
@@ -48,10 +44,8 @@
                                 <p class="card-text"> avec <strong>{{activity.instructor_name}}</strong></p>
                                 <p class="card-subtitle"><em>{{activity.description | capitalize}}</em></p>
                             </div>
-                        <div class="activity-time align-self-center p-1 d-flex flex-row align-items-baseline">
-                            <p>{{ activity.start_time | date('H:i')}}</p>
-                            <img src="/assets/images/icon_time.svg.png" alt="clock icon">
-                        </div>
+
+                            <p class="activity-time align-self-center p-1">{{ activity.start_time | date('H')}}h{{ activity.start_time | date('i')}}</p>
 
                         </div>
                     </div>

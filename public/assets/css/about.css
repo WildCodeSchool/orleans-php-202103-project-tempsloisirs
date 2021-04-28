@@ -7,7 +7,7 @@
 	transition: .3s ease-in-out;
 }
 
-.history div:hover img {
+.history img:hover {
 	transform: scale(1.1);
 }
 

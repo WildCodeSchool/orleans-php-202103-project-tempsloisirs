@@ -28,7 +28,12 @@
     {% for activity in activities %}
         <h2 id="{{activity.weekday}}" class="h2 my-lg-5 my-3 mx-3">{{ activity.weekday }}</h2>
             <div class="card d-flex flex-row align-items-center">
-                <img src="{{activity.image}}" class="card-img-top m-4 ratio" alt="{{activity.name}}">
+                {% if activity.image %}
+                    <img src="{{activity.image}}" class="card-img-top m-4 ratio" alt="{{activity.name}}">
+                {% else %}
+                {#FIX ALTERNATIVE IMAGE PATH#}
+                    <img src="/public/assets/images/no-img.png" class="card-img-top m-4 ratio" alt="L'image n'existe pas">
+                {% endif %}
 
                 <div class="card-body d-flex justify-content-between">
                     <div class = "card-info">

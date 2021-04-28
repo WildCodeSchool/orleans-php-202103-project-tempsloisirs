@@ -9,27 +9,32 @@
 {% block content %}
 <main class="container">
 
-    <h1 class="h1 text-align">Toutes nos activités</h1>
+    <h1 class="h1 text-align my-lg-5 my-3">Toutes nos activités</h1>
 
-    <div class="row d-flex justify-content-around flex-nowrap">   {# A retravailler#}
-            {% for day in constant('App\\Controller\\AdminActivityController::DAYS' ) %}
-                <div class ="col">
-                    <a class="btn btn-primary" href="#" role="button"> {{ day }}</a> 
-                </div>
-            {% endfor %}
+    {# Center text inside buttons#}
+
+    <div id="list-weekday" class="row list-group d-flex flex-row justify-content-around">
+        {% for day in constant('App\\Controller\\AdminActivityController::DAYS' ) %}
+            <div class="col">
+                <a class="list-group-item list-group-item-action btn btn-primary" href="#{{day}}">
+                    {{ day }}
+                </a>
+            </div>
+        {% endfor %}
     </div>
 
 
-
+<section data-bs-spy="scroll" data-bs-target="#list-weekday" data-bs-offset="0" class="scrollspy-example" tabindex="0">
     {% for activity in activities %}
-        <h2>{{ activity.weekday }}</h2>
+        <h2 id="{{activity.weekday}}" class="h2 my-lg-5 my-3 mx-3">{{ activity.weekday }}</h2>
             <div class="card d-flex flex-row align-items-center">
-<img src="{{activity.image}}" class="card-img-top m-4 ratio" alt="{{activity.name}}">
+                <img src="{{activity.image}}" class="card-img-top m-4 ratio" alt="{{activity.name}}">
 
                 <div class="card-body d-flex justify-content-between">
                     <div class = "card-info">
                         <h3>{{activity.name}}</h3>
                         <p class="card-text"> avec <strong>{{activity.instructor_name}}</strong></p>
+                        <p class="card-subtitle"><em>{{activity.description}}</em></p>
                     </div>
                     <div class = "card-time align-self-end">
                         <p class = "activity-time">{{activity.start_time}}h</p>
@@ -37,6 +42,13 @@
                 </div>
             </div>
     {% endfor %}
+
+{{ dump(activities)}}
+</section>
+
+
+    <h2>Les Photos</h2>
+
 
 </main>
 {% endblock %}

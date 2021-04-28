@@ -7,9 +7,26 @@
     color: var(--primary-color);
 }
 
-.btn {
-    margin: 0;
+h2, h3{
+    color: var(--primary-color);
 }
+
+.list-group-item, .btn{
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    font-weight: 650;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+}
+
+.btn-primary:hover, .list-group-item:hover {
+    filter: brightness(110%);
+}
+
+.btn-primary:active, .list-group-item:active {
+    filter: brightness(90%);
+}
+
 
 .card-img-top{
     height: auto;

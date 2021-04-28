@@ -25,7 +25,7 @@
 				<div class="card-body">
 					<h2 class="title-card color-text-{{ information.type }}">{{ information.date|date("d/m/Y") }}</h2>
 					<p class="card-text">{{ information.content }}</p>
-					<a href="#" class="btn btn-primary">Modifier</a>
+					<a href="/adminInformation/edit/{{ information.id }}" class="btn btn-primary">Modifier</a>
 					<a href="#" class="btn btn-danger">Supprimer</a>
 				</div>
 			</div>

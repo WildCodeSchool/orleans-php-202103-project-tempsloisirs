@@ -103,7 +103,7 @@ class AdminInformationController extends AbstractController
                 $informationManager->update($informations);
 
                 // redirection
-                header('Location: /adminInformation/edit/' . $id);
+                header('Location: /adminInformation/index/');
             }
         }
 

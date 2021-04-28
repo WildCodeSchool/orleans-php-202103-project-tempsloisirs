@@ -1,0 +1,29 @@
+@import 'style.css';
+
+.history img {
+    width: 100%;
+    height: auto;
+	transform: scale(1);
+	transition: .3s ease-in-out;
+}
+
+.history div:hover img {
+	transform: scale(1.1);
+}
+
+.text-orange {
+    color: var(--secondary-color);
+}
+
+.text-green {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.history .h2 {
+    font-weight: 700;
+}
+
+.history p {
+    line-height: 1.5em;
+}

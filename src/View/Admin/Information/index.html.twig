@@ -25,8 +25,12 @@
 				<div class="card-body">
 					<h2 class="title-card color-text-{{ information.type }}">{{ information.date|date("d/m/Y") }}</h2>
 					<p class="card-text">{{ information.content }}</p>
+					<div class="links d-flex justify-content-start align-items-center px-3 pb-3">
 					<a href="#" class="btn btn-primary">Modifier</a>
-					<a href="#" class="btn btn-danger">Supprimer</a>
+						<form class="w-50 me-1" onSubmit="return confirm('Voulez vous vraiment supprimer ?')" action="/adminInformation/delete/{{information.id}}" method="POST">
+							<button class="btn btn-danger w-25">Supprimer</button>
+						</form>
+					</div>
 				</div>
 			</div>
 		{% else %}

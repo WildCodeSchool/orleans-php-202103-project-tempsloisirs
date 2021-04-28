@@ -1,0 +1,133 @@
+.eventMain h1,
+h2,
+h3,
+h4,
+h5 {
+    color: var(--primary-color);
+    font-family: var(---title-font);
+    font-weight: 700;
+}
+
+.bg-eventCards {
+    background-color: var(--primary-color);
+    padding: var(--third-spacing) 0 var(--third-spacing) 0;
+}
+
+.flip-card {
+    background-color: transparent;
+    width: 24rem;
+    height: 500px;
+    perspective: 1000px;
+    margin: var(--third-spacing) 0 var(--third-spacing) 0;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.flip-card-front {
+    background-color: #bbb;
+    background-image: url('https://picsum.photos/200/300');
+    /* Front image */
+}
+
+.flip-card-front h3 {
+    margin-top: 5rem;
+    background-color: #f1ffffc4;
+    color: var(--secondary-color);
+    font-weight: 900;
+    padding: var(--secondary-spacing);
+    text-transform: uppercase;
+}
+
+.bg-front-1 {
+    background-image: url('/assets/images/event/bingo_2.png');
+}
+
+.bg-front-2 {
+    background-image: url('/assets/images/event/voyages.jpeg');
+    object-fit: contain;
+}
+
+.bg-front-3 {
+    background-image: url('/assets/images/event/sortis.jpeg');
+    background-size: contain;
+}
+
+.flip-card-back {
+    background-color: var(--light-color);
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.flip-card-back h3 {
+    color: var(--secondary-color);
+    font-weight: 900;
+    margin-top: 5rem;
+    background-color: #c4c4c45b;
+    padding: var(--secondary-spacing);
+    text-transform: uppercase;
+    letter-spacing: 0.1px;
+}
+
+.flip-card-back p {
+    padding: var(--secondary-spacing);
+    font-size: 1.2em;
+    color: var(--secondary-color);
+}
+
+/* Calender Section */
+
+.eventInfo {
+    background-color: #fff;
+    text-transform: none;
+    box-shadow: 0px 1px 2px 1px var(--dark-color);
+}
+
+.eventinfo h5 {
+    margin: var(--primary-spacing) 0 var(--primary-spacing) 0;
+}
+
+.monthSelect {
+    width: 100%;
+    min-width: 15ch;
+    max-width: 30ch;
+    border: 1px solid var(--select-border);
+    border-radius: 0.25em;
+    padding: 0.25em 0.5em;
+    font-size: 1.25rem;
+    cursor: pointer;
+    line-height: 1.1;
+    background-color: #fff;
+    background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+}
+
+.monthSelect:focus {
+    border: 2px solid var(--primary-color);
+}
+
+/* Derniers evenements */
+
+.carousel .carousel-item {
+    max-height: 500px;
+    object-fit: contain;
+}

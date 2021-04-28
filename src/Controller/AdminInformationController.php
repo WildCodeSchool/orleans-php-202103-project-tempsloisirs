@@ -93,4 +93,35 @@ class AdminInformationController extends AbstractController
 
         return $errorsLength;
     }
+
+    public function edit(int $id): string
+    {
+        $informationManager = new informationManager();
+        $information = $informationManager->selectOneById($id);
+
+        $errorsEmpty = $errorsLength = $errors = [];
+
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $information = array_map('trim', $_POST);
+
+            $errorsEmpty = $this->validateEmpty($information);
+            $errorsLength = $this->validateLength($information);
+
+            $errors = array_merge($errorsEmpty, $errorsLength);
+
+            if (empty($errors)) {
+                // update en database
+                $information['id'] = $id;
+                $informationManager->update($information);
+
+                // redirection
+                header('Location: /adminInformation/index/');
+            }
+        }
+
+        return $this->twig->render('Admin/Information/edit.html.twig', [
+            'errors' => $errors,
+            'information' => $information,
+        ]);
+    }
 }

@@ -23,4 +23,8 @@ class ActivityManager extends AbstractManager
         $statement->bindValue('description', $activity['description'], \PDO::PARAM_STR);
         return $statement->execute();
     }
+
+    public function update(array $activity) {
+        return "Test";
+    }
 }

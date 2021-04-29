@@ -6,8 +6,6 @@
 
 {% block title %}
 	Admin - Editer
-	{{ boardMember.firstname }}
-	{{ boardMember.surname }}
 {% endblock %}
 
 {% block content %}
@@ -15,11 +13,11 @@
 	<main class="m-board py-lg-5 px-lg-5 py-3 px-3 d-flex justify-content-center flex-column">
 
 		<header class="admin-header d-flex justify-content-lg-between flex-lg-row align-items-lg-center flex-column px-lg-5 mb-lg-5 mb-3">
-			<h1 class="text-center h1">Éditer un membre du CA</h1>
-			<a href="/adminBoard/index" class="btn btn-primary mt-3 mt-lg-0">Gérer conseil d'administration</a>
+			<h1 class="text-center h1">Éditer une information</h1>
+			<a href="/adminInformation/index" class="btn btn-primary mt-3 mt-lg-0">Gérer les informations</a>
 		</header>
 
-		{% include 'Admin/Board/_form.html.twig' with {buttonName: 'Modifier ce membre'} %}
+		{% include 'Admin/Information/_form.html.twig' with {buttonName: 'Modifier cette information'} %}
 
 
 	</main>

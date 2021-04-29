@@ -10,6 +10,13 @@ class AdminActivityController extends AbstractController
     public const MAX_FIELD_LENGTH = 255;
     public const MIN_FIELD_LENGTH = 2;
 
+    public function index(): string
+    {
+        $activityManager = new ActivityManager();
+        $activities = $activityManager->selectAll('name');
+        return $this->twig->render('Admin/Activity/index.html.twig', ['activities' => $activities]);
+    }
+
     public function edit($id): string
     {
         $activityManager = new ActivityManager();

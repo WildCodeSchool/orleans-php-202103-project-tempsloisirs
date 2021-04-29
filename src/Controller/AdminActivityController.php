@@ -6,15 +6,31 @@ use App\Model\ActivityManager;
 
 class AdminActivityController extends AbstractController
 {
+    // delete
     public const MAX_FIELD_LENGTH = 255;
     public const MIN_FIELD_LENGTH = 2;
-    public const DAYS = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi'];
+
+    public function index(): string
+    {
+        $activityManager = new ActivityManager();
+        $activities = $activityManager->selectAll('name');
+        return $this->twig->render('Admin/Activity/index.html.twig', ['activities' => $activities]);
+    }
+
+    public function delete($id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $activityManager = new ActivityManager();
+            $activityManager->delete($id);
+            header('Location:/AdminActivity/index');
+        }
+    }
 
     public function edit($id): string
     {
         $activityManager = new ActivityManager();
         $activities = $activityManager->selectOneById($id);
-        $errors = [];
+        $errorsEmpty = $errorsURL = $errorsTime = $errorsLength = $errorsDays = $errors = [];
 
         if (!$activities) {
             $errors[] = "Cette activité n'existe pas";
@@ -31,7 +47,9 @@ class AdminActivityController extends AbstractController
             $errorsLength = $this->validateLength($activities);
             $errorsURL = $this->validateURL($activities);
             $errorsTime = $this->validateTime($activities);
-            $errors = array_merge($errorsEmpty, $errorsLength, $errorsURL, $errorsTime);
+            $errorsDays = $this->validateDays($activities);
+
+            $errors = array_merge($errorsEmpty, $errorsLength, $errorsURL, $errorsTime, $errorsDays);
 
             if (empty($errors)) {
                 $activityManager = new ActivityManager();
@@ -57,7 +75,8 @@ class AdminActivityController extends AbstractController
             $activities = array_map('trim', $_POST);
             $activities = array_map('ucfirst', $activities);
 
-            // data checks
+            // TODO validations (length, format...)
+
             $errorsEmpty = $this->validateEmpty($activities);
             $errorsLength = $this->validateLength($activities);
             $errorsURL = $this->validateURL($activities);
@@ -67,10 +86,9 @@ class AdminActivityController extends AbstractController
             $errors = array_merge($errorsEmpty, $errorsLength, $errorsURL, $errorsTime, $errorsDays);
 
             if (empty($errors)) {
-                // if validation is ok, insert and redirection
                 $activityManager = new ActivityManager();
                 $activityManager->insert($activities);
-                header('Location:/adminActivity/index');
+                header('Location: /AdminActivity/index');
             }
         }
 
@@ -78,10 +96,8 @@ class AdminActivityController extends AbstractController
             'errors' => $errors,
         ]);
     }
+    // Delete everything past this before committing
 
-/**
- * Data checks
- */
     public function validateEmpty(array $activities): array
     {
         $errorsEmpty = [];
@@ -107,6 +123,8 @@ class AdminActivityController extends AbstractController
 
         return $errorsEmpty;
     }
+
+    //Delete everything past this before pushing
 
     public function validateURL(array $activities): array
     {
@@ -167,25 +185,9 @@ class AdminActivityController extends AbstractController
     public function validateDays(array $activities): array
     {
         $errorsDays = [];
-        if (!in_array($activities['weekday'], self::DAYS)) {
+        if (!in_array($activities['weekday'], ActivityManager::DAYS)) {
             $errorsDays[] = 'Veuillez sélectionner un jour de la semaine parmi les options proposées';
         }
         return $errorsDays;
-    }
-
-    public function index(): string
-    {
-        $activityManager = new ActivityManager();
-        $activities = $activityManager->selectAll('name');
-        return $this->twig->render('Admin/Activity/index.html.twig', ['activities' => $activities]);
-    }
-
-    public function delete($id)
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $activityManager = new ActivityManager();
-            $activityManager->delete($id);
-            header('Location:/AdminActivity/index');
-        }
     }
 }

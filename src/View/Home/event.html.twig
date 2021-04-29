@@ -6,7 +6,9 @@
 
 {% block content %}
 	<main class="container-fluid p-0 eventMain">
-		<h1 class="text-uppercase text-center">Tous Nos évènements</h1>
+
+
+		<h1 class="text-uppercase text-center mb-5 mt-5">Tous Nos évènements</h1>
 		<div class="bg-eventCards">
 			<section class="container d-flex justify-content-between flex-wrap">
 
@@ -19,9 +21,7 @@
 						</div>
 						<div class="flip-card-back">
 							<h3>Bingo</h3>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quibusdam dicta consequatur eveniet.Facere dolore tempore totam.
-								                            Minima at beatae animi possimus. 
-								                            Quam dicta quia dolore dignissimos. Reiciendis, numquam nostrum!
+							<p>On fait de bingo reguliérment entre les adhérents et ses familles. Ce jeu, permettant de gagner des prix est très populaire entre notres adhérents.
 							</p>
 						</div>
 					</div>
@@ -34,8 +34,8 @@
 						</div>
 						<div class="flip-card-back">
 							<h3>Voyages</h3>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quibusdam dicta consequatur eveniet. Facere dolore tempore totam. Minima at beatae animi possimus.
-															Quam dicta quia dolore dignissimos. Reiciendis, numquam nostrum!
+							<p>Le temps des loisirs a pour but de regrouper les passionnés de voyage afin de favoriser, entre les adhérents, les échanges de vécu et d'informations pratiques sur leurs voyages, de mettre en commun ces éléments, et de faciliter ainsi la préparation d'un prochain voyage.
+
 							</p>
 						</div>
 					</div>
@@ -48,8 +48,7 @@
 						</div>
 						<div class="flip-card-back">
 							<h3>Sorties</h3>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quibusdam dicta consequatur eveniet. Facere dolore tempore totam. Minima at beatae animi possimus.
-															Quam dicta quia dolore dignissimos. Reiciendis, numquam nostrum!
+							<p>Nous favorisons des départs réguliers parmi les membres et les sorties sont ouvertes à tous les adhérents, cependant certaines d'entre elles sont plus particulièrement destinées aux débutants.
 							</p>
 						</div>
 					</div>
@@ -60,38 +59,54 @@
 
 		<section class="container text-uppercase text-center mb-5 mt-5">
 			<h2 class="m-5">Calandrier</h2>
-			<div>
+
+			<div
+				class="currentDateTitle">
+
 				{#To be changed dynamically #}
-				<h4 class="m-4">Avril 2021</h4>
+				<h4 class="m-4">
+					<span style="color: var(--secondary-color);">{{'now'|date("m")}}</span>
+					/
+					{{'now'|date("Y")}}</h4>
 			</div>
 
-			{# To be looped in order to show the events #}
-			<div class="row eventInfo p-3 mb-3 mt-3">
-				<div class="col-sm  mt-1">
-					<h5>Quand?</h5>
-					<span class="mb-2">02/03/2021
-					</span>
+			{# Start Loop Event Card #}
+			{% for event in events %}
+				{% if event.start_date|date("m") == 'now'|date("m") and event.start_date|date >= 'now'|date  %}
+					<div class="row eventInfo p-3 mb-3 mt-3">
+						<div class="col-sm  mt-1">
+							<h5>Quand?</h5>
+							<span class="mb-2">
+								<strong>{{ event.start_date|date("d/m/Y") }}</strong>
+								{% if event.end_date is not null and event.end_date != event.start_date %}
+									<span class="mb-2">jusqu'au
+										<strong>{{event.end_date|date("d/m/Y") }}</strong>
+									</p>
+								{% endif %}
+							</span>
 
-				</div>
-				<div class="col-sm  mt-1">
-					<h5>Évènement</h5>
-					<span class="mb-2">
-						Voyage aux Alpes
-					</span>
-				</div>
-				<div class="col-sm  mt-1">
-					<h5>Prix</h5>
-					<span class="mb-2">$3500
-					</span>
-				</div>
-				<div class="col-sm  mt-1">
-					<h5>Description</h5>
-					<span class="mb-2">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-					</span>
-				</div>
-			</div>
-			{# End event card #}
-            
+						</div>
+						<div class="col-sm  mt-1">
+							<h5>Évènement</h5>
+							<span class="mb-2">
+								{{ event.name }}
+							</span>
+						</div>
+						<div class="col-sm  mt-1">
+							<h5>Prix</h5>
+							<span class="mb-2">€{{ event.price }}
+							</span>
+						</div>
+						<div class="col-sm  mt-1">
+							<h5>Description</h5>
+							<span class="mb-2">{{ event.description }}
+							</span>
+						</div>
+					</div>
+
+				{% endif %}
+			{% endfor %}
+			{# End Loop Event Card #}
 
 			<form action="" method="POST" class="eventForm">
 				<div class="">
@@ -148,6 +163,12 @@
 				</button>
 			</div>
 		</section>
+
+		<button onclick="topFunction()" id="myBtn" title="Go to top"><img src="https://img.icons8.com/cotton/64/000000/double-up.png"/></button>
+		{% block javascript %}
+			<script src="/assets/scripts/scroll.js"></script>
+		{% endblock %}
+
 	</main>
 
 {% endblock %}

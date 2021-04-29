@@ -46,7 +46,7 @@ h5 {
 
 .flip-card-front {
     background-color: #bbb;
-    background-image: url('https://picsum.photos/200/300');
+
     /* Front image */
 }
 
@@ -60,22 +60,23 @@ h5 {
 }
 
 .bg-front-1 {
-    background-image: url('/assets/images/event/bingo_2.png');
+    background-image: url('/assets/images/event/bingo_2_Easy-Resize.com.jpg');
+    background-size: cover;
 }
 
 .bg-front-2 {
-    background-image: url('/assets/images/event/voyages.jpeg');
-    object-fit: contain;
+    background-image: url('/assets/images/event/voyages_Easy-Resize.com (1).jpg');
+    background-size: cover;
 }
 
 .bg-front-3 {
-    background-image: url('/assets/images/event/sortis.jpeg');
-    background-size: contain;
+    background-image: url('/assets/images/event/sortis_Easy-Resize.com.jpg');
+    background-size: cover;
+
 }
 
 .flip-card-back {
     background-color: var(--light-color);
-    color: white;
     transform: rotateY(180deg);
 }
 
@@ -92,10 +93,21 @@ h5 {
 .flip-card-back p {
     padding: var(--secondary-spacing);
     font-size: 1.2em;
+    font-weight: 500;
     color: var(--secondary-color);
 }
 
 /* Calender Section */
+
+.currentDateTitle {
+    background-color: #ffffff;
+    width: 160px;
+    border-radius: 50px;
+    text-transform: none;
+    margin: auto;
+
+
+}
 
 .eventInfo {
     background-color: #fff;
@@ -130,4 +142,28 @@ h5 {
 .carousel .carousel-item {
     max-height: 500px;
     object-fit: contain;
+}
+
+
+
+/* Scroll top page */
+
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: var(--light-color);
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+#myBtn:hover {
+    background-color: var(--primary-color);
 }

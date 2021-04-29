@@ -10,6 +10,41 @@ class AdminActivityController extends AbstractController
     public const MIN_FIELD_LENGTH = 2;
     public const DAYS = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi'];
 
+    public function edit($id): string
+    {
+        $activityManager = new ActivityManager();
+        $activities = $activityManager->selectOneById($id);
+        $errors = [];
+
+        if (!$activities) {
+            $errors[] = "Cette activité n'existe pas";
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // clean $_POST data
+            $activities = array_map('trim', $_POST);
+            $activities = array_map('ucfirst', $activities);
+
+            // TODO validations (length, format...)
+
+            $errorsEmpty = $this->validateEmpty($activities);
+            $errorsLength = $this->validateLength($activities);
+            $errorsURL = $this->validateURL($activities);
+            $errorsTime = $this->validateTime($activities);
+            $errors = array_merge($errorsEmpty, $errorsLength, $errorsURL, $errorsTime);
+
+            if (empty($errors)) {
+                $activityManager = new ActivityManager();
+                $activities['id'] = $id;
+                $activityManager->update($activities);
+                header('Location: /AdminActivity/index');
+            }
+        }
+        return $this->twig->render('Admin/Activity/edit.html.twig', [
+            'activity' => $activities, 'errors' => $errors,
+        ]);
+    }
+
     /**
      * Add a new item
      */
@@ -41,7 +76,7 @@ class AdminActivityController extends AbstractController
 
         return $this->twig->render('Admin/Activity/add.html.twig', [
             'errors' => $errors,
-            ]);
+        ]);
     }
 
 /**

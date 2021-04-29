@@ -17,11 +17,20 @@ class AdminActivityController extends AbstractController
         return $this->twig->render('Admin/Activity/index.html.twig', ['activities' => $activities]);
     }
 
+    public function delete($id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $activityManager = new ActivityManager();
+            $activityManager->delete($id);
+            header('Location:/AdminActivity/index');
+        }
+    }
+
     public function edit($id): string
     {
         $activityManager = new ActivityManager();
         $activities = $activityManager->selectOneById($id);
-        $errors = [];
+        $errorsEmpty = $errorsURL = $errorsTime = $errorsLength = $errorsDays = $errors = [];
 
         if (!$activities) {
             $errors[] = "Cette activité n'existe pas";
@@ -38,7 +47,9 @@ class AdminActivityController extends AbstractController
             $errorsLength = $this->validateLength($activities);
             $errorsURL = $this->validateURL($activities);
             $errorsTime = $this->validateTime($activities);
-            $errors = array_merge($errorsEmpty, $errorsLength, $errorsURL, $errorsTime);
+            $errorsDays = $this->validateDays($activities);
+
+            $errors = array_merge($errorsEmpty, $errorsLength, $errorsURL, $errorsTime, $errorsDays);
 
             if (empty($errors)) {
                 $activityManager = new ActivityManager();
@@ -57,7 +68,7 @@ class AdminActivityController extends AbstractController
      */
     public function add(): string
     {
-        $errors = [];
+        $errorsEmpty = $errorsURL = $errorsTime = $errorsLength = $errorsDays = $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
@@ -70,7 +81,9 @@ class AdminActivityController extends AbstractController
             $errorsLength = $this->validateLength($activities);
             $errorsURL = $this->validateURL($activities);
             $errorsTime = $this->validateTime($activities);
-            $errors = array_merge($errorsEmpty, $errorsLength, $errorsURL, $errorsTime);
+            $errorsDays = $this->validateDays($activities);
+
+            $errors = array_merge($errorsEmpty, $errorsLength, $errorsURL, $errorsTime, $errorsDays);
 
             if (empty($errors)) {
                 $activityManager = new ActivityManager();
@@ -167,5 +180,14 @@ class AdminActivityController extends AbstractController
         }
 
         return $errorsLength;
+    }
+
+    public function validateDays(array $activities): array
+    {
+        $errorsDays = [];
+        if (!in_array($activities['weekday'], ActivityManager::DAYS)) {
+            $errorsDays[] = 'Veuillez sélectionner un jour de la semaine parmi les options proposées';
+        }
+        return $errorsDays;
     }
 }

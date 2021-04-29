@@ -22,6 +22,18 @@ class AdminInformationController extends AbstractController
     }
 
     /**
+     * Delete informations for a specific item
+     **/
+    public function delete(int $id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $informationManager = new InformationManager();
+            $informationManager->delete($id);
+            header('Location:/adminInformation/index');
+        }
+    }
+
+    /**
      * Add a new item
      */
     public function add(): string
@@ -80,5 +92,36 @@ class AdminInformationController extends AbstractController
         }
 
         return $errorsLength;
+    }
+
+    public function edit(int $id): string
+    {
+        $informationManager = new informationManager();
+        $information = $informationManager->selectOneById($id);
+
+        $errorsEmpty = $errorsLength = $errors = [];
+
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $information = array_map('trim', $_POST);
+
+            $errorsEmpty = $this->validateEmpty($information);
+            $errorsLength = $this->validateLength($information);
+
+            $errors = array_merge($errorsEmpty, $errorsLength);
+
+            if (empty($errors)) {
+                // update en database
+                $information['id'] = $id;
+                $informationManager->update($information);
+
+                // redirection
+                header('Location: /adminInformation/index/');
+            }
+        }
+
+        return $this->twig->render('Admin/Information/edit.html.twig', [
+            'errors' => $errors,
+            'information' => $information,
+        ]);
     }
 }

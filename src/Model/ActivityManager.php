@@ -24,7 +24,8 @@ class ActivityManager extends AbstractManager
         return $statement->execute();
     }
 
-    public function update(array $activity) {
+    public function update()
+    {
         return "Test";
     }
 }

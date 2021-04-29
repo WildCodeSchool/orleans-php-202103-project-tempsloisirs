@@ -1,0 +1,12 @@
+{% extends 'layout.html.twig' %}
+
+{% block navbar %}
+	{% include "Components/_navbarAdmin.html.twig" %}
+{% endblock %}
+
+{% block footer %}
+	<footer class="admin-footer d-flex justify-content-center flex-md-row flex-column mt-lg-3 mt-2 mb-lg-5 mb-3 px-lg-5 px-3">
+		<a href="#" class="btn btn-dark btn-lg mx-1 my-1">Retour au site principal</a>
+		<a href="/Admin/home" class="btn btn-dark btn-lg mx-1 my-1">Accueil Admin</a>
+	</footer>
+{% endblock %}

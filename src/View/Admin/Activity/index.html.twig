@@ -28,7 +28,7 @@
                     <p class="card-subtitle">{{ activity.description }}</p>
                     <div class="row">
                         <div class="col d-flex flex-row justify-content-around">
-                            <a href="AdminActivity/edit" class="btn btn-primary align-self-end w-100 my-1">Editer</a>
+                            <a href="/AdminActivity/edit/{{activity.id}}" class="btn btn-primary align-self-end w-100 my-1">Editer</a>
                         </div>
                         <div class="col d-flex flex-row justify-content-around">
                             	<form method="POST" onSubmit="return confirm('Êtes-vous sûr(e) de vouloir supprimer ?');" action="/AdminActivity/delete/{{activity.id}}">

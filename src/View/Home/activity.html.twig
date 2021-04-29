@@ -12,7 +12,7 @@
 
     <div id="list-weekday" class="row list-group d-flex flex-column flex-md-row justify-content-around">
 
-            {% for day in constant('App\\Controller\\AdminActivityController::DAYS' ) %}
+            {% for day in constant('App\\Model\\ActivityManager::DAYS' ) %}
                 <div class="col m-1">
                     <a class="btn btn-primary w-100 h-100 py-md-5" href="#{{day}}">{{ day }}</a>
                 </div>
@@ -21,7 +21,7 @@
 
 
     <section data-bs-spy="scroll" data-bs-target="#list-weekday" data-bs-offset="0" class="scrollspy-example" tabindex="0">
-        {% for day in constant('App\\Controller\\AdminActivityController::DAYS' ) %}
+        {% for day in constant('App\\Model\\ActivityManager::DAYS' ) %}
 
             <h2 id="{{day}}" class="h2 my-lg-5 my-3 mx-3">{{ day }}</h2>
 

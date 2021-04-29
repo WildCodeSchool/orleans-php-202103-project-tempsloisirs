@@ -35,7 +35,7 @@ h2, h3{
 
 .activity-time{
     background-color: var(--primary-color);
-    color: white;
+    color: var(--light-color);
     border-radius: 5px;
 }
 

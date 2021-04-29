@@ -54,23 +54,59 @@ CREATE TABLE `activity` (
   `name` varchar(255) NOT NULL,
   `weekday` varchar(50) NOT NULL,
   `instructor_name` varchar(255) DEFAULT NULL,
-  `schedule` time NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
-  `price` int DEFAULT NULL,
-  `is_membersonly` tinyint(1) DEFAULT NULL,
+  `start_time` time NOT NULL,
+  `end_time` time NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
 --
 -- Dumping data for table `activity`
 --
-
 LOCK TABLES `activity` WRITE;
 /*!40000 ALTER TABLE `activity` DISABLE KEYS */;
-INSERT INTO `activity` VALUES (1,'danse','lundi','Didier','15:30:00',NULL,'Danse de salon',10,NULL),(2,'bingo','mardi','Jacques','10:30:00',NULL,'incontournable bingo',10,NULL),(3,'dictee','vendredi','Emma','09:00:00',NULL,'attention aux mauvaises notes',5,NULL);
-/*!40000 ALTER TABLE `activity` ENABLE KEYS */;
+INSERT INTO
+  `activity`
+VALUES
+  (
+    1,
+    'danse',
+    'Lundi',
+    'Didier',
+    NULL,
+    'Danse de salon',
+    '00:00:00',
+    '00:00:00'
+  ),(
+    2,
+    'bingo',
+    'Mardi',
+    'Jacques',
+    NULL,
+    'incontournable bingo',
+    '00:00:00',
+    '00:00:00'
+  ),(
+    3,
+    'dictee',
+    'Jeudi',
+    'Emma',
+    NULL,
+    'attention aux mauvaises notes',
+    '00:00:00',
+    '00:00:00'
+  ),(
+    4,
+    'Salsa',
+    'Vendredi',
+    'Emma Guesbaya',
+    'Https://picsum.photos/id/1/200/300',
+    'Let\'s danse! Ca va transpirer',
+    '19:00:00',
+    '20:00:00'
+  );
+  /*!40000 ALTER TABLE `activity` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --

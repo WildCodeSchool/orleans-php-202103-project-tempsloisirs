@@ -1,10 +1,12 @@
-{% extends 'layout.html.twig' %}
+{% extends 'layoutAdmin.html.twig' %}
+
 {% block title %}Admin - Events
 {% endblock %}
 {% block stylesheet %}<link rel="stylesheet" href="/assets/css/adminEvents.css">
-<link rel="stylesheet" href="/assets/css/admin.css">
+	<link rel="stylesheet" href="/assets/css/admin.css">
 {% endblock %}
 {% block content %}
+
 	<main class="py-lg-5 px-lg-5 py-3 px-3">
 		<div class="container">
 			<div class="eventSection">
@@ -18,31 +20,30 @@
 				<div class="row row-cols-1 row-cols-sm-12 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
 
 					{% for event in events %}
-						<div class="col mb-5">
+						<div class="col mb-5 card-group">
 							<div class="card eventCards">
 								<img src={{ event.image }} class="card-img-top" alt="...">
-								<div class="card-body">
+								<div class="card-body d-flex flex-column justify-content-between">
 									<h3 class="card-title strong">{{ event.name }}</h3>
 									<p><strong>Date de début:</strong> {{ event.start_date}}</p>
                                     {% if event.end_date is not null and event.end_date != event.start_date %}
 									<p class="text-left"><strong>Date de fin:</strong> {{event.end_date}}</p>
                                      {% endif %}
-									<p class="text-left"><strong>Description:</strong> {{ event.description }}</p>
-									<a href="#" class="btn btn-primary">Modifier</a>
-									<a href="#" class="btn btn-danger">Supprimer</a>
+									<p class="card-text"><strong>Description:</strong> {{ event.description }}</p>
+										<div class="links d-flex justify-content-center align-items-center px-3 pb-3">
+										<a class="btn btn-primary" href="/adminEvent/edit/{{ event.id }}">Modifier</a>
+										<form method="POST" onSubmit="return confirm('Voulez vous supprimer ?');" action="/adminEvent/delete/{{event.id}}">
+										<button class="btn btn-danger">Supprimer</button>
+										</form>
+									</div>
 								</div>
 							</div>
-
 						</div>
 					{% endfor %}
 
-	            {# Closing div row tag #}
+					{# Closing div row tag #}
 				</div>
 			
-				<footer class="admin-footer d-flex justify-content-center flex-md-row flex-column mt-lg-5 mt-2">
-					<a class="btn btn-primary btn-lg mx-1 my-1" href="#">Retour au site principal</a>
-					<a class="btn btn-primary btn-lg mx-1 my-1" href="#">Accueil Admin</a>
-				</footer>
 			</div>
 		</div>
 	</main>

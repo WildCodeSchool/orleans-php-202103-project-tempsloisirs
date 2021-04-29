@@ -9,6 +9,36 @@ class AdminEventController extends AbstractController
 
     public const MAX_FIELD_LENGTH = 255;
 
+    public function edit(int $id): string
+    {
+        $errorsDateValue = $errorsEmptyLength = $errorsIdNotFound = $errors = [];
+
+        $eventManager = new EventManager();
+        $event = $eventManager->selectOneById($id);
+
+        if ($event === false) {
+            $errorsIdNotFound[] = "L'évènement sélectionné n\'existe pas.";
+        }
+
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $event = array_map('trim', $_POST);
+            $event['id'] = $id;
+            $errorsEmptyLength = $this->validateEmptyLength($event);
+            $errorsDateValue = $this->validateDateValue($event);
+            $errors = array_merge($errorsEmptyLength, $errorsDateValue, $errorsIdNotFound);
+
+            if (empty($errors)) {
+                $eventManager->updateEvent($event);
+
+                header('Location:/adminEvent/index');
+            }
+        }
+           return $this->twig->render('Admin/Event/edit.html.twig', [
+           'errors' => $errors,
+           'event' => $event,
+           ]);
+    }
+
     public function add()
     {
         $eventManager = new EventManager();
@@ -81,5 +111,15 @@ class AdminEventController extends AbstractController
         $eventManager = new EventManager();
         $events = $eventManager->selectAll();
         return $this->twig->render('Admin/Event/index.html.twig', ['events' => $events]);
+    }
+
+    public function delete(int $id)
+    {
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $eventManager = new EventManager();
+            $eventManager->delete($id);
+
+            header('Location:/adminEvent/index');
+        }
     }
 }

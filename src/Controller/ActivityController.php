@@ -8,7 +8,6 @@ class ActivityController extends AbstractController
 {
     public const MAX_FIELD_LENGTH = 255;
     public const MIN_FIELD_LENGTH = 2;
-    public const DAYS = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi'];
 
     public function index(): string
     {

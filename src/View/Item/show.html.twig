@@ -1,11 +1,11 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Item {{ item.title }}</h1>
-    <p>{{ item.id }}. {{ item.title }}</p>
-    <a href="/item/edit/{{ item.id }}">Edit</a>
-    <form action="/item/delete/{{item.id}}" method="POST">
+    <h1>Activité: {{ activity.name }}</h1>
+    <p>{{ activity.id }}. {{ activity.name }}</p>
+    <a href="/AdminActivity/edit/{{ item.id }}">Edit</a>
+    <form action="/AdminActivity/delete/{{item.id}}" method="POST">
         <button>Delete</button>
     </form>
-    <a href="/item/index">Back</a>
+    <a href="/AdminActivity/index">Back</a>
 {% endblock %}

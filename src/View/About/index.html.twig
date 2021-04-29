@@ -1,0 +1,35 @@
+{% extends "layout.html.twig" %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/about.css">
+{% endblock %}
+
+{% block title %}
+	À propos de nous
+{% endblock %}
+
+{% block content %}
+
+	<main class="about-main py-xl-5 px-xl-5 py-4 px-3">
+
+		<h1 class="h1 text-center mt-5">À propos de nous</h1>
+
+		<section class="history container py-xl-5 px-xl-5 py-3 px-2">
+
+			<div class="history-content mt-xl-3 mt-2 row">
+				<div class="col-12 col-xl-4 mx-xl-3 mx-0">
+					<img class="shadow" src="https://images.unsplash.com/flagged/photo-1570286425032-78fa45a1f41a" alt="group of old people">
+				</div>
+				<div class="col-xl-7 mx-xl-3 mx-0 my-xl-auto my-3">
+					<h2 class="h2 text-orange my-lg-3 my-2">Histoire</h2>
+					<p class="lead">Il était une fois, un petit village du Loiret situé au sud d'ORLEANS, <span class="text-green">Saint Cyr-En-Val</span>.
+						<br>
+						En <span class="text-green">1975</span>, en avance sur leur temps, quelques Saint-Cyriens dynamiques ont l'idée de mettre en place un club pour réunir les retraités, leur permettant de mieux se connaître et d'échapper quelques moments à l'isolement..</p>
+				</div>
+			</div>
+
+		</section>
+
+	</main>
+
+{% endblock %}

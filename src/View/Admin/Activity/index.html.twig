@@ -1,4 +1,4 @@
-{% extends 'layout.html.twig' %}
+{% extends 'layoutAdmin.html.twig' %}
 
 {% block title %}
     Admin - Activités
@@ -9,8 +9,6 @@
 {% endblock %}
 
 {% block content %}
-
-{% include 'Components/_navbarAdmin.html.twig' %}
 
 <div class="container py-lg-5 px-lg-5 py-3 px-3">  
     
@@ -30,7 +28,7 @@
                     <p class="card-subtitle">{{ activity.description }}</p>
                     <div class="row">
                         <div class="col d-flex flex-row justify-content-around">
-                            <a href="AdminActivity/edit" class="btn btn-primary align-self-end w-100 my-1">Editer</a>
+                            <a href="/AdminActivity/edit/{{activity.id}}" class="btn btn-primary align-self-end w-100 my-1">Editer</a>
                         </div>
                         <div class="col d-flex flex-row justify-content-around">
                             	<form method="POST" onSubmit="return confirm('Êtes-vous sûr(e) de vouloir supprimer ?');" action="/AdminActivity/delete/{{activity.id}}">
@@ -43,12 +41,7 @@
         </div>
         {% endfor %}
     </div>
-
-		<footer class="admin-footer d-flex justify-content-center flex-md-row flex-column mt-lg-5 mt-2">
-			<a href="#" class="btn btn-primary btn-lg mx-1 my-1">Retour au site principal</a>
-			<a href="#" class="btn btn-primary btn-lg mx-1 my-1">Accueil Admin</a>
-		</footer>
-        
+    
 </div>
 
 {% endblock %}

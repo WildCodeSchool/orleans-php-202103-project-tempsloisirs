@@ -8,6 +8,26 @@ h5 {
     font-weight: 700;
 }
 
+.shadow {
+    box-shadow: 0 4px 8px 0 var(--shadow-color);
+
+
+}
+
+.shadow:hover {
+    box-shadow: 0 8px 16px 0 var(--shadow-color);
+    transition: 0.3s;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+
+}
+
+.shadow:hover h5 {
+
+    color: var(--light-color);
+
+}
+
 .bg-eventCards {
     background-color: var(--primary-color);
     padding: var(--third-spacing) 0 var(--third-spacing) 0;
@@ -28,7 +48,7 @@ h5 {
     text-align: center;
     transition: transform 0.6s;
     transform-style: preserve-3d;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px 0 var(--shadow-color);
 }
 
 .flip-card:hover .flip-card-inner {
@@ -45,8 +65,7 @@ h5 {
 }
 
 .flip-card-front {
-    background-color: #bbb;
-
+    background-color: var(--grey-color);
     /* Front image */
 }
 
@@ -60,17 +79,17 @@ h5 {
 }
 
 .bg-front-1 {
-    background-image: url('/assets/images/event/bingo_2_Easy-Resize.com.jpg');
+    background-image: url('/assets/images/event/bingo.jpg');
     background-size: cover;
 }
 
 .bg-front-2 {
-    background-image: url('/assets/images/event/voyages_Easy-Resize.com.jpg');
+    background-image: url('/assets/images/event/voyages.jpg');
     background-size: cover;
 }
 
 .bg-front-3 {
-    background-image: url('/assets/images/event/sortis_Easy-Resize.com.jpg');
+    background-image: url('/assets/images/event/sortis.jpg');
     background-size: cover;
 
 }
@@ -100,19 +119,20 @@ h5 {
 /* Calender Section */
 
 .currentDateTitle {
-    background-color: #ffffff;
-    width: 160px;
-    border-radius: 50px;
+    background-color: var(--white-color);
+    width: 200px;
+    border-radius: 3px;
     text-transform: none;
     margin: auto;
 
-
 }
 
+
 .eventInfo {
-    background-color: #fff;
+    background-color: var(--white-color);
     text-transform: none;
     box-shadow: 0px 1px 2px 1px var(--dark-color);
+    border-radius: 10px;
 }
 
 .eventinfo h5 {
@@ -129,8 +149,8 @@ h5 {
     font-size: 1.25rem;
     cursor: pointer;
     line-height: 1.1;
-    background-color: #fff;
-    background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+    background-color: var(--white-color);
+
 }
 
 .monthSelect:focus {

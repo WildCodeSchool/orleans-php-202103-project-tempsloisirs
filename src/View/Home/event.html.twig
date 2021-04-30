@@ -2,7 +2,8 @@
 {% block title %}Les Temps des Loisirs | Évènements
 {% endblock %}
 {% block stylesheet %}<link rel="stylesheet" href="/assets/css/event.css">
-<link rel="stylesheet" href="/assets/css/scroll.css">
+	<link rel="stylesheet" href="/assets/css/scroll.css">
+	<link rel="stylesheet" href="/assets/css/admin.css">
 {% endblock %}
 
 {% block content %}
@@ -65,16 +66,56 @@
 				class="currentDateTitle">
 
 				{#To be changed dynamically #}
-				<h4 class="m-4">
-					<span style="color: var(--secondary-color);">{{'now'|date("m")}}</span>
+				<h4
+					class="m-4 p-2">
+					
+					{% if 'now'|date("m") == "01"%}
+						<span style="color: var(--secondary-color);">Janvier</span>
+					{% endif %}
+					{% if 'now'|date("m") == "02"%}
+						<span style="color: var(--secondary-color);">Février</span>
+					{% endif %}
+					{% if 'now'|date("m") == "03"%}
+						<span style="color: var(--secondary-color);">Mars</span>
+					{% endif %}
+					{% if 'now'|date("m") == "04"%}
+						<span style="color: var(--secondary-color);">Avril</span>
+					{% endif %}
+					{% if 'now'|date("m") == "05"%}
+						<span style="color: var(--secondary-color);">Mai</span>
+					{% endif %}
+					{% if 'now'|date("m") == "06"%}
+						<span style="color: var(--secondary-color);">Juin</span>
+					{% endif %}
+					{% if 'now'|date("m") == "07"%}
+						<span style="color: var(--secondary-color);">Juillet</span>
+					{% endif %}
+					{% if 'now'|date("m") == "08"%}
+						<span style="color: var(--secondary-color);">Auot</span>
+					{% endif %}
+					{% if 'now'|date("m") == "09"%}
+						<span style="color: var(--secondary-color);">Septembre</span>
+					{% endif %}
+					{% if 'now'|date("m") == "10"%}
+						<span style="color: var(--secondary-color);">Octobre</span>
+					{% endif %}
+					{% if 'now'|date("m") == "11"%}
+						<span style="color: var(--secondary-color);">Novembre</span>
+					{% endif %}
+					{% if 'now'|date("m") == "12"%}
+						<span style="color: var(--secondary-color);">Décembre</span>
+					{% endif %}
+
 					/
 					{{'now'|date("Y")}}</h4>
+
+
 			</div>
 
 			{# Start Loop Event Card #}
 			{% for event in events %}
 				{% if event.start_date|date("m") == 'now'|date("m") and event.start_date|date("d/m/Y") >= 'now'|date("d/m/Y")  %}
-					<div class="row eventInfo p-3 mb-3 mt-3">
+					<div class="row eventInfo p-3 mb-3 mt-3 shadow">
 						<div class="col-sm  mt-1">
 							<h5>Quand?</h5>
 							<span class="mb-2">
@@ -128,13 +169,13 @@
 						<option value="12">Décembre</option>
 					</select>
 
-					<input class="btn btn-outline-secondary p-2 mb-2" type="submit" id="search" value="Rechercher">
+					<input class="btn  btn-primary p-2 mb-2" type="submit" id="search" value="Rechercher">
 				</div>
 			</form>
 		</section>
 
 
-		<section class="container mb-5 mt-5 p-0">
+		<section class="container mb-5 mt-5 p-0 ">
 			<h2 class="text-uppercase text-center m-5">Derniers Évènements</h2>
 
 			<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -143,7 +184,7 @@
 					<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
 					<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
 				</div>
-				<div class="carousel-inner">
+				<div class="carousel-inner eventCarousel">
 					<div class="carousel-item active">
 						<img src="http://tempsdesloisirs45590.fr/regard10/Documents_Communs/_pageWeb/image/photogroupe/italie_mai18.png" class="d-block w-100" alt="...">
 					</div>
@@ -164,11 +205,6 @@
 				</button>
 			</div>
 		</section>
-        <!-- Button to go up (Scroll) -->
-		<button onclick="topFunction()" id="myBtn" title="Go to top"><img src="https://img.icons8.com/cotton/64/000000/double-up.png"/></button>
-		{% block javascript %}
-			<script src="/assets/scripts/scroll.js"></script>
-		{% endblock %}
 
 	</main>
 

@@ -120,13 +120,16 @@ h5 {
 
 .currentDateTitle {
     background-color: var(--white-color);
-    width: 200px;
+    width: 350px;
     border-radius: 3px;
     text-transform: none;
     margin: auto;
-
 }
 
+.currentDateTitle h4 {
+    font-size: 2em;
+
+}
 
 .eventInfo {
     background-color: var(--white-color);

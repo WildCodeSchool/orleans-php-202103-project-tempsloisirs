@@ -10,9 +10,9 @@ class HomeController extends AbstractController
     {
         $homeManager = new HomeManager();
         $information = $homeManager->selectInfo('date');
-        $events = $homeManager->selectEvent('date');
-        $activities = $homeManager->selectActivity('date');
-        $photos = $homeManager->selectPhoto('date');
+        $events = $homeManager->selectEvent();
+        $activities = $homeManager->selectActivity();
+        $photos = $homeManager->selectPhoto();
         return $this->twig->render(
             'Home/index.html.twig',
             ['information' => $information,

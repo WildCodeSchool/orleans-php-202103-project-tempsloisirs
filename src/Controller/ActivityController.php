@@ -12,7 +12,8 @@ class ActivityController extends AbstractController
     public function index(): string
     {
         $activityManager = new ActivityManager();
-        $activities = $activityManager->selectAll('name');
-        return $this->twig->render('Home/activity.html.twig', ['activities' => $activities]);
+        $activities  = $activityManager->selectAll('name');
+        $photos = $activityManager->selectPhotos('id');
+        return $this->twig->render('Home/activity.html.twig', ['activities' => $activities, 'photos' => $photos]);
     }
 }

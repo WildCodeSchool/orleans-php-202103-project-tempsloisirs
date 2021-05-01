@@ -45,4 +45,10 @@ class ActivityManager extends AbstractManager
 
         return $statement->execute();
     }
+
+    public function selectPhotos(): array
+    {
+        $query = "SELECT * FROM photo";
+        return $this->pdo->query($query)->fetchAll();
+    }
 }

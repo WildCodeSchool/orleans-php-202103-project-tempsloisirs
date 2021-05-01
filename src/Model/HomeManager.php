@@ -35,7 +35,7 @@ class HomeManager extends AbstractManager
         return $this->pdo->query($query)->fetchAll();
     }
 
-        public function selectPhoto(string $orderBy = '', string $direction = 'ASC'): array
+    public function selectPhoto(string $orderBy = '', string $direction = 'ASC'): array
     {
         $query = "SELECT * FROM photo";
         if ($orderBy) {

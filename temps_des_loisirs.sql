@@ -86,7 +86,6 @@ CREATE TABLE `board` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
 --
 -- Dumping data for table `board`
 --
@@ -95,6 +94,49 @@ LOCK TABLES `board` WRITE;
 /*!40000 ALTER TABLE `board` DISABLE KEYS */;
 INSERT INTO `board` VALUES (1,'Jeanine','Armand','Secrétaire','https://images.unsplash.com/photo-1543430720-fa600c67e423'),(3,'Yvon','Saquefouille','Président','https://images.unsplash.com/photo-1560031788-093b3a661715'),(4,'Hilaire','Tronchacake','Trésorier','https://images.unsplash.com/photo-1468218457742-ee484fe2fe4c '),(5,'Henry','Pasissaimple','Adjoint','https://images.unsplash.com/photo-1484611941511-3628849e90f7 ');
 /*!40000 ALTER TABLE `board` ENABLE KEYS */;
+LOCK TABLES `activity` WRITE;
+/*!40000 ALTER TABLE `activity` DISABLE KEYS */;
+INSERT INTO
+  `activity`
+VALUES
+  (
+    1,
+    'danse',
+    'Lundi',
+    'Didier',
+    NULL,
+    'Danse de salon',
+    '00:00:00',
+    '00:00:00'
+  ),(
+    2,
+    'bingo',
+    'Mardi',
+    'Jacques',
+    NULL,
+    'incontournable bingo',
+    '00:00:00',
+    '00:00:00'
+  ),(
+    3,
+    'dictee',
+    'Jeudi',
+    'Emma',
+    NULL,
+    'attention aux mauvaises notes',
+    '00:00:00',
+    '00:00:00'
+  ),(
+    4,
+    'Salsa',
+    'Vendredi',
+    'Emma Guesbaya',
+    'Https://picsum.photos/id/1/200/300',
+    'Let\'s danse! Ca va transpirer',
+    '19:00:00',
+    '20:00:00'
+  );
+  /*!40000 ALTER TABLE `activity` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --

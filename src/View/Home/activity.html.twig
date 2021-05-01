@@ -1,0 +1,60 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %} Activités | Le temps des loisirs{% endblock %}
+
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/activity.css">
+{% endblock %}
+
+{% block content %}
+<main class="container">
+
+    <h1 class="h1 text-align my-lg-5 my-3">Toutes nos activités</h1>
+
+    <div id="list-weekday" class="row list-group d-flex flex-column flex-md-row justify-content-around">
+
+            {% for day in constant('App\\Model\\ActivityManager::DAYS' ) %}
+                <div class="col m-1">
+                    <a class="btn btn-primary w-100 h-100 py-md-5" href="#{{day}}">{{ day }}</a>
+                </div>
+            {% endfor %}
+        </div>
+
+
+    <section data-bs-spy="scroll" data-bs-target="#list-weekday" data-bs-offset="0" class="scrollspy-example" tabindex="0">
+        {% for day in constant('App\\Model\\ActivityManager::DAYS' ) %}
+
+            <h2 id="{{day}}" class="h2 my-lg-5 my-3 mx-3">{{ day }}</h2>
+
+                {% for activity in activities %}
+                    {% if activity.weekday == day %}
+                        <div class="card d-flex flex-column flex-md-row align-items-center">
+                            {% if activity.image %}
+                                <img src="{{activity.image}}" class="card-img-top m-4 ratio" alt="{{activity.name}}">
+                            {% else %}
+                                <img src="/assets/images/no-img.png" class="card-img-top m-4 ratio" alt="L'image n'existe pas">
+                            {% endif %}
+
+                        <div class="card-body d-flex flex-column align-items-center flex-md-row justify-content-between">
+                            <div class = "card-info d-flex flex-column align-items-center align-items-md-start">
+                                <h3>{{activity.name | capitalize }}</h3>
+                                <p class="card-text"> avec <strong>{{activity.instructor_name}}</strong></p>
+                                <p class="card-subtitle"><em>{{activity.description | capitalize}}</em></p>
+                            </div>
+
+                            <p class="activity-time align-self-center p-1">{{ activity.start_time | date('H')}}h{{ activity.start_time | date('i')}}</p>
+
+                        </div>
+                    </div>
+                    {% endif %}
+            {% endfor %}
+        {% endfor %}
+    </section>
+
+
+    <h1 class="h1 text-align my-lg-5 my-3">Les Photos</h2>
+
+
+
+</main>
+{% endblock %}
+

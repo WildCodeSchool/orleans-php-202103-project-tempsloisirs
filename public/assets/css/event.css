@@ -1,5 +1,4 @@
-.eventMain h1,
-h2,
+.eventMain h2,
 h3,
 h4,
 h5 {
@@ -7,6 +6,15 @@ h5 {
     font-family: var(--title-font);
     font-weight: 700;
 }
+
+.eventMain h1 {
+    color: var(--primary-color);
+    font-family: var(--title-font);
+    font-weight: 700;
+    margin: 100px 0px 60px 0px;
+
+}
+
 
 .shadow {
     box-shadow: 0 4px 8px 0 var(--shadow-color);
@@ -29,8 +37,9 @@ h5 {
 }
 
 .bg-eventCards {
-    background-color: var(--primary-color);
+    background-color: var(--primary-color-transparence);
     padding: var(--third-spacing) 0 var(--third-spacing) 0;
+
 }
 
 .flip-card {
@@ -119,12 +128,27 @@ h5 {
 /* Calender Section */
 
 .currentDateTitle {
-    background-color: var(--white-color);
+
     width: 350px;
     border-radius: 3px;
     text-transform: none;
     margin: auto;
+
 }
+
+
+.currentDateTitle::after {
+
+    content: '';
+    display: block;
+    width: 200px;
+    height: 4px;
+    background: var(--primary-color);
+    margin: auto;
+
+}
+
+
 
 .currentDateTitle h4 {
     font-size: 2em;
@@ -142,23 +166,6 @@ h5 {
     margin: var(--primary-spacing) 0 var(--primary-spacing) 0;
 }
 
-.monthSelect {
-    width: 100%;
-    min-width: 15ch;
-    max-width: 30ch;
-    border: 1px solid var(--select-border);
-    border-radius: 0.25em;
-    padding: 0.25em 0.5em;
-    font-size: 1.25rem;
-    cursor: pointer;
-    line-height: 1.1;
-    background-color: var(--white-color);
-
-}
-
-.monthSelect:focus {
-    border: 2px solid var(--primary-color);
-}
 
 /* Derniers evenements */
 

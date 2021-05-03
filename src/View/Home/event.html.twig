@@ -2,15 +2,15 @@
 {% block title %}Les Temps des Loisirs | Évènements
 {% endblock %}
 {% block stylesheet %}<link rel="stylesheet" href="/assets/css/event.css">
-	<link rel="stylesheet" href="/assets/css/scroll.css">
-	<link rel="stylesheet" href="/assets/css/admin.css">
+		<link rel="stylesheet" href="/assets/css/admin.css">
+		<link rel="stylesheet" href="/assets/css/style.css">
 {% endblock %}
 
 {% block content %}
 	<main class="container-fluid p-0 eventMain">
 
 
-		<h1 class="text-uppercase text-center mb-5 mt-5">Tous Nos évènements</h1>
+		<h1 class="text-uppercase text-center">Tous Nos évènements</h1>
 		<div class="bg-eventCards">
 			<section class="container d-flex justify-content-between flex-wrap">
 
@@ -64,47 +64,17 @@
 
 			<div
 				class="currentDateTitle">
-
+	 
 				{#To be changed dynamically #}
 				<h4
-					class="m-4 p-2">
+					class="m-1 p-1">
+					 {% for key, month in constant('App\\Model\\EventManager::MONTHS' ) %}
+				
+					{% if key == 'now'|date("m") %}
+						<span style="color: var(--secondary-color);">{{ month }}</span>
+					{% endif %}
 					
-					{% if 'now'|date("m") == "01"%}
-						<span style="color: var(--secondary-color);">Janvier</span>
-					{% endif %}
-					{% if 'now'|date("m") == "02"%}
-						<span style="color: var(--secondary-color);">Février</span>
-					{% endif %}
-					{% if 'now'|date("m") == "03"%}
-						<span style="color: var(--secondary-color);">Mars</span>
-					{% endif %}
-					{% if 'now'|date("m") == "04"%}
-						<span style="color: var(--secondary-color);">Avril</span>
-					{% endif %}
-					{% if 'now'|date("m") == "05"%}
-						<span style="color: var(--secondary-color);">Mai</span>
-					{% endif %}
-					{% if 'now'|date("m") == "06"%}
-						<span style="color: var(--secondary-color);">Juin</span>
-					{% endif %}
-					{% if 'now'|date("m") == "07"%}
-						<span style="color: var(--secondary-color);">Juillet</span>
-					{% endif %}
-					{% if 'now'|date("m") == "08"%}
-						<span style="color: var(--secondary-color);">Aôut</span>
-					{% endif %}
-					{% if 'now'|date("m") == "09"%}
-						<span style="color: var(--secondary-color);">Septembre</span>
-					{% endif %}
-					{% if 'now'|date("m") == "10"%}
-						<span style="color: var(--secondary-color);">Octobre</span>
-					{% endif %}
-					{% if 'now'|date("m") == "11"%}
-						<span style="color: var(--secondary-color);">Novembre</span>
-					{% endif %}
-					{% if 'now'|date("m") == "12"%}
-						<span style="color: var(--secondary-color);">Décembre</span>
-					{% endif %}
+					{% endfor %}
 
 					| 
 					{{'now'|date("Y")}}</h4>
@@ -115,7 +85,7 @@
 			{# Start Loop Event Card #}
 			{% for event in events %}
 				{% if event.start_date|date("m") == 'now'|date("m") and event.start_date|date("d/m/Y") >= 'now'|date("d/m/Y")  %}
-					<div class="row eventInfo p-3 mb-3 mt-3 shadow">
+					<div class="row eventInfo p-3 mb-3 mt-4 shadow">
 						<div class="col-sm  mt-1">
 							<h5>Quand?</h5>
 							<span class="mb-2">
@@ -150,30 +120,8 @@
 			{% endfor %}
 			{# End Loop Event Card #}
 
-			<form action="" method="POST" class="eventForm">
-				<div class="">
-					<h5 class="d-inline-block">Filtrer par Mois:</h5>
-					<select name="search" id="monthSelect" class="p-2 m-3 monthSelect" aria-label="Search event by month" value="">
-						<option value="">Choisissez un mois</option>
-						<option value="1">Janvier</option>
-						<option value="2">Février</option>
-						<option value="3">Mars</option>
-						<option value="4">Avril</option>
-						<option value="5">Mai</option>
-						<option value="6">Juin</option>
-						<option value="7">Juillet</option>
-						<option value="8">Aôut</option>
-						<option value="9">Septembre</option>
-						<option value="10">Octobre</option>
-						<option value="11">Novembre</option>
-						<option value="12">Décembre</option>
-					</select>
-
-					<input class="btn  btn-primary p-2 mb-2" type="submit" id="search" value="Rechercher">
-				</div>
-			</form>
-		</section>
-
+			 {# The month filter goes here #}
+		
 
 		<section class="container mb-5 mt-5 p-0 ">
 			<h2 class="text-uppercase text-center m-5">Derniers Évènements</h2>

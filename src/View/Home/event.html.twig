@@ -59,11 +59,19 @@
 			<div class="currentDateTitle">
 				{#To be changed dynamically #}
 				<h4 class="m-4 p-2">
-					{% for monthId, month in constant('App\\Model\\EventManager::MONTHS') %}
-						{% if monthId == 'now'|date("m") %}
-							<span style="color: var(--secondary-color);">{{month}} {{'now'|date('Y')}} </span>
+					{% for id, month in constant('App\\Model\\EventManager::MONTHS') %}
+						{% if monthId %}
+							{% if id == monthId %}
+								<span style="color: var(--secondary-color);">{{month}} {{'now'|date('Y')}} </span>
 							{% endif %}
-						{% endfor %}
+						{% else %}
+							{% if id == 'now'|date("m") %}
+								<span style="color: var(--secondary-color);">{{month}}
+									{{'now'|date('Y')}}
+								</span>
+							{% endif %}
+						{% endif %}
+					{% endfor %}
 				</h4>
 			</div>
 

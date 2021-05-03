@@ -13,7 +13,6 @@ class ActivityController extends AbstractController
     {
         $activityManager = new ActivityManager();
         $activities  = $activityManager->selectAll('name');
-        $photos = $activityManager->selectPhotos();
-        return $this->twig->render('Home/activity.html.twig', ['activities' => $activities, 'photos' => $photos]);
+        return $this->twig->render('Home/activity.html.twig', ['activities' => $activities]);
     }
 }

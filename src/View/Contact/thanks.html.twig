@@ -1,0 +1,22 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/thanks.css">
+{% endblock %}
+
+{% block title %}
+	Contact - Validation
+{% endblock %}
+
+{% block content %}
+	<div class="box-container">
+		<div class="thanks-box">
+        <br/>
+        <br/>
+        <br/>
+			<h2 class="thanks-message">Merci {{ firstname }} {{ lastname }} votre mail est bien envoyé</h2>
+			<div class="links d-flex justify-content-start align-items-center">
+				<a href="/Contact/index" class="btn btn-primary">Retour</a>
+			</div>
+		</div>
+	{% endblock %}

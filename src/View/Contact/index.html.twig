@@ -1,0 +1,46 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+	<link
+	rel="stylesheet" href="/assets/css/contact.css">
+	<!-- Fichiers css map -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+{% endblock %}
+
+{% block title %}
+	Contact
+{% endblock %}
+
+{% block content %}
+
+	<main class="container py-lg-5 px-lg-5 py-3 px-3">
+
+		<header class="admin-header d-flex justify-content-lg-between flex-lg-row align-items-lg-center flex-column px-lg-5 mb-lg-5 mb-3">
+			<h1 class="text-center h1">Contactez-nous</h1>
+		</header>
+
+		{% include "Contact/_form.html.twig" %}
+
+		{% block javascripts %}
+			<!-- Fichiers css map -->
+			<div id="maCarte"></div>
+			<!-- Fichiers Javascript -->
+			<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+			<script>
+			// On initialise la carte
+			var carte = L.map('maCarte').setView([47.831, 1.969], 13);
+
+			// On charge les tuiles
+			L.tilelayer('https://{s}.tile.opestreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+			// Il est toujours bien de laisser le lien vers la source des données
+			attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
+			minZoom: 1,
+			maxZoom: 20
+			}).addTo(carte);
+
+			var marker = L.marker([47.831, 1.969]).addTo(carte);
+			marker.bindPopup("<h2>Temps des loisirs</h2>");
+			</script>
+		{% endblock %}
+	</main>
+{% endblock %}

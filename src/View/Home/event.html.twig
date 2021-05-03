@@ -23,7 +23,7 @@
 						</div>
 						<div class="flip-card-back">
 							<h3>Bingo</h3>
-							<p>On fait de bingo reguliérment entre les adhérents et ses familles. Ce jeu, permettant de gagner des prix est très populaire entre notres adhérents.
+							<p>On fait de bingo régulièrement entre les adhérents et leurs familles. Ce jeu, permettant de gagner des prix est très populaire chez notres adhérents.
 							</p>
 						</div>
 					</div>
@@ -60,7 +60,7 @@
 		</div>
 
 		<section class="container text-uppercase text-center mb-5 mt-5">
-			<h2 class="m-5">Calandrier</h2>
+			<h2 class="m-5">Calendrier</h2>
 
 			<div
 				class="currentDateTitle">
@@ -68,48 +68,11 @@
 				{#To be changed dynamically #}
 				<h4
 					class="m-4 p-2">
-					
-					{% if 'now'|date("m") == "01"%}
-						<span style="color: var(--secondary-color);">Janvier</span>
-					{% endif %}
-					{% if 'now'|date("m") == "02"%}
-						<span style="color: var(--secondary-color);">Février</span>
-					{% endif %}
-					{% if 'now'|date("m") == "03"%}
-						<span style="color: var(--secondary-color);">Mars</span>
-					{% endif %}
-					{% if 'now'|date("m") == "04"%}
-						<span style="color: var(--secondary-color);">Avril</span>
-					{% endif %}
-					{% if 'now'|date("m") == "05"%}
-						<span style="color: var(--secondary-color);">Mai</span>
-					{% endif %}
-					{% if 'now'|date("m") == "06"%}
-						<span style="color: var(--secondary-color);">Juin</span>
-					{% endif %}
-					{% if 'now'|date("m") == "07"%}
-						<span style="color: var(--secondary-color);">Juillet</span>
-					{% endif %}
-					{% if 'now'|date("m") == "08"%}
-						<span style="color: var(--secondary-color);">Aôut</span>
-					{% endif %}
-					{% if 'now'|date("m") == "09"%}
-						<span style="color: var(--secondary-color);">Septembre</span>
-					{% endif %}
-					{% if 'now'|date("m") == "10"%}
-						<span style="color: var(--secondary-color);">Octobre</span>
-					{% endif %}
-					{% if 'now'|date("m") == "11"%}
-						<span style="color: var(--secondary-color);">Novembre</span>
-					{% endif %}
-					{% if 'now'|date("m") == "12"%}
-						<span style="color: var(--secondary-color);">Décembre</span>
-					{% endif %}
-
-					| 
-					{{'now'|date("Y")}}</h4>
-
-
+						{% for number, month in constant('App\\Model\\EventManager::MONTHS') %}
+							{% if number == 'now'|date("m") %}
+							<span style="color: var(--secondary-color);">{{ month}} {{'now'|date('Y')}} </span>
+							{% endif %}
+						{% endfor %}
 			</div>
 
 			{# Start Loop Event Card #}
@@ -150,25 +113,15 @@
 			{% endfor %}
 			{# End Loop Event Card #}
 
-			<form action="" method="POST" class="eventForm">
+			<form action="" method="GET" class="eventForm">
 				<div class="">
 					<h5 class="d-inline-block">Filtrer par Mois:</h5>
-					<select name="search" id="monthSelect" class="p-2 m-3 monthSelect" aria-label="Search event by month" value="">
+					<select name="filter" id="monthSelect" class="p-2 m-3 monthSelect" aria-label="Search event by month" value="">
 						<option value="">Choisissez un mois</option>
-						<option value="1">Janvier</option>
-						<option value="2">Février</option>
-						<option value="3">Mars</option>
-						<option value="4">Avril</option>
-						<option value="5">Mai</option>
-						<option value="6">Juin</option>
-						<option value="7">Juillet</option>
-						<option value="8">Aôut</option>
-						<option value="9">Septembre</option>
-						<option value="10">Octobre</option>
-						<option value="11">Novembre</option>
-						<option value="12">Décembre</option>
+						{% for number, month in constant('App\\Model\\EventManager::MONTHS') %}
+							<option value="{{number}}">{{month}}</option>
+						{% endfor %}
 					</select>
-
 					<input class="btn  btn-primary p-2 mb-2" type="submit" id="search" value="Rechercher">
 				</div>
 			</form>

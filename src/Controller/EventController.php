@@ -14,7 +14,7 @@ class EventController extends AbstractController
         return $this->twig->render('Home/event.html.twig', ['events' => $events]);
     }
 
-    public function filterByMonth(string $monthId) : string
+    public function filterByMonth(string $monthId): string
     {
         $eventManager = new EventManager();
         $events = $eventManager->selectAll();
@@ -28,7 +28,5 @@ class EventController extends AbstractController
             'monthId' => $monthId,
             'events' => $events,
         ]);
-
     }
-
 }

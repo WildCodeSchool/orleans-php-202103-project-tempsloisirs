@@ -1,7 +1,3 @@
-.eventSection {
-  text-align: center;
-}
-
 .eventTitle h1 {
   font-weight: 600;
   text-transform: uppercase;
@@ -17,4 +13,8 @@
 
 .errorsMessage {
   list-style-type: none;
+}
+
+.form-label{
+  text-align: start;
 }

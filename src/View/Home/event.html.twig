@@ -57,7 +57,6 @@
 		<section class="container text-uppercase text-center mb-5 mt-5">
 			<h2 class="m-5">Calendrier</h2>
 			<div class="currentDateTitle">
-				{#To be changed dynamically #}
 				<h4 class="m-4 p-2">
 					{% for id, month in constant('App\\Model\\EventManager::MONTHS') %}
 						{% if monthId %}
@@ -76,81 +75,74 @@
 			</div>
 
 			{# Start Loop Event Card #}
-			{% for event in events %}
-				{% if event.start_date|date('m') == monthId %}
-					<div class="row eventInfo p-3 mb-3 mt-3 shadow">
-						<div class="col-sm  mt-1">
-							<h5>Quand?</h5>
-							<span class="mb-2">
-								<strong>{{ event.start_date|date("d/m/Y") }}</strong>
-								{% if event.end_date is not null and event.end_date != event.start_date %}
-									<span class="mb-2">jusqu'au
+			{% if monthId %}
+				{% for event in events %}
+					{% if event.start_date|date('m') == monthId %}
+						<div class="row eventInfo p-3 mb-3 mt-3 shadow">
+							<div class="col-sm  mt-1">
+								<h5>Quand?</h5>
+								<span class="mb-2">
+									<strong>{{ event.start_date|date("d/m/Y") }}</strong>
+									{% if event.end_date is not null and event.end_date != event.start_date %}
+										<span class="mb-2">jusqu'au
+											<strong>{{event.end_date|date("d/m/Y") }}</strong>
+										</p>
+									{% endif %}
+								</span>
+							</div>
+							<div class="col-sm  mt-1">
+								<h5>Évènement</h5>
+								<span class="mb-2">
+									{{ event.name }}
+								</span>
+							</div>
+							<div class="col-sm  mt-1">
+								<h5>Prix</h5>
+								<span class="mb-2">€{{ event.price }}
+								</span>
+							</div>
+							<div class="col-sm  mt-1">
+								<h5>Description</h5>
+								<span class="mb-2">{{ event.description }}
+								</span>
+							</div>
+						</div>
+					{% endif %}
+				{% endfor %}
+			{% else %}
+				{% for event in events %}
+					{% if event.start_date|date("m") == 'now'|date("m") and event.start_date|date("d/m/Y") >= 'now'|date("d/m/Y") %}
+							<div class="row eventInfo p-3 mb-3 mt-3 shadow">
+								<div class="col-sm  mt-1">
+									<h5>Quand?</h5>
+										<span class="mb-2">
+											<strong>{{ event.start_date|date("d/m/Y") }}</strong>
+												{% if event.end_date is not null and event.end_date != event.start_date %}
+										<span class="mb-2">jusqu'au
 										<strong>{{event.end_date|date("d/m/Y") }}</strong>
-									</p>
-								{% endif %}
-							</span>
-						</div>
-						<div class="col-sm  mt-1">
-							<h5>Évènement</h5>
-							<span class="mb-2">
-								{{ event.name }}
-							</span>
-						</div>
-						<div class="col-sm  mt-1">
-							<h5>Prix</h5>
-							<span class="mb-2">€{{ event.price }}
-							</span>
-						</div>
-						<div class="col-sm  mt-1">
-							<h5>Description</h5>
-							<span class="mb-2">{{ event.description }}
-							</span>
-						</div>
-					</div>
-				{% endif %}
-			{% endfor %}
-
-			{{ dump(monthId)}}
-
-
-
-				{# condition de Gersey
-				{% if event.start_date|date("m") == 'now'|date("m") and event.start_date|date("d/m/Y") >= 'now'|date("d/m/Y")  %}
-					<div class="row eventInfo p-3 mb-3 mt-3 shadow">
-						<div class="col-sm  mt-1">
-							<h5>Quand?</h5>
-							<span class="mb-2">
-								<strong>{{ event.start_date|date("d/m/Y") }}</strong>
-								{% if event.end_date is not null and event.end_date != event.start_date %}
-									<span class="mb-2">jusqu'au
-										<strong>{{event.end_date|date("d/m/Y") }}</strong>
-									</p>
-								{% endif %}
-							</span>
-
-						</div>
-						<div class="col-sm  mt-1">
-							<h5>Évènement</h5>
-							<span class="mb-2">
-								{{ event.name }}
-							</span>
-						</div>
-						<div class="col-sm  mt-1">
-							<h5>Prix</h5>
-							<span class="mb-2">€{{ event.price }}
-							</span>
-						</div>
-						<div class="col-sm  mt-1">
-							<h5>Description</h5>
-							<span class="mb-2">{{ event.description }}
-							</span>
-						</div>
-					</div>
-
-				{% endif %}
-			{% endfor %}
-			#}
-
+												{% endif %}
+										</span>
+								</div>
+								<div class="col-sm  mt-1">
+									<h5>Évènement</h5>
+										<span class="mb-2">
+											{{ event.name }}
+										</span>
+								</div>
+								<div class="col-sm  mt-1">
+									<h5>Prix</h5>
+										<span class="mb-2">€{{ event.price }}
+										</span>
+								</div>
+								<div class="col-sm  mt-1">
+									<h5>Description</h5>
+										<span class="mb-2">{{ event.description }}
+										</span>
+								</div>
+							</div>
+					{% endif %}
+				{% endfor %}
+			{% endif %}
 			{# End Loop Event Card #}
 
 			<div class="dropdown">
@@ -165,26 +157,6 @@
 					{% endfor %}
 				</ul>
 			</div>
-
-
-
-			{#
-			<form action="" method="POST" class="eventForm">
-				<div class="">
-					<h5 class="d-inline-block">Filtrer par Mois:</h5>
-					<select name="month" id="monthSelect" class="p-2 m-3 monthSelect" aria-label="Search event by month" value="">
-						<option value="">Choisissez un mois</option>
-						{% for monthId, month in constant('App\\Model\\EventManager::MONTHS') %}
-							<option value="{{monthId}}">{{month}}</option>
-
-						{% endfor %}
-					</select>
-					<input class="btn  btn-primary p-2 mb-2" type="submit" id="search" value="Rechercher">
-				</div>
-			</form>
-		</section>
-		#}
-
 
 		<section class="container mb-5 mt-5 p-0 ">
 			<h2 class="text-uppercase text-center m-5">Derniers Évènements</h2>

@@ -1,3 +1,22 @@
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 .hero-image {
     color: white;
     background-image: url("/assets/images/home/heroimage.png");
@@ -49,7 +68,7 @@
 }
 
 .infoButton {
-    margin: 10vh auto 0px auto;
+    margin: 2vh auto 0px auto;
 }
 
 .btn-secondary {

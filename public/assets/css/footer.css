@@ -18,12 +18,3 @@
     background-color: rgba(0, 0, 0, 0.2);
 
 }
-
-@media screen and (min-width: 800px) {
-
-    .footerContainer {
-        position: absolute;
-        top: -100;
-    }
-
-}

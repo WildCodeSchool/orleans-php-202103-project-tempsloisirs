@@ -10,15 +10,16 @@
 
 {% block content %}
 
-	<main class="container py-lg-5 px-lg-5 py-3 px-3">
+	<main class="infos py-lg-5 px-lg-5 py-3 px-3">
 
 		<header class="admin-header d-flex justify-content-lg-between flex-lg-row align-items-lg-center flex-column px-lg-5 mb-lg-5 mb-3">
 			<h1 class="text-center h1">Gérer les informations</h1>
 			<a href="/adminInformation/add" class="btn btn-primary mt-3 mt-lg-0">Ajouter une information</a>
 		</header>
 
+		<div class="px-lg-5">
 		{% for information in informations %}
-			<div class="card mb-2 alerts">
+			<div class="card mb-3 alerts">
 				<div class="card-header {{ information.type }}-color text-white">
 					{{ constant('App\\Controller\\AdminInformationController::LAST_INFORMATIONS')[information.type] }}
 				</div>
@@ -36,6 +37,7 @@
 		{% else %}
 			<li>Nothing to display</li>
 		{% endfor %}
+		</div>
 
 	</main>
 {% endblock %}

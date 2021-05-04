@@ -16,36 +16,19 @@
 	<main class="container py-lg-5 px-lg-5 py-3 px-3">
 
 		<header class="admin-header d-flex justify-content-lg-between flex-lg-row align-items-lg-center flex-column px-lg-5 mb-lg-5 mb-3">
-			<h1 class="text-center h1">Contactez-nous</h1>
+			<h1 class="text-center h1 pt-3">Contactez-nous</h1>
 		</header>
 
 		{% include "Contact/_form.html.twig" %}
-        <br/>
-        <br/>
-
-		<h2 class="d-flex justify-content-center">Où nous trouver</h2>
 		<br/>
-        <br/>
-		{% block javascripts %}
-			<!-- Fichiers css map -->
-			<div id="maCarte"></div>
-			<!-- Fichiers Javascript -->
-			<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
-			<script>
-			// On initialise la carte
-			var carte = L.map('maCarte').setView([47.831, 1.969], 13);
+		<br/>
 
-			// On charge les tuiles
-			L.tilelayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
-			// Il est toujours bien de laisser le lien vers la source des données
-			attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
-			minZoom: 1,
-			maxZoom: 20
-			}).addTo(carte);
+		<h2 class="text-center h1 pb-5">Où nous trouver ?</h2>
 
-			var marker = L.marker([47.831, 1.969]).addTo(carte);
-			marker.bindPopup("<h2>Temps des loisirs</h2>");
-			</script>
-		{% endblock %}
+		<div class="d-flex flex-column justify-content-center align-items-center">
+			<iframe width="600" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=1.9618213176727297%2C47.82893817479573%2C1.9752109050750735%2C47.83559310285169&amp;layer=mapnik&amp;marker=47.83226394492732%2C1.9685161113739014" style="border: 1px solid black"></iframe><br/><small>
+				<a href="https://www.openstreetmap.org/?mlat=47.83226&amp;mlon=1.96852#map=17/47.83226/1.96852">Afficher une carte plus grande</a>
+			</small>
+		</div>
 	</main>
 {% endblock %}

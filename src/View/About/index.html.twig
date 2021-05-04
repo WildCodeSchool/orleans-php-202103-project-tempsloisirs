@@ -94,6 +94,23 @@
 			</div>
 		</section>
 
+		<section class="board container py-xl-5 px-xl-5 py-3 px-2">
+
+			<h2 class="h2 text-center text-orange mt-lg-2 mt-5 mb-5">Le Conseil d'Administration</h1>
+
+			<div class="board-cards row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-5">
+				{% for member in boardMembers %}
+					<div class="col text-center">
+						<img src="{{ member.image }}" class="rounded-circle shadow-sm mb-3" alt="photo portrait">
+						<h3 class="h3">{{ member.firstname }}
+							{{ member.surname }}</h3>
+						<p class="mb-4">{{ member.role }}</p>
+					</div>
+				{% endfor %}
+			</div>
+
+		</section>
+
 	</main>
 
 {% endblock %}

@@ -1,0 +1,178 @@
+.eventMain h2,
+h3,
+h4,
+h5 {
+    color: var(--primary-color);
+    font-family: var(--title-font);
+    font-weight: 700;
+}
+
+.eventMain h1 {
+    color: var(--primary-color);
+    font-family: var(--title-font);
+    font-weight: 700;
+    margin: 100px 0px 60px 0px;
+}
+
+h3{
+    color: var(--secondary-color);
+}
+
+
+.shadow {
+    box-shadow: 0 4px 8px 0 var(--shadow-color);
+
+
+}
+
+.shadow:hover {
+    box-shadow: 0 8px 16px 0 var(--shadow-color);
+    transition: 0.3s;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+
+}
+
+.shadow:hover h4 {
+
+    color: var(--light-color);
+
+}
+
+.bg-eventCards {
+    background-color: var(--primary-color-transparence);
+    padding: var(--third-spacing) 0 var(--third-spacing) 0;
+
+}
+
+.flip-card {
+    background-color: transparent;
+    width: 24rem;
+    height: 500px;
+    perspective: 1000px;
+    margin: var(--third-spacing) 0 var(--third-spacing) 0;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 var(--shadow-color);
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.flip-card-front {
+    background-color: var(--grey-color);
+    /* Front image */
+}
+
+.flip-card-front h3 {
+    margin-top: 5rem;
+    background-color: #f1ffffc4;
+    color: var(--secondary-color);
+    font-weight: 900;
+    padding: var(--secondary-spacing);
+    text-transform: uppercase;
+}
+
+.bg-front-1 {
+    background-image: url('/assets/images/event/bingo.jpg');
+    background-size: cover;
+}
+
+.bg-front-2 {
+    background-image: url('/assets/images/event/voyages.jpg');
+    background-size: cover;
+}
+
+.bg-front-3 {
+    background-image: url('/assets/images/event/sortis.jpg');
+    background-size: cover;
+
+}
+
+.flip-card-back {
+    background-color: var(--light-color);
+    transform: rotateY(180deg);
+}
+
+.flip-card-back h3 {
+    color: var(--secondary-color);
+    font-weight: 900;
+    margin-top: 5rem;
+    background-color: #c4c4c45b;
+    padding: var(--secondary-spacing);
+    text-transform: uppercase;
+    letter-spacing: 0.1px;
+}
+
+.flip-card-back p {
+    padding: var(--secondary-spacing);
+    font-size: 1.2em;
+    font-weight: 500;
+    color: var(--secondary-color);
+}
+
+/* Calender Section */
+
+.currentDateTitle {
+
+    width: 350px;
+    border-radius: 3px;
+    text-transform: none;
+    margin: auto;
+
+}
+
+
+.currentDateTitle::after {
+
+    content: '';
+    display: block;
+    width: 200px;
+    height: 4px;
+    background: var(--primary-color);
+    margin: auto;
+
+}
+
+
+
+.currentDateTitle h4 {
+    font-size: 2em;
+
+}
+
+.eventInfo {
+    background-color: var(--white-color);
+    text-transform: none;
+    box-shadow: 0px 1px 2px 1px var(--dark-color);
+    border-radius: 10px;
+}
+
+.eventinfo h5 {
+    margin: var(--primary-spacing) 0 var(--primary-spacing) 0;
+}
+
+
+/* Derniers evenements */
+
+.carousel .carousel-item {
+    max-height: 500px;
+    object-fit: contain;
+}

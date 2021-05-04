@@ -1,0 +1,62 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+	Accueil | Le temps des loisirs
+{% endblock %}
+{% block stylesheet %}
+
+	<link rel="stylesheet" href="/assets/css/home.css">
+{% endblock %}
+
+{% block content %}
+	<main>
+
+		<div class="hero-image p-0">
+
+			<div class="hero-text">
+				<h1>Le Temps de Loisirs</h1>
+
+				<p>Ton club de loisir à Saint Cyr-E n-Val</p>
+			</div>
+
+		</div>
+
+	</div>
+
+	<section class="lastInfos container">
+		<div class="row">
+
+			<div class="informationSection me-4 mt-5 p-4 col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
+				<h2 class="text-center">Les dernières informations</h2>
+				{% for information in informations %}
+					<div class="informationCard mb-3 mt-3 p-2">
+						<span class="fw-bold me-2">{{information.date|date("d/m/Y","Europe/Paris")}}</span>
+						<span>{{information.content}}</span>
+					</div>
+
+				{% endfor %}
+			</div>
+ 
+<div class="monthSection p-4 mt-5 col-sm-6 col-md-5 offset-md-2 col-lg-5 offset-lg-0">
+				<h2 class="text-center">Avril 2021</h2>
+				{% for activity in activities %}	
+					<div class="informationCard mb-3 mt-3 p-2">
+						<span>{{activity.start_date|date("d/m/Y","Europe/Paris")}}</span>
+						<span>{{activity.name}}</span>
+					</div>
+					{% endfor %}
+{% for event in events %}
+	<div class="informationCard mb-3 mt-3 p-2">
+						<span>{{event.start_date|date("d/m/Y","Europe/Paris")}}</span>
+						<span>{{event.name}}</span>
+					</div>
+				{% endfor %}
+				
+			</div>
+		</div>
+	</section>
+	
+	<section>
+	CARROUSEL
+	</section>
+</main>{% endblock %}

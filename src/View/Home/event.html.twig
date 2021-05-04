@@ -55,8 +55,8 @@
 		</div>
 
 		<section class="container text-uppercase text-center mb-5 mt-5">
-			<h2 class="m-5">Calendrier</h2>
-			<h3 class="m-4 p-2">
+			<h2 class="m-5" id="calendar">Calendrier</h2>
+			<h3 class="m-4 p-2" >
 				{{constant('App\\Model\\EventManager::MONTHS')[monthId]}}
 					{{'now'|date('Y')}}
 			</h3>
@@ -64,7 +64,7 @@
 			{# Start Loop Event Card #}
 			{% for event in events %}
 			<div class="row eventInfo p-3 mb-3 mt-3 shadow">
-				<div class="col-sm  mt-1">
+				<div class="col-sm my-2">
 					<h4>Quand?</h4>
 						<strong>{{event.start_date|date("d/m/Y") }}</strong>
 							{% if event.end_date is not null and event.end_date != event.start_date %}
@@ -72,86 +72,34 @@
 									<strong>{{event.end_date|date("d/m/Y") }}</strong>
 							{% endif %}
 				</div>
-				<div class="col-sm  mt-1">
+				<div class="col-sm  my-2">
 					<h4>Évènement</h4>
-					<span class="mb-2">
+					<strong>
 						{{event.name}}
-					</span>
+					</strong>
 				</div>
-				<div class="col-sm  mt-1">
+				<div class="col-sm my-2">
 					<h4>Prix</h4>
-					<span class="mb-2">€{{event.price}}</span>
+					<strong>€{{event.price}}</strong>
 				</div>
-				<div class="col-sm  mt-1">
+				<div class="col-sm  my-2">
 					<h4>Description</h4>
-					<span class="mb-2">{{event.description}}</span>
+					<span>{{event.description}}</span>
 				</div>
 			</div>
 			{% endfor %}
-	
-
-			{#}
-			{% else %}
-				{% for event in events %}
-					{% if event.start_date|date("m") == 'now'|date("m") and event.start_date|date("d/m/Y") >= 'now'|date("d/m/Y") %}
-							<div class="row eventInfo p-3 mb-3 mt-3 shadow">
-								<div class="col-sm  mt-1">
-									<h5>Quand?</h5>
-										<span class="mb-2">
-											<strong>{{ event.start_date|date("d/m/Y") }}</strong>
-												{% if event.end_date is not null and event.end_date != event.start_date %}
-										<span class="mb-2">jusqu'au
-										<strong>{{event.end_date|date("d/m/Y") }}</strong>
-												{% endif %}
-										</span>
-								</div>
-								<div class="col-sm  mt-1">
-									<h5>Évènement</h5>
-										<span class="mb-2">
-											{{ event.name }}
-										</span>
-								</div>
-								<div class="col-sm  mt-1">
-									<h5>Prix</h5>
-										<span class="mb-2">€{{ event.price }}
-										</span>
-								</div>
-								<div class="col-sm  mt-1">
-									<h5>Description</h5>
-										<span class="mb-2">{{ event.description }}
-										</span>
-								</div>
-							</div>
-					{% endif %}
-				{% endfor %}
-			{% endif %}
 			{# End Loop Event Card #}
 
-			{# adjust redirection#}
-			<form action="" method="post" class="d-flex flex-row justify-content-center">
-				<select name="monthId" class="form-select" aria-label="Default select example">
+			<form action="#calendar" method="post" class="d-flex flex-row justify-content-center">
+				<select name="monthId" class="form-select w-25 me-1" aria-label="Default select example">
 					<option selected>Filtrer par mois</option>
 					{% for id, month in constant('App\\Model\\EventManager::MONTHS') %}
 						<option value="{{id}}">{{month}}</option>
 					{% endfor %}
 				</select>
-				<button type="submit" class="btn btn-primary">Rechercher</button>
+				<button type="submit" class="btn btn-primary ms-1">Appliquer</button>
 			</form>
-
-
-
-			{#}<div class="dropdown">
-				<a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-					Filtrer par mois
-				</a>
-				<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-					{% for monthId, month in constant('App\\Model\\EventManager::MONTHS') %}
-						<li>
-							<a class="dropdown-item" href="/Event/index/{{monthId}}">{{month}}</a>
-						</li>
-					{% endfor %}
-				</ul>
-			</div>{#}
+		</section>
 
 		<section class="container mb-5 mt-5 p-0 ">
 			<h2 class="text-uppercase text-center m-5">Derniers Évènements</h2>

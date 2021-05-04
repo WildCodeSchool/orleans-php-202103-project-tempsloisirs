@@ -6,17 +6,17 @@
 		{% endfor %}
 	{% endif %}
 
-	<div
-		class="form-row mt-sm-0 px-xs-0 py-sm-0">
+	<div class="form-row mt-sm-0 px-xs-0 py-sm-0">
+    
 		<!-- Name-->
 		<div class="form-group col col-lg-6 col-md-12 mx-auto">
-			<label for="activityName" class="col-sm-2 col-form-label col-form-label-lg">Activité :</label>
-			<input type="text" class="form-control shadow-sm p-3 mb-1 bg-white rounded" name="name" value="{{ activity.name }}" id="activityName" aria-describedby="nameHelp" checked="checked">
-			<div id="nameHelp" class="form-text">Veuillez entrer le nom de l'activité proposée (exemple: Dictée).</div>
+			<label for="activityName" class="col-form-label col-form-label-lg">Nom de l'activité</label>
+			<input type="text" class="form-control shadow-sm p-3 mb-1 bg-white rounded" name="name" value="{{ activity.name }}" id="activityName" placeholder="Danse" aria-describedby="nameHelp" checked="checked">
+			<div id="nameHelp" class="form-text">Veuillez entrer le nom de l'activité proposée (exemple: Dictée)</div>
 		</div>
 		<!--Weekdays-->
 		<div class="form-group col col-lg-6 col-md-12 mx-auto">
-			<label for="weekday" class="col-form-label col-form-label-lg">Jour de la semaine :</label>
+			<label for="weekday" class="col-form-label col-form-label-lg">Jour de la semaine</label>
 			<div
 				class="">
 				{# Loop sur les jours #}
@@ -32,41 +32,41 @@
 		</div>
 		<!--Instructor-->
 		<div class="form-group col col-lg-6 col-md-12 mx-auto">
-			<label for="instructor_name" class="col-sm-6 col-form-label col-form-label-lg">Moniteur :</label>
-			<input type="text" class="form-control shadow-sm p-3 mb-1 bg-white rounded" id="instructor_name" name="instructor_name" value="{{activity.instructor_name}}" aria-describedby="instructorHelp">
-			<div id="instructorHelp" class="form-text">Veuillez entrer le nom de la personne qui anime cette activité (exemple: Didier Raoult).</div>
+			<label for="instructor_name" class="col-sm-6 col-form-label col-form-label-lg">Moniteur</label>
+			<input type="text" class="form-control shadow-sm p-3 mb-1 bg-white rounded" id="instructor_name" placeholder="Didier" name="instructor_name" value="{{activity.instructor_name}}" aria-describedby="instructorHelp">
+			<div id="instructorHelp" class="form-text">Veuillez entrer le nom de la personne qui anime cette activité (exemple: Didier Raoult)</div>
 		</div>
 		<!--Start time-->
 		<div class="form-group col col-lg-6 col-md-12 mx-auto">
 
-			<label for="start_time" class="col-sm-6 col-form-label col-form-label-lg">Heure de début :</label>
-			<input type="time" class="form-control shadow-sm p-3 mb-1 bg-white rounded" id="start_time" name="start_time" value="{{activity.start_time}}" aria-describedby="startTimeHelp">
-			<div id="statTimeHelp" class="form-text">Veuillez entrer l'heure à laquelle commence cette activité.</div>
+			<label for="start_time" class="col-sm-6 col-form-label col-form-label-lg">Heure de début</label>
+			<input type="time" class="form-control shadow-sm p-3 mb-1 bg-white rounded" id="start_time" placeholder="19:30" name="start_time" value="{{activity.start_time}}" aria-describedby="startTimeHelp">
+			<div id="statTimeHelp" class="form-text">Veuillez entrer l'heure à laquelle commence cette activité</div>
 		</div>
 		<!--End time-->
 		<div class="form-group col col-lg-6 col-md-12 mx-auto">
-			<label for="end_time" class="col-sm-6 col-form-label col-form-label-lg">Heure de fin :</label>
-			<input type="time" class="form-control shadow-sm p-3 mb-1 bg-white rounded" id="end_time" name="end_time" value="{{activity.end_time}}" aria-describedby="endTimeHelp">
-			<div id="endTimeHelp" class="form-text">Veuillez entrer l'heure à laquelle termine cette activité.</div>
+			<label for="end_time" class="col-sm-6 col-form-label col-form-label-lg">Heure de fin</label>
+			<input type="time" class="form-control shadow-sm p-3 mb-1 bg-white rounded" id="end_time" placeholder="21:00" name="end_time" value="{{activity.end_time}}" aria-describedby="endTimeHelp">
+			<div id="endTimeHelp" class="form-text">Veuillez entrer l'heure à laquelle termine cette activité</div>
 		</div>
 		<!--Image-->
 		<div class="form-group col col-lg-6 col-md-12 mx-auto">
-			<label for="image" class="col-sm-2 col-form-label col-form-label-lg">Image :</label>
-			<input type="url" class="form-control shadow-sm p-3 mb-1 bg-white rounded" id="image" name="image" value="{{activity.image}}" aria-describedby="imageHelp">
-			<div id="imageHelp" class="form-text">Veuillez entrer un lien vers l'image que vous souhaitez afficher.</div>
+			<label for="image" class="col-sm-2 col-form-label col-form-label-lg">Image</label>
+			<input type="url" class="form-control shadow-sm p-3 mb-1 bg-white rounded" id="image" placeholder="https://www.tempsdesloisirs/image-danse.png" name="image" value="{{activity.image}}" aria-describedby="imageHelp">
+			<div id="imageHelp" class="form-text">Veuillez entrer un lien vers l'image que vous souhaitez afficher</div>
 		</div>
-
 		<!--Description-->
-		<div class="fform-group col col-lg-6 col-md-12 mx-auto">
-			<label for="description" class="col-sm-2 col-form-label col-form-label-lg">Description :</label>
-			<textarea class="form-control shadow-sm p-3 mb-1 bg-white rounded" id="description" rows="3" name="description" aria-describedby="descriptionHelp">{{- activity.description -}}</textarea>
-			<div id="descriptionHelp" class="form-text">Veuillez entrer une brève description de l'activité proposée, afin d'aider vos membres à comprendre de quoi il s'agit.</div>
+		<div class="form-group col col-lg-6 col-md-12 mx-auto">
+			<label for="description" class="col-sm-2 col-form-label col-form-label-lg">Description</label>
+			<textarea class="form-control shadow-sm p-3 mb-1 bg-white rounded" id="description" placeholder="Description de l'activité" rows="3" name="description" aria-describedby="descriptionHelp">{{- activity.description -}}</textarea>
+			<div id="descriptionHelp" class="form-text mb-3">Veuillez entrer une brève description de l'activité proposée, afin d'aider vos membres à comprendre de quoi il s'agit</div>
 		</div>
-
-		<div class"form-group col col-lg-6 col-md-12 mx-auto">
-			<button type="submit" class="btn btn-primary btn-lg w-100">{{ buttonName|default("Ajouter l'activité") }}
+        <div class="form-group col col-lg-6 col-md-12 mx-auto">
+			<button type="submit" class="btn btn-primary btn-lg w-100" value="Valider">
+				{{ buttonName|default("Ajouter l'activité") }}
 			</button>
 		</div>
+
 	</div>
 
 </form>

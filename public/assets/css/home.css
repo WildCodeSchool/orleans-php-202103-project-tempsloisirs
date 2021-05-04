@@ -1,22 +1,3 @@
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: #888;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
-
 .hero-image {
     color: white;
     background-image: url("/assets/images/home/heroimage.png");
@@ -34,7 +15,7 @@
     color: var(--light-color);
     text-transform: uppercase;
     font-family: var(--title-font);
-    font-size: 8vh;
+    /* font-size: 8vh; */
 }
 
 
@@ -57,7 +38,30 @@
     overflow-y: scroll;
     max-height: 400px;
 
+}
 
+.informationSection::-webkit-scrollbar,
+.monthSection::-webkit-scrollbar {
+    width: 10px;
+    background: #888;
+}
+
+/* Track */
+.informationSection::-webkit-scrollbar-track,
+.monthSection::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+.informationSection::-webkit-scrollbar-thumb,
+.monthSection::-webkit-scrollbar-track-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+.informationSection::-webkit-scrollbar-thumb:hover,
+.monthSection::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
 
 .informationCard {

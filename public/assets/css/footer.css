@@ -1,0 +1,29 @@
+.footerContainer {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.footerLogo {
+    font-family: var(--title-font);
+    font-size: 1.5em;
+
+}
+
+.footerCopyright {
+
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+
+}
+
+@media screen and (min-width: 800px) {
+
+    .footerContainer {
+        position: absolute;
+        top: -100;
+    }
+
+}

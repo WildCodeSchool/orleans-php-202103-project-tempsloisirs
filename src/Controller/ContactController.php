@@ -100,8 +100,6 @@ class ContactController extends AbstractController
 
     public function thanks(string $firstname, string $lastname): string
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        }
         return $this->twig->render('Contact/thanks.html.twig', ['firstname' => $firstname, 'lastname' => $lastname]);
     }
 }

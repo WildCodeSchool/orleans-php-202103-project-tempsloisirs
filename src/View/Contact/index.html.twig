@@ -20,7 +20,12 @@
 		</header>
 
 		{% include "Contact/_form.html.twig" %}
+        <br/>
+        <br/>
 
+		<h2 class="d-flex justify-content-center">Où nous trouver</h2>
+		<br/>
+        <br/>
 		{% block javascripts %}
 			<!-- Fichiers css map -->
 			<div id="maCarte"></div>
@@ -31,7 +36,7 @@
 			var carte = L.map('maCarte').setView([47.831, 1.969], 13);
 
 			// On charge les tuiles
-			L.tilelayer('https://{s}.tile.opestreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+			L.tilelayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
 			// Il est toujours bien de laisser le lien vers la source des données
 			attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
 			minZoom: 1,

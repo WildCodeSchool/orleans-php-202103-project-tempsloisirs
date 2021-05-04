@@ -22,7 +22,7 @@
 				{# Loop sur les jours #}
 				{% for day in constant('App\\Model\\ActivityManager::DAYS' ) %}
 					<div class="form-check">
-						<input class="form-check-input" value="{{ day }}" type="radio" name="weekday" id="weekday" checked>
+						<input class="form-check-input" value="{{ day }}" type="radio" name="weekday" id="weekday">
 						<label class="form-check-label" for="weekday">
 							{{day}}
 						</label>

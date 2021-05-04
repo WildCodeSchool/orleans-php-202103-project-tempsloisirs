@@ -49,4 +49,15 @@ class EventManager extends AbstractManager
 
         return $statement->execute();
     }
+
+    public function selectByMonth(int $monthId)
+    {
+        $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . 
+        " WHERE MONTH(`start_date`)=:monthId AND YEAR(`start_date`) = YEAR(CURRENT_DATE())");
+
+        $statement->bindValue('monthId', $monthId, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetchAll();
+    }
 }

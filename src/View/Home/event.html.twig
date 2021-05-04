@@ -56,59 +56,41 @@
 
 		<section class="container text-uppercase text-center mb-5 mt-5">
 			<h2 class="m-5">Calendrier</h2>
-			<div class="currentDateTitle">
-				<h4 class="m-4 p-2">
-					{% for id, month in constant('App\\Model\\EventManager::MONTHS') %}
-						{% if monthId %}
-							{% if id == monthId %}
-								<span style="color: var(--secondary-color);">{{month}} {{'now'|date('Y')}} </span>
-							{% endif %}
-						{% else %}
-							{% if id == 'now'|date("m") %}
-								<span style="color: var(--secondary-color);">{{month}}
-									{{'now'|date('Y')}}
-								</span>
-							{% endif %}
-						{% endif %}
-					{% endfor %}
-				</h4>
-			</div>
+			<h3 class="m-4 p-2">
+				{{constant('App\\Model\\EventManager::MONTHS')[monthId]}}
+					{{'now'|date('Y')}}
+			</h3>
 
 			{# Start Loop Event Card #}
-			{% if monthId %}
-				{% for event in events %}
-					{% if event.start_date|date('m') == monthId %}
-						<div class="row eventInfo p-3 mb-3 mt-3 shadow">
-							<div class="col-sm  mt-1">
-								<h5>Quand?</h5>
-								<span class="mb-2">
-									<strong>{{ event.start_date|date("d/m/Y") }}</strong>
-									{% if event.end_date is not null and event.end_date != event.start_date %}
-										<span class="mb-2">jusqu'au
-											<strong>{{event.end_date|date("d/m/Y") }}</strong>
-										</p>
-									{% endif %}
-								</span>
-							</div>
-							<div class="col-sm  mt-1">
-								<h5>Évènement</h5>
-								<span class="mb-2">
-									{{ event.name }}
-								</span>
-							</div>
-							<div class="col-sm  mt-1">
-								<h5>Prix</h5>
-								<span class="mb-2">€{{ event.price }}
-								</span>
-							</div>
-							<div class="col-sm  mt-1">
-								<h5>Description</h5>
-								<span class="mb-2">{{ event.description }}
-								</span>
-							</div>
-						</div>
-					{% endif %}
-				{% endfor %}
+			{% for event in events %}
+			<div class="row eventInfo p-3 mb-3 mt-3 shadow">
+				<div class="col-sm  mt-1">
+					<h4>Quand?</h4>
+						<strong>{{event.start_date|date("d/m/Y") }}</strong>
+							{% if event.end_date is not null and event.end_date != event.start_date %}
+								jusqu'au
+									<strong>{{event.end_date|date("d/m/Y") }}</strong>
+							{% endif %}
+				</div>
+				<div class="col-sm  mt-1">
+					<h4>Évènement</h4>
+					<span class="mb-2">
+						{{event.name}}
+					</span>
+				</div>
+				<div class="col-sm  mt-1">
+					<h4>Prix</h4>
+					<span class="mb-2">€{{event.price}}</span>
+				</div>
+				<div class="col-sm  mt-1">
+					<h4>Description</h4>
+					<span class="mb-2">{{event.description}}</span>
+				</div>
+			</div>
+			{% endfor %}
+	
+
+			{#}
 			{% else %}
 				{% for event in events %}
 					{% if event.start_date|date("m") == 'now'|date("m") and event.start_date|date("d/m/Y") >= 'now'|date("d/m/Y") %}
@@ -145,18 +127,31 @@
 			{% endif %}
 			{# End Loop Event Card #}
 
-			<div class="dropdown">
+			{# adjust redirection#}
+			<form action="" method="post" class="d-flex flex-row justify-content-center">
+				<select name="monthId" class="form-select" aria-label="Default select example">
+					<option selected>Filtrer par mois</option>
+					{% for id, month in constant('App\\Model\\EventManager::MONTHS') %}
+						<option value="{{id}}">{{month}}</option>
+					{% endfor %}
+				</select>
+				<button type="submit" class="btn btn-primary">Rechercher</button>
+			</form>
+
+
+
+			{#}<div class="dropdown">
 				<a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
 					Filtrer par mois
 				</a>
 				<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 					{% for monthId, month in constant('App\\Model\\EventManager::MONTHS') %}
 						<li>
-							<a class="dropdown-item" href="/Event/filterByMonth/{{monthId}}">{{month}}</a>
+							<a class="dropdown-item" href="/Event/index/{{monthId}}">{{month}}</a>
 						</li>
 					{% endfor %}
 				</ul>
-			</div>
+			</div>{#}
 
 		<section class="container mb-5 mt-5 p-0 ">
 			<h2 class="text-uppercase text-center m-5">Derniers Évènements</h2>

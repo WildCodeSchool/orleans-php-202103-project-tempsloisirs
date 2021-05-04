@@ -12,7 +12,10 @@ h5 {
     font-family: var(--title-font);
     font-weight: 700;
     margin: 100px 0px 60px 0px;
+}
 
+h3{
+    color: var(--secondary-color);
 }
 
 
@@ -30,7 +33,7 @@ h5 {
 
 }
 
-.shadow:hover h5 {
+.shadow:hover h4 {
 
     color: var(--light-color);
 

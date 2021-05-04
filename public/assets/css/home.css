@@ -35,17 +35,69 @@
 
 .informationSection {
     background-color: var(--primary-color);
+    overflow-y: scroll;
+    max-height: 400px;
 
 
 }
 
 .informationCard {
     background-color: aliceblue;
+    border-radius: 5px;
+
 
 }
+
+.infoButton {
+    margin: 10vh auto 0px auto;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    border: none;
+    margin: auto;
+
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary-color);
+    filter: brightness(110%);
+}
+
 
 .monthSection {
     background-color: var(--primary-color);
     max-height: 400px;
+    width: 70vh;
     overflow-y: scroll;
+
+}
+
+.carouselHome h2 {
+    font-family: var(--title-font);
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.carousel .carousel-item {
+    max-height: 500px;
+    object-fit: contain;
+}
+
+/* INFORMATION PART */
+
+.informationTable h1 {
+    margin-top: 15vh;
+    font-family: var(--title-font);
+    font-size: 2em;
+    color: var(--primary-color);
+    text-transform: uppercase;
+}
+
+.informationTable th {
+    text-transform: uppercase;
+    font-family: var(--title-font);
+    font-size: 1.5em;
+    color: var(--primary-color);
 }

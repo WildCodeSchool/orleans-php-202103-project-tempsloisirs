@@ -20,4 +20,11 @@ class HomeController extends AbstractController
         'activities' => $activities,
         'informations' => $informations,]);
     }
+
+    public function informations(): string
+    {
+        $informationManager = new InformationManager();
+        $informations = $informationManager->selectAll();
+        return $this->twig->render('Home/informations.html.twig', ['informations' => $informations,]);
+    }
 }

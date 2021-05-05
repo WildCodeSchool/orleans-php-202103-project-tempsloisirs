@@ -92,10 +92,6 @@ class ContactController extends AbstractController
             $errorsLength[] = 'Le nom ne doit pas dépassé ' . self::MAX_LENGTH_NAME . ' caractères';
         }
 
-        if (strlen($data['phone']) > 10) {
-            $errorsLength[] = 'Le téléphone ne doit pas dépassé 10 chiffres';
-        }
-
         return $errorsLength;
     }
 

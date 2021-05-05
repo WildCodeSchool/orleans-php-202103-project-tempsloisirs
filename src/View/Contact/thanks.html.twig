@@ -10,13 +10,9 @@
 
 {% block content %}
 	<div class="box-container">
-		<div class="thanks-box">
-        <br/>
-        <br/>
-        <br/>
-			<h2 class="thanks-message">Merci {{ firstname }} {{ lastname }}. Votre mail est bien envoyé</h2>
-			<div class="links d-flex justify-content-start align-items-center">
-				<a href="/Contact/index" class="btn btn-primary">Retour</a>
-			</div>
+		<h2 class="thanks-message text-center mb-3">Merci {{ firstname }} {{ lastname }}! Votre mail est bien envoyé.</h2>
+		<div class="links d-flex justify-content-center align-items-center">
+			<a href="/Contact/index" class="btn btn-primary">Retour</a>
 		</div>
-	{% endblock %}
+	</div>
+{% endblock %}

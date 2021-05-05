@@ -36,16 +36,6 @@ CREATE TABLE `activity` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `activity`
---
-
-LOCK TABLES `activity` WRITE;
-/*!40000 ALTER TABLE `activity` DISABLE KEYS */;
-INSERT INTO `activity` VALUES (1,'danse','Lundi','Didier',NULL,'Danse de salon','00:00:00','00:00:00'),(2,'bingo','Mardi','Jacques',NULL,'incontournable bingo','00:00:00','00:00:00'),(3,'dictee','Jeudi','Emma',NULL,'attention aux mauvaises notes','00:00:00','00:00:00'),(4,'Salsa','Vendredi','Emma Guesbaya','Https://picsum.photos/id/1/200/300','Let\'s danse! Ca va transpirer','19:00:00','20:00:00');
-/*!40000 ALTER TABLE `activity` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `album`
 --
 

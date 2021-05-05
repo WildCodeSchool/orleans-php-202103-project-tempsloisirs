@@ -1,6 +1,14 @@
 @import 'style.css';
 @import 'admin.css';
 
-#maCarte { 
-    height: 400px;
+.iframe {
+    justify-content: center;
+}
+
+@media screen and (max-width: 800px) {
+
+    iframe {
+        width: 50%;
+    }
+
 }

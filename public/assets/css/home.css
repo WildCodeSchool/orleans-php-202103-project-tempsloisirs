@@ -1,5 +1,5 @@
 .hero-image {
-    color: white;
+    color: var(--white-color);
     background-image: url("/assets/images/home/heroimage.jpg");
     background-position: center;
     background-repeat: no-repeat;
@@ -15,7 +15,7 @@
     color: var(--light-color);
     text-transform: uppercase;
     font-family: var(--title-font);
-    /* font-size: 8vh; */
+
 }
 
 
@@ -25,7 +25,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: white;
+    color: var(--white-color);
 }
 
 .lastInfos h2 {
@@ -46,35 +46,9 @@
 
 }
 
-.informationSection::-webkit-scrollbar,
-.monthSection::-webkit-scrollbar {
-    width: 10px;
-    background: #888;
-}
-
-/* Track */
-.informationSection::-webkit-scrollbar-track,
-.monthSection::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-/* Handle */
-.informationSection::-webkit-scrollbar-thumb,
-.monthSection::-webkit-scrollbar-track-thumb {
-    background: #888;
-}
-
-/* Handle on hover */
-.informationSection::-webkit-scrollbar-thumb:hover,
-.monthSection::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
-
 .informationCard {
-    background-color: aliceblue;
+    background-color: var(--light-color);
     border-radius: 5px;
-
-
 }
 
 

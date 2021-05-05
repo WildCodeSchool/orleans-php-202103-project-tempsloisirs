@@ -2,10 +2,15 @@
 
 namespace App\Controller;
 
+use App\Model\BoardManager;
+
 class AboutController extends AbstractController
 {
     public function index()
     {
-        return $this->twig->render('About/index.html.twig');
+        $boardManager = new BoardManager();
+        $boardMembers = $boardManager->selectAll('firstname');
+
+        return $this->twig->render('About/index.html.twig', ['boardMembers' => $boardMembers]);
     }
 }

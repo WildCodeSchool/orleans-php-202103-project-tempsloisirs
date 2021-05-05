@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-class AdminBoardManager extends AbstractManager
+class BoardManager extends AbstractManager
 {
     public const TABLE = 'board';
 

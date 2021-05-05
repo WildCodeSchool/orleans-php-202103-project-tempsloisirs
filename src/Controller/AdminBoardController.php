@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Model\AdminBoardManager;
+use App\Model\BoardManager;
 
 class AdminBoardController extends AbstractController
 {
@@ -16,7 +16,7 @@ class AdminBoardController extends AbstractController
      **/
     public function index(): string
     {
-        $adminManager = new AdminBoardManager();
+        $adminManager = new BoardManager();
         $boardMembers = $adminManager->selectAll('firstname');
 
         return $this->twig->render('Admin/Board/index.html.twig', ['boardMembers' => $boardMembers]);
@@ -28,7 +28,7 @@ class AdminBoardController extends AbstractController
     public function delete(int $id)
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $adminBoardManager = new AdminBoardManager();
+            $adminBoardManager = new BoardManager();
             $adminBoardManager->delete($id);
             header('Location:/adminBoard/index');
         }
@@ -52,7 +52,7 @@ class AdminBoardController extends AbstractController
             $errors = array_merge($errorsEmpty, $errorsFilter, $errorsLength);
 
             if (empty($errors)) {
-                $adminBoardManager = new AdminBoardManager();
+                $adminBoardManager = new BoardManager();
                 $adminBoardManager->insert($boardMember);
                 header('Location:/adminBoard/index');
             }
@@ -68,7 +68,7 @@ class AdminBoardController extends AbstractController
      */
     public function edit(int $id): string
     {
-        $adminManager = new AdminBoardManager();
+        $adminManager = new BoardManager();
         $boardMember = $adminManager->selectOneById($id);
 
         $errorsEmpty = $errorsLength = $errorsFilter = $errors = [];

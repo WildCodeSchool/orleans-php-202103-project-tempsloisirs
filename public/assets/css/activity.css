@@ -39,6 +39,7 @@ h2, h3{
     border-radius: 5px;
 }
 
-.activity-time img {
-    filter: contrast(160%);
+.clock-icon {
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
 }

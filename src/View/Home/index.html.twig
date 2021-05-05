@@ -23,8 +23,8 @@
 	<section class="lastInfos container">
 		<div class="row">
 
-			<div class="informationSection me-4 mt-5 p-4 col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
-				<h2 class="text-center fw-bold">Les dernières informations</h2>
+			<div class="informationSection me-2 mt-5 p-4 col-sm-6 col-md-12 col-lg-12 col-xl-6">
+				<h2 class="text-center fw-bold text-uppercase">Les Dernières Informations</h2>
 				<div class="infoButton d-flex">
 			
 				<a class="btn btn-secondary fw-bold" href="/Home/informations">Voir toutes les informations</a>
@@ -33,7 +33,7 @@
 					{% if information.date|date("m/Y") == "now"|date("m/Y") %}
 						<div class="informationCard mb-3 mt-3 p-2">
 							<span class="fw-bold me-2">{{information.date|date("d/m/Y","Europe/Paris")}}</span>
-							<span class="rounded  p-2 fw-bold text-white m-3 {{information.type}}-color">{{ constant('App\\Controller\\AdminInformationController::LAST_INFORMATIONS')[information.type] }}</span>
+							<span class="rounded alertType p-1 fw-bold text-white m-3 {{information.type}}-color">{{ constant('App\\Controller\\AdminInformationController::LAST_INFORMATIONS')[information.type] }}</span>
 							<span>{{information.content}}</span>
 						</div>
 						{% endif %}
@@ -46,8 +46,9 @@
 				
 			</div>
 
-			<div class="monthSection p-4 mt-5 col-sm-6 col-md-5 offset-md-2 col-lg-5 offset-lg-0">
-				<h2 class="text-center fw-bold">{{"now"|date("m | Y") }}</h2>
+			<div class="monthSection p-4 mt-5 col-sm-6 col-md-5 col-lg-4 col-xl-6">
+				<h2 class="text-center fw-bold">	{{constant('App\\Model\\EventManager::MONTHS')['now'|date('n')]}}
+					| {{'now'|date('Y')}}</h2>
 
 				{% for activity in activities %}
 					{% if activity.start_date|date("m/Y") == "now"|date("m/Y") %}

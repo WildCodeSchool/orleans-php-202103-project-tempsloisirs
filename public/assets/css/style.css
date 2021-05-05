@@ -3,6 +3,7 @@
 
 :root {
   --primary-color: #5eaaa8;
+  --primary-color-transparence: #5eaaa88e;
   --secondary-color: #ecb390;
   --danger-color: #ff7979;
   --warning-color: #ffd13b;
@@ -10,6 +11,8 @@
   --dark-color: #595959;
   --grey-color: #c4c4c4;
   --page-color: #e5e5e5;
+  --white-color: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.2);
 
   --text-font: 'Open Sans', sans-serif;
   --title-font: 'Simonetta', cursive;

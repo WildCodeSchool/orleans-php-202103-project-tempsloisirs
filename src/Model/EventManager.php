@@ -5,6 +5,18 @@ namespace App\Model;
 class EventManager extends AbstractManager
 {
     public const TABLE = 'event';
+    public const MONTHS = [ 1 => 'Janvier',
+        2 => 'Février',
+        3 => 'Mars',
+        4 => 'Avril',
+        5 => 'Mai',
+        6 => 'Juin',
+        7 => 'Juillet',
+        8 => 'Aout',
+        9 => 'Septembre',
+        10 => 'Octobre',
+        11 => 'Novembre',
+        12 => 'Décembre'];
 
     public function updateEvent(array $event)
     {
@@ -36,5 +48,16 @@ class EventManager extends AbstractManager
         $statement->bindValue('description', $event['description'], \PDO::PARAM_STR);
 
         return $statement->execute();
+    }
+
+    public function selectByMonth(int $monthId)
+    {
+        $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE .
+        " WHERE MONTH(`start_date`)=:monthId AND YEAR(`start_date`) = YEAR(CURRENT_DATE())");
+
+        $statement->bindValue('monthId', $monthId, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetchAll();
     }
 }

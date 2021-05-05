@@ -1,6 +1,6 @@
 .hero-image {
     color: white;
-    background-image: url("/assets/images/home/heroimage.png");
+    background-image: url("/assets/images/home/heroimage.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -34,9 +34,15 @@
 }
 
 .informationSection {
-    background-color: var(--primary-color);
+    background-color: var(--primary-color-transparence);
     overflow-y: scroll;
     max-height: 400px;
+
+}
+
+.informationSection h2 {
+    font-family: var(--title-font);
+
 
 }
 
@@ -71,6 +77,12 @@
 
 }
 
+
+.alertType {
+    font-size: 14px;
+
+}
+
 .infoButton {
     margin: 2vh auto 0px auto;
 }
@@ -89,11 +101,15 @@
 
 
 .monthSection {
-    background-color: var(--primary-color);
+    background-color: var(--primary-color-transparence);
     max-height: 400px;
     width: 70vh;
     overflow-y: scroll;
 
+}
+
+.monthSection h2 {
+    font-family: var(--title-font);
 }
 
 .carouselHome h2 {

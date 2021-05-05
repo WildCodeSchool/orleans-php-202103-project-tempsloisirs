@@ -7,11 +7,17 @@
     color: var(--primary-color);
 }
 
-h2, h3{
+h2,
+h3 {
     color: var(--primary-color);
 }
 
-.btn, .btn-primary, .btn:hover, .btn-primary:hover, .btn:active, .btn-primary:active  {
+.btn,
+.btn-primary,
+.btn:hover,
+.btn-primary:hover,
+.btn:active,
+.btn-primary:active {
     background-color: var(--secondary-color);
     color: var(--light-color);
     font-weight: 650;
@@ -19,21 +25,23 @@ h2, h3{
     border-radius: 5px;
 }
 
-.btn:hover, .btn-primary:hover{
+.btn:hover,
+.btn-primary:hover {
     filter: brightness(110%);
 }
 
-.btn:active, .btn-primary:active {
+.btn:active,
+.btn-primary:active {
     filter: brightness(90%);
 }
 
-.card-img-top{
+.card-img-top {
     width: 150px;
     height: 125px;
     object-fit: cover;
 }
 
-.activity-time{
+.activity-time {
     background-color: var(--primary-color);
     color: var(--light-color);
     border-radius: 5px;
@@ -41,4 +49,9 @@ h2, h3{
 
 .activity-time img {
     filter: contrast(160%);
+}
+
+.carousel .carousel-item {
+    max-height: 500px;
+    object-fit: contain;
 }

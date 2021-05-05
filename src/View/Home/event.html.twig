@@ -2,8 +2,8 @@
 {% block title %}Les Temps des Loisirs | Évènements
 {% endblock %}
 {% block stylesheet %}<link rel="stylesheet" href="/assets/css/event.css">
-		<link rel="stylesheet" href="/assets/css/admin.css">
-		<link rel="stylesheet" href="/assets/css/style.css">
+	<link rel="stylesheet" href="/assets/css/admin.css">
+	<link rel="stylesheet" href="/assets/css/style.css">
 {% endblock %}
 
 {% block content %}
@@ -56,38 +56,44 @@
 
 		<section class="container text-uppercase text-center mb-5 mt-5">
 			<h2 class="m-5" id="calendar">Calendrier</h2>
-			<h3 class="m-4 p-2" >
+			<h3 class="m-4 p-2">
 				{{constant('App\\Model\\EventManager::MONTHS')[monthId]}}
-					{{'now'|date('Y')}}
+				{{'now'|date('Y')}}
 			</h3>
 
 			{# Start Loop Event Card #}
 			{% for event in events %}
-			<div class="row eventInfo p-3 mb-3 mt-3 shadow">
-				<div class="col-sm my-2">
-					<h4>Quand?</h4>
+				<div class="row eventInfo p-3 mb-3 mt-3 shadow">
+					<div class="col-sm my-2">
+						<h4>Quand?</h4>
 						<strong>{{event.start_date|date("d/m/Y") }}</strong>
-							{% if event.end_date is not null and event.end_date != event.start_date %}
-								jusqu'au
-									<strong>{{event.end_date|date("d/m/Y") }}</strong>
-							{% endif %}
+						{% if event.end_date is not null and event.end_date != event.start_date %}
+							jusqu'au
+							<strong>{{event.end_date|date("d/m/Y") }}</strong>
+						{% endif %}
+					</div>
+					<div class="col-sm  my-2">
+						<h4>Évènement</h4>
+						<strong>
+							{{event.name}}
+						</strong>
+					</div>
+					<div class="col-sm my-2">
+						<h4>Prix</h4>
+						<strong>€{{event.price}}</strong>
+					</div>
+					<div class="col-sm  my-2">
+						<h4>Description</h4>
+						<span>{{event.description}}</span>
+					</div>
 				</div>
-				<div class="col-sm  my-2">
-					<h4>Évènement</h4>
-					<strong>
-						{{event.name}}
-					</strong>
-				</div>
-				<div class="col-sm my-2">
-					<h4>Prix</h4>
-					<strong>€{{event.price}}</strong>
-				</div>
-				<div class="col-sm  my-2">
-					<h4>Description</h4>
-					<span>{{event.description}}</span>
-				</div>
-			</div>
 			{% endfor %}
+
+			{% if events is empty %}
+				<div class="alert alert-warning" role="alert">
+					<strong>Aucun évènement n'est prévu ce mois</strong>
+				</div>
+			{% endif %}
 			{# End Loop Event Card #}
 
 			<form action="#calendar" method="post" class="d-flex flex-row justify-content-center">

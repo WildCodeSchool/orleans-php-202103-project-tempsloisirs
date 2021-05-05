@@ -6,9 +6,9 @@
 {% endblock %}
 
 {% block content %}
-<main class="container">
+<main class="container py-lg-5 px-lg-5 py-3 px-3">
 
-    <h1 class="h1 text-align my-lg-5 my-3">Toutes nos activités</h1>
+    <h1 class="h1 text-align mb-3 mt-5">Toutes nos activités</h1>
 
     <div id="list-weekday" class="row list-group d-flex flex-column flex-md-row justify-content-around">
 
@@ -40,8 +40,16 @@
                                 <p class="card-text"> avec <strong>{{activity.instructor_name}}</strong></p>
                                 <p class="card-subtitle"><em>{{activity.description | capitalize}}</em></p>
                             </div>
+                        <div class="d-flex align-items-center activity-time p-2">
+                            <img src="/assets/images/icon_time.svg.png" alt="clock" class="pe-2 clock-icon">
 
-                            <p class="activity-time align-self-center p-1">{{ activity.start_time | date('H')}}h{{ activity.start_time | date('i')}}</p>
+                            <h5 class="align-self-center mt-2">
+                                {{ activity.start_time | date('H')}}h{{ activity.start_time | date('i')}}
+                                à
+                                {{ activity.end_time | date('H')}}h{{ activity.end_time | date('i')}}
+                            </h5>
+
+                        </div>
 
                         </div>
                     </div>

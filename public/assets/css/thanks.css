@@ -1,0 +1,9 @@
+@import 'admin.css';
+
+.box-container {
+    margin-top: 4rem;
+}
+
+footer {
+    display: none;
+}

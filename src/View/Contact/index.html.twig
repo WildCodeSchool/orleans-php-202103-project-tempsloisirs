@@ -1,0 +1,34 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+	<link
+	rel="stylesheet" href="/assets/css/contact.css">
+	<!-- Fichiers css map -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+{% endblock %}
+
+{% block title %}
+	Contact
+{% endblock %}
+
+{% block content %}
+
+	<main class="container py-lg-5 px-lg-5 py-3 px-3">
+
+		<header class="admin-header d-flex justify-content-lg-between flex-lg-row align-items-lg-center flex-column px-lg-5 mb-lg-5 mb-3">
+			<h1 class="text-center h1 pt-3">Contactez-nous</h1>
+		</header>
+
+		{% include "Contact/_form.html.twig" %}
+		<br/>
+		<br/>
+
+		<h2 class="text-center h1 pb-5">Où nous trouver ?</h2>
+
+		<div class="d-flex flex-column justify-content-center align-items-center">
+			<iframe width="600" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=1.9618213176727297%2C47.82893817479573%2C1.9752109050750735%2C47.83559310285169&amp;layer=mapnik&amp;marker=47.83226394492732%2C1.9685161113739014" style="border: 1px solid black"></iframe><br/><small>
+				<a href="https://www.openstreetmap.org/?mlat=47.83226&amp;mlon=1.96852#map=17/47.83226/1.96852">Afficher une carte plus grande</a>
+			</small>
+		</div>
+	</main>
+{% endblock %}

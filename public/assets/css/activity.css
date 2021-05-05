@@ -47,8 +47,8 @@ h3 {
     border-radius: 5px;
 }
 
-.activity-time img {
-    filter: contrast(160%);
+.clock-icon {
+    filter: invert(100%);
 }
 
 .carousel .carousel-item {

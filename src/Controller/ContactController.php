@@ -15,11 +15,12 @@ class ContactController extends AbstractController
 
     //    private array $errors = [];
     private const MAX_LENGTH_NAME = 100;
+    public const TITLES = ['M' => 'Monsieur', 'Mme' => 'Madame', 'Melle' => 'Mademoiselle'];
 
     public function index(): string
     {
-        $titles = ['M' => 'Monsieur', 'Mme' => 'Madame', 'Melle' => 'Mademoiselle'];
         $errorsEmpty = $errorsLength = $errors = [];
+        $data = ['firstname', 'lastname', 'phone', 'email', 'message'];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data = array_map('trim', $_POST);
@@ -33,7 +34,7 @@ class ContactController extends AbstractController
                 $errors[] = 'Mauvais format d\'email';
             }
 
-            if (!in_array($data['title'], $titles)) {
+            if (!in_array($data['title'], self::TITLES)) {
                 $errors[] = 'Le titre n\'est pas valable';
             }
 
@@ -47,7 +48,7 @@ class ContactController extends AbstractController
             'Contact/index.html.twig',
             [
                 'errors' => $errors,
-                'titles' => $titles
+                'data' => $data,
             ]
         );
     }

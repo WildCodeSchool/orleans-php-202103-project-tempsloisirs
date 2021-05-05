@@ -1,14 +1,2 @@
-@import 'style.css';
 @import 'admin.css';
 
-.iframe {
-    justify-content: center;
-}
-
-@media screen and (max-width: 800px) {
-
-    iframe {
-        width: 50%;
-    }
-
-}

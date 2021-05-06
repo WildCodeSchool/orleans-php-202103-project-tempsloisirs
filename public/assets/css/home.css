@@ -1,0 +1,116 @@
+.hero-image {
+    color: var(--white-color);
+    background-image: url("/assets/images/home/heroimage.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 80vh;
+    width: 100%;
+
+}
+
+.hero-image h1 {
+
+    color: var(--light-color);
+    text-transform: uppercase;
+    font-family: var(--title-font);
+
+}
+
+
+.hero-text {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--white-color);
+}
+
+.lastInfos h2 {
+    color: var(--light-color);
+
+}
+
+.informationSection {
+    background-color: var(--primary-color-transparence);
+    overflow-y: scroll;
+    max-height: 400px;
+
+}
+
+.informationSection h2 {
+    font-family: var(--title-font);
+
+
+}
+
+.informationCard {
+    background-color: var(--light-color);
+    border-radius: 5px;
+}
+
+
+.alertType {
+    font-size: 14px;
+
+}
+
+.infoButton {
+    margin: 2vh auto 0px auto;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    border: none;
+    margin: auto;
+
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary-color);
+    filter: brightness(110%);
+}
+
+
+.monthSection {
+    background-color: var(--primary-color-transparence);
+    max-height: 400px;
+    width: 70vh;
+    overflow-y: scroll;
+
+}
+
+.monthSection h2 {
+    font-family: var(--title-font);
+}
+
+.carouselHome h2 {
+    font-family: var(--title-font);
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.carousel .carousel-item {
+    max-height: 500px;
+    object-fit: contain;
+}
+
+/* INFORMATION PART */
+
+.informationTable h1 {
+    margin-top: 15vh;
+    font-family: var(--title-font);
+    font-size: 2em;
+    color: var(--primary-color);
+    text-transform: uppercase;
+}
+
+.informationTable th {
+    text-transform: uppercase;
+    font-family: var(--title-font);
+    font-size: 1.5em;
+    color: var(--primary-color);
+}

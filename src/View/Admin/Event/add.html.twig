@@ -1,22 +1,22 @@
 {% extends 'layoutAdmin.html.twig' %}
 
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/admin.css">
+{% endblock %}
+
 {% block title %}Admin - Ajouter un évènement
 {% endblock %}
-{% block stylesheet %}
-	<link rel="stylesheet" href="/assets/css/adminEvents.css">
-	<link rel="stylesheet" href="/assets/css/admin.css">
-{% endblock %}
+
 {% block content %}
-<main class="py-lg-5 px-lg-5 py-3 px-3">
-	<div class="container">
-		<div class="eventSection">
-			<div class="eventTitle d-flex justify-content-lg-between flex-lg-row align-items-lg-center flex-column px-lg-5 mb-lg-5 mb-3">
-				<h1>Ajouter un Évènement</h1>
-				<a class="btn btn-primary mt-3" href="/AdminEvent/index" role="button">Gérer les évènements</a>
-			</div>
-				
-			{% include '/Admin/Event/_form.html.twig' %}
-			
-		</div>
+
+	<main class="py-lg-5 px-lg-5 py-3 px-3 d-flex justify-content-center flex-column">
+
+        <header class="admin-header d-flex justify-content-lg-between flex-lg-row align-items-lg-center flex-column px-lg-5 mb-lg-5 mb-3">
+			<h1 class="text-center h1">Ajouter un évènement</h1>
+			<a href="/adminEvent/index" class="btn btn-primary mt-3 mt-lg-0">Gérer les évènements</a>
+		</header>
+
+		{% include 'Admin/Event/_form.html.twig' %}
+
 	</main>
+
 {% endblock %}

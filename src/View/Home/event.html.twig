@@ -1,0 +1,143 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Les Temps des Loisirs | Évènements
+{% endblock %}
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/event.css">
+	<link rel="stylesheet" href="/assets/css/admin.css">
+	<link rel="stylesheet" href="/assets/css/style.css">
+{% endblock %}
+
+{% block content %}
+	<main class="container-fluid p-0 eventMain">
+
+
+		<h1 class="text-uppercase text-center">Tous Nos évènements</h1>
+		<div class="bg-eventCards">
+			<section class="container d-flex justify-content-between flex-wrap">
+				<div class="flip-card">
+					<div class="flip-card-inner">
+						<div class="flip-card-front bg-front-1">
+							<h3>Bingo</h3>
+						</div>
+						<div class="flip-card-back">
+							<h3>Bingo</h3>
+							<p>On fait de bingo régulièrement entre les adhérents et leurs familles. Ce jeu, permettant de gagner des prix est très populaire chez notres adhérents.
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="flip-card">
+					<div class="flip-card-inner">
+						<div class="flip-card-front bg-front-2">
+							<h3>Voyages</h3>
+						</div>
+						<div class="flip-card-back">
+							<h3>Voyages</h3>
+							<p>Le temps des loisirs a pour but de regrouper les passionnés de voyage afin de favoriser, entre les adhérents, les échanges de vécu et d'informations pratiques sur leurs voyages, de mettre en commun ces éléments, et de faciliter ainsi la préparation d'un prochain voyage.
+							</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="flip-card">
+					<div class="flip-card-inner">
+						<div class="flip-card-front bg-front-3">
+							<h3>Sorties</h3>
+						</div>
+						<div class="flip-card-back">
+							<h3>Sorties</h3>
+							<p>Nous favorisons des départs réguliers parmi les membres et les sorties sont ouvertes à tous les adhérents, cependant certaines d'entre elles sont plus particulièrement destinées aux débutants.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+
+		<section class="container text-uppercase text-center mb-5 mt-5">
+			<h2 class="m-5" id="calendar">Calendrier</h2>
+			<h3 class="m-4 p-2">
+				{{constant('App\\Model\\EventManager::MONTHS')[monthId]}}
+				{{'now'|date('Y')}}
+			</h3>
+
+			{# Start Loop Event Card #}
+			{% for event in events %}
+				<div class="row eventInfo p-3 mb-3 mt-3 shadow">
+					<div class="col-sm my-2">
+						<h4>Quand?</h4>
+						<strong>{{event.start_date|date("d/m/Y") }}</strong>
+						{% if event.end_date is not null and event.end_date != event.start_date %}
+							jusqu'au
+							<strong>{{event.end_date|date("d/m/Y") }}</strong>
+						{% endif %}
+					</div>
+					<div class="col-sm  my-2">
+						<h4>Évènement</h4>
+						<strong>
+							{{event.name}}
+						</strong>
+					</div>
+					<div class="col-sm my-2">
+						<h4>Prix</h4>
+						<strong>€{{event.price}}</strong>
+					</div>
+					<div class="col-sm  my-2">
+						<h4>Description</h4>
+						<span>{{event.description}}</span>
+					</div>
+				</div>
+			{% endfor %}
+
+			{% if events is empty %}
+				<div class="alert alert-warning" role="alert">
+					<strong>Aucun évènement n'est prévu ce mois</strong>
+				</div>
+			{% endif %}
+			{# End Loop Event Card #}
+
+			<form action="#calendar" method="post" class="d-flex flex-row justify-content-center">
+				<select name="monthId" class="form-select w-25 me-1" aria-label="Default select example">
+					<option selected>Filtrer par mois</option>
+					{% for id, month in constant('App\\Model\\EventManager::MONTHS') %}
+						<option value="{{id}}">{{month}}</option>
+					{% endfor %}
+				</select>
+				<button type="submit" class="btn btn-primary ms-1">Appliquer</button>
+			</form>
+		</section>
+
+		<section class="container mb-5 mt-5 p-0 ">
+			<h2 class="text-uppercase text-center m-5">Derniers Évènements</h2>
+
+			<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+				<div class="carousel-indicators">
+					<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+					<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+					<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+				</div>
+				<div class="carousel-inner eventCarousel">
+					<div class="carousel-item active">
+						<img src="http://tempsdesloisirs45590.fr/regard10/Documents_Communs/_pageWeb/image/photogroupe/italie_mai18.png" class="d-block w-100" alt="...">
+					</div>
+					<div class="carousel-item">
+						<img src="http://tempsdesloisirs45590.fr/regard10/Documents_Communs/_pageWeb/image/photogroupe/tyrol_11sept17_swaroski.jpg" class="d-block w-100" alt="...">
+					</div>
+					<div class="carousel-item">
+						<img src="http://tempsdesloisirs45590.fr/regard10/Documents_Communs/_pageWeb/image/photogroupe/tyrol_11sept17_innsbruck.jpg" class="d-block w-100" alt="...">
+					</div>
+				</div>
+				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+			</div>
+		</section>
+
+	</main>
+
+{% endblock %}

@@ -8,7 +8,11 @@ class AdminInformationController extends AbstractController
 {
     private const MAX_CONTENT_LENGTH = 255;
     private const MAX_DATE_LENGTH = 12;
-    public const LAST_INFORMATIONS = ['alert' => 'Alerte', 'warning' => 'Avertissement', 'info' => 'Information'];
+    public const LAST_INFORMATIONS = [
+        'alert' => 'Alerte ❗',
+        'warning' => 'Avertissement ⚠️',
+        'info' => 'Information ℹ️'
+    ];
 
     /**
      * Show informations for a specific item

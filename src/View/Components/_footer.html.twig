@@ -1,0 +1,48 @@
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/footer.css">
+	<link rel="stylesheet" href="/assets/css/navbar.css">
+{% endblock %}
+
+<footer class="footer mt-5 footerContainer pt-3">
+	<div class="row footerContainer text-center g-0">
+		<div class="col-sm mt-5 col-lg-4 col-md-3 mb-4 mb-md-0">
+			<p class="fw-bold text-uppercase footerLogo p-4">Le Temps des Loisirs</p>
+
+		</div>
+
+		<div class="col-sm mt-4 col-lg-4 col-md-6 mb-4 mb-md-0">
+			<p class="text-center fw-bold text-uppercase">Contactez-nous:</p>
+			<p>
+				45 Rue  45590 Saint Cyr-en-Val</p>
+			<p>tempsloisirs_cyrenval@orange.fr</p>
+			<p>+33 01 02 03 04 05</p>
+		</div>
+
+		<div class="col-sm col-lg-4 col-md-2 mb-4 mt-2 mb-md-0 pb-3">
+			<ul class="nav flex-column ">
+				<li class="nav-item">
+					<a class="nav-link active" href="/Home/index">Accueil</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/About/index">À propos</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/Activity/index">Activités</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/Event/index">Évènements</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/Contact/index">Contact</a>
+				</li>
+			</ul>
+		</div>
+	
+	<div class="text-center p-3 text-light footerCopyright">
+		©<span class="fw-bold">
+			{{ "now"|date("Y") }}
+			Copyright</span>
+		- Aucune reproduction admise de ce site et de l'ensemble de son contenu.
+	</div>
+    </div>
+</footer>

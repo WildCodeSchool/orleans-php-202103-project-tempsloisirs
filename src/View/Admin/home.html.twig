@@ -25,26 +25,32 @@
 
 		<section class="d-flex flex-column align-items-center w-100">
 			<div class="d-flex flex-column align-items-center w-100 mb-3">
-				<a class="btn btn-primary btn-block w-50 py-lg-3 py-2 mb-lg-2 mb-2" href="/AdminActivity/index" role="button">Activités</a>
+				<a class="btn btn-primary btn-block col-lg-6 col-10 py-lg-3 py-2 mb-lg-2 mb-2" href="/AdminActivity/index" role="button">Activités</a>
 				<p class="text-center text-muted">Ajouter, éditer et supprimer vos activités</p>
 			</div>
 
 			<div class="d-flex flex-column align-items-center w-100 mb-3">
-				<a class="btn btn-primary btn-block w-50 py-lg-3 py-2 mb-lg-2 mb-2" href="/AdminEvent/index" role="button">Evènements</a>
+				<a class="btn btn-primary btn-block col-lg-6 col-10 py-lg-3 py-2 mb-lg-2 mb-2" href="/AdminEvent/index" role="button">Evènements</a>
 				<p class="text-center text-muted">Ajouter, éditer et supprimer vos évènements</p>
 			</div>
 
 			<div class="d-flex flex-column align-items-center w-100 mb-3">
-				<a class="btn btn-primary btn-block w-50 py-lg-3 py-2 mb-lg-2 mb-2" href="/AdminBoard/index" role="button">Conseil d'Administration</a>
+				<a class="btn btn-primary btn-block col-lg-6 col-10 py-lg-3 py-2 mb-lg-2 mb-2" href="/AdminBoard/index" role="button">Conseil d'Administration</a>
 				<p class="text-center text-muted">Ajouter, éditer et supprimer des informations sur le conseil d’administration</p>
 			</div>
 
 			<div class="d-flex flex-column align-items-center w-100 mb-3">
-				<a class="btn btn-primary btn-block w-50 py-lg-3 py-2 mb-lg-2 mb-2" href="/AdminInformation/index" role="button">Informations</a>
+				<a class="btn btn-primary btn-block col-lg-6 col-10 py-lg-3 py-2 mb-lg-2 mb-2" href="/AdminInformation/index" role="button">Informations</a>
 				<p class="text-center text-muted">Ajouter, éditer et supprimer les alertes affichées sur la page d’accueil</p>
+			</div>
+
+			<div class="d-flex flex-column align-items-center w-100 mb-3">
+				<a class="btn btn-secondary btn-block col-lg-3 col-7 py-lg-3 py-2 mb-lg-2 mb-2" href="/home/index" role="button"><strong>Retour au site principal</strong></a>
 			</div>
 		</section>
 	</div>
+
+	{% block footer %}{% endblock %}
 
 {% endblock %}
 

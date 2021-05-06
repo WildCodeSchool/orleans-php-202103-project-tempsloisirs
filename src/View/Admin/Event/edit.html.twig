@@ -1,27 +1,23 @@
 {% extends 'layoutAdmin.html.twig' %}
-{% block title %}Admin - Modifier l'évènement
-{% endblock %}
-{% block stylesheet %}
 
-	<link rel="stylesheet" href="/assets/css/adminEvents.css">
-	<link rel="preconnect" href="https://fonts.gstatic.com">
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/admin.css">
 {% endblock %}
+
+{% block title %}Modifier un évènement
+{% endblock %}
+
 {% block content %}
-	<main class="py-lg-5 px-lg-5 py-3 px-3">
-		<div class="container">
-			<div class="eventSection">
-				<div class="eventTitle d-flex justify-content-lg-between flex-lg-row align-items-lg-center flex-column px-lg-5 mb-lg-5 mb-3">
-					<h1>Modifier l'évènement</h1>
-					<a class="btn btn-primary mt-3" href="/AdminEvent/index" role="button">Gérer les évènements</a>
-				</div>
 
-				{% include '/Admin/Event/_form.html.twig' %}
+	<main class="py-lg-5 px-lg-5 py-3 px-3 d-flex justify-content-center flex-column">
 
-				<div class="admin-footer d-flex justify-content-center flex-md-row flex-column mt-lg-5 mt-2">
-					<a class="btn btn-primary btn-lg mx-1 my-1" href="#">Retour au site principal</a>
-					<a class="btn btn-primary btn-lg mx-1 my-1" href="#">Accueil Admin</a>
-				</div>
-			</div>
-		</div>
+		<header class="admin-header d-flex justify-content-lg-between flex-lg-row align-items-lg-center flex-column px-lg-5 mb-lg-5 mb-3">
+			<h1 class="text-center h1">Modifier
+				{{event.name}}</h1>
+			<a href="/adminEvent/index" class="btn btn-primary mt-3 mt-lg-0">Gérer les évènements</a>
+		</header>
+
+		{% include 'Admin/Event/_form.html.twig' with {buttonName: "Modifier l'évènement"} %}
+
 	</main>
+
 {% endblock %}

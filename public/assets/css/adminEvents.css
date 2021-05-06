@@ -10,11 +10,3 @@
   justify-content: space-between;
   align-items: center;
 }
-
-.errorsMessage {
-  list-style-type: none;
-}
-
-.form-label{
-  text-align: start;
-}

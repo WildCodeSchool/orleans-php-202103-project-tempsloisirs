@@ -9,10 +9,10 @@
 {% endblock %}
 
 {% block content %}
-	<div class="box-container">
-		<h2 class="thanks-message text-center mb-3">Merci {{ firstname }} {{ lastname }}! Votre mail est bien envoyé.</h2>
+	<div class="box-container d-flex flex-column mt-5 px-4">
+		<h2 class="thanks-message text-center mt-5 mb-4 h2 align-self-center">Merci <span class="text-blue"><strong>{{ firstname }} {{ lastname }}</strong></span>! Votre message a bien été envoyé.</h2>
 		<div class="links d-flex justify-content-center align-items-center">
-			<a href="/Contact/index" class="btn btn-primary">Retour</a>
+			<a href="/" class="btn btn-lg btn-primary">Retour à l'accueil</a>
 		</div>
 	</div>
 {% endblock %}

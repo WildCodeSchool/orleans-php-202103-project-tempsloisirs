@@ -7,6 +7,8 @@
 
 	<link rel="stylesheet" href="/assets/css/home.css">
 	<link rel="stylesheet" href="/assets/css/admin.css">
+	<link rel="stylesheet" href="/assets/css/event.css">
+	<link rel="stylesheet" href="/assets/css/style.css">
 {% endblock %}
 
 {% block content %}
@@ -15,7 +17,7 @@
 		<div class="hero-image p-0">
 			<div class="hero-text">
 				<h1 class="h1 display-3 mt-5-xl">Le Temps de Loisirs</h1>
-				<p class="lead">Ton club de loisir à Saint Cyr-En-Val</p>
+				<p class="lead">Votre club de loisir à Saint Cyr-En-Val</p>
 			</div>
 		</div>
 	</div>
@@ -29,20 +31,23 @@
 
 					<a class="btn btn-secondary fw-bold" href="/Home/informations">Voir toutes les informations</a>
 				</div>
+				{% set isThisMonth = false %}
 				{% for information in informations %}
 					{% if information.date|date("m/Y") == "now"|date("m/Y") %}
+						{% set isThisMonth = true %}
 						<div class="informationCard mb-3 mt-3 p-2">
 							<span class="fw-bold me-2">{{information.date|date("d/m/Y","Europe/Paris")}}</span>
 							<span class="rounded alertType p-1 fw-bold text-white m-3 {{information.type}}-color">{{ constant('App\\Controller\\AdminInformationController::LAST_INFORMATIONS')[information.type] }}</span>
 							<span>{{information.content}}</span>
 						</div>
 					{% endif %}
-					{% if information.date|date("m/Y") != "now"|date("m/Y") and loop.last %}
-						<div class="informationCard mb-3 mt-5 p-2 text-center">
-							<span>Sans informations récents.</span>
-						</div>
-					{% endif %}
+
 				{% endfor %}
+				{% if isThisMonth == false %}
+					<div class="mb-3 mt-5 p-2 text-center alert alert-warning">
+						<span>Aucunes informations récentes.</span>
+					</div>
+				{% endif %}
 
 			</div>
 
@@ -53,7 +58,9 @@
 					{{'now'|date('Y')}}</h2>
 
 				{% for activity in activities %}
+
 					{% if activity.start_date|date("m/Y") == "now"|date("m/Y") %}
+						{% set isThisMonth = true %}
 						<div class="informationCard mb-3 mt-3 p-2">
 							<span class="fw-bold me-2">
 								{{activity.start_date|date("d/m/Y","Europe/Paris")}}</span>
@@ -63,16 +70,23 @@
 				{% endfor %}
 
 				{% for event in events %}
+
 					{% if event.start_date|date("m/Y") == "now"|date("m/Y") %}
+						{% set isThisMonth = true %}
 						<div class="informationCard mb-3 mt-3 p-2">
 							<span class="fw-bold me-2">{{event.start_date|date("d/m/Y","Europe/Paris")}}</span>
 							<span>{{event.name}}</span>
 						</div>
 					{% endif %}
 				{% endfor %}
+				{% if isThisMonth == false %}
+					<div class="mb-3 mt-5 p-2 text-center alert alert-warning">
+						<span>Pas d'évènement ou activité ce mois-ci.</span>
+					</div>
+				{% endif %}
 
-			
-</div>
+
+			</div>
 		</div>
 	</section>
 

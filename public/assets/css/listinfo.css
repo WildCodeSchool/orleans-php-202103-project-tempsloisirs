@@ -1,0 +1,10 @@
+footer {
+    display: none;
+}
+
+.year {
+    color: var(--secondary-color);
+    font-family: var(--title-font);
+    font-size: 2em;
+
+}

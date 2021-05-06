@@ -69,6 +69,7 @@ class AdminActivityController extends AbstractController
     public function add(): string
     {
         $errorsEmpty = $errorsURL = $errorsTime = $errorsLength = $errorsDays = $errors = [];
+        $activities = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
@@ -94,6 +95,7 @@ class AdminActivityController extends AbstractController
 
         return $this->twig->render('Admin/Activity/add.html.twig', [
             'errors' => $errors,
+            'activity' => $activities
         ]);
     }
     // Delete everything past this before committing

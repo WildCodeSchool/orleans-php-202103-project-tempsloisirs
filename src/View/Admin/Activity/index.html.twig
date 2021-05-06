@@ -1,47 +1,50 @@
 {% extends 'layoutAdmin.html.twig' %}
 
 {% block title %}
-    Admin - Activités
+	Admin - Activités
 {% endblock %}
 
 {% block stylesheet %}
-    <link href="/assets/css/admin.css" rel="stylesheet">
+	<link href="/assets/css/admin.css" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
 
-<div class="container py-lg-5 px-lg-5 py-3 px-3">  
-    
+	<main class="activities py-lg-5 px-lg-5 py-3 px-3">
+
 		<header class="admin-header d-flex justify-content-lg-between flex-lg-row align-items-lg-center flex-column px-lg-5 mb-lg-5 mb-3">
 			<h1 class="text-center h1">Gérer les activités</h1>
-			<a href="/AdminActivity/add" class="btn btn-primary mt-3">Ajouter une activité</a>
+			<a href="/AdminActivity/add" class="btn btn-primary mt-3 mt-lg-0">Ajouter une activité</a>
 		</header>
- 
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
-        {% for activity in activities %}
-        <div class="col card-group">
-            <div class="card mb-3">
-                <img class="card-img-top h-50" src="https://picsum.photos/id/1/200/300" alt="Card image cap">
-                <div class="card-body h-50 d-flex flex-column justify-content-around">
-                    <h2 class="card-title">{{ activity.name }}</h2>
-                    <p class="card-text">Moniteur/Monitrice: {{activity.instructor_name}}</p>
-                    <p class="card-subtitle">{{ activity.description }}</p>
-                    <div class="row">
-                        <div class="col d-flex flex-row justify-content-around">
-                            <a href="/AdminActivity/edit/{{activity.id}}" class="btn btn-primary align-self-end w-100 my-1">Editer</a>
-                        </div>
-                        <div class="col d-flex flex-row justify-content-around">
-                            	<form method="POST" onSubmit="return confirm('Êtes-vous sûr(e) de vouloir supprimer ?');" action="/AdminActivity/delete/{{activity.id}}">
-								<button class="btn btn-danger delete align-self-end w-100 my-1">Supprimer</button>
-							</form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-    
-</div>
+
+		<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 px-lg-5">
+			{% for activity in activities %}
+				<div class="col card-group">
+					<div class="card mb-3">
+						{% if activity.image %}
+							<img src="{{activity.image}}" class="card-img-top" alt="{{activity.name}}">
+						{% else %}
+							<img src="https://i.stack.imgur.com/y9DpT.jpg" class="card-img-top" alt="L'image n'existe pas">
+						{% endif %}
+						<div class="card-body d-flex flex-column justify-content-between">
+							<div>
+								<h2 class="card-title">{{ activity.name }}</h2>
+								<p class="card-text">Moniteur/Monitrice:
+									{{ activity.instructor_name }}</p>
+								<p class="card-subtitle mb-3">{{ activity.description }}</p>
+							</div>
+							<div class="links d-flex">
+								<a href="/AdminActivity/edit/{{ activity.id }}" class="btn btn-primary w-50 me-1">Modifier</a>
+								<form class="w-50 ms-1" method="POST" onsubmit="return confirm('Êtes-vous sûr(e) de vouloir supprimer ?');" action="/AdminActivity/delete/{{activity.id}}">
+									<button class="btn btn-danger w-100">Supprimer</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+
+	</main>
 
 {% endblock %}

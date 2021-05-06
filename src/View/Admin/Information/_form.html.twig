@@ -25,10 +25,12 @@
 		<div class="form-group col col-lg-6 col-md-12 mx-auto">
 			<label class="col-sm-2 col-form-label col-form-label-lg" for="date">Date</label>
 			<input type="date" value="{{ information.date }}" name="date" class="form-control shadow-sm p-3 mb-1 bg-white rounded" id="date" placeholder="01/01/2021">
+			<div id="dateHelp" class="form-text">Veuillez entrer la date de l'information</div>
 		</div>
 		<div class="form-group col col-lg-6 col-md-12 mx-auto">
 			<label class="col-sm-2 col-form-label col-form-label-lg" for="content">Description</label>
-			<textarea name="content" class="form-control shadow-sm p-3 mb-3 bg-white rounded" id="content" placeholder="Description">{{ information.content }}</textarea>
+			<textarea name="content" class="form-control shadow-sm p-3 mb-1 bg-white rounded" id="content" placeholder="Description">{{ information.content }}</textarea>
+			<div id="descriptionHelp" class="form-text mb-3">Veuillez entrer la description de l'information</div>
 		</div>
 
 		<div class="form-group col col-lg-6 col-md-12 mx-auto">

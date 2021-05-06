@@ -1,6 +1,8 @@
 {% extends 'layout.html.twig' %}
 
-{% block title %} Activités | Le temps des loisirs{% endblock %}
+{% block title %}
+	Activités | Le temps des loisirs
+{% endblock %}
 
 {% block stylesheet %}<link rel="stylesheet" href="/assets/css/activity.css">
 {% endblock %}
@@ -8,7 +10,7 @@
 {% block content %}
 <main class="container py-lg-5 px-lg-5 py-3 px-3">
 
-    <h1 class="h1 text-align mb-3 mt-5">Toutes nos activités</h1>
+    <h1 class="h1 text-center mb-3 mt-5">Toutes nos activités</h1>
 
     <div id="list-weekday" class="row list-group d-flex flex-column flex-md-row justify-content-around">
 
@@ -23,10 +25,13 @@
     <section data-bs-spy="scroll" data-bs-target="#list-weekday" data-bs-offset="0" class="scrollspy-example" tabindex="0">
         {% for day in constant('App\\Model\\ActivityManager::DAYS' ) %}
 
-            <h2 id="{{day}}" class="h2 my-lg-5 my-3 mx-3">{{ day }}</h2>
+            <h2 id="{{day}}" class="h2 my-lg-5 my-3 mx-3">{{day}}</h2>
+                {% set isActivity = false %}
 
                 {% for activity in activities %}
                     {% if activity.weekday == day %}
+                        {% set isActivity = true %}
+                        {# start card #}
                         <div class="card d-flex flex-column flex-md-row align-items-center">
                             {% if activity.image %}
                                 <img src="{{activity.image}}" class="card-img-top m-4 ratio" alt="{{activity.name}}">
@@ -34,27 +39,34 @@
                                 <img src="/assets/images/no-img.png" class="card-img-top m-4 ratio" alt="L'image n'existe pas">
                             {% endif %}
 
-                        <div class="card-body d-flex flex-column align-items-center flex-md-row justify-content-between">
-                            <div class = "card-info d-flex flex-column align-items-center align-items-md-start">
-                                <h3>{{activity.name | capitalize }}</h3>
-                                <p class="card-text"> avec <strong>{{activity.instructor_name}}</strong></p>
-                                <p class="card-subtitle"><em>{{activity.description | capitalize}}</em></p>
+                            <div class="card-body d-flex flex-column align-items-center flex-md-row justify-content-between">
+                                <div class = "card-info d-flex flex-column align-items-center align-items-md-start">
+                                    <h3>{{activity.name | capitalize }}</h3>
+                                    <p class="card-text"> avec <strong>{{activity.instructor_name}}</strong></p>
+                                    <p class="card-subtitle"><em>{{activity.description | capitalize}}</em></p>
+                                </div>
+                            <div class="d-flex align-items-center activity-time p-2">
+                                <img src="/assets/images/icon_time.svg.png" alt="clock" class="pe-2 clock-icon">
+
+                                <h5 class="align-self-center mt-2">
+                                    {{ activity.start_time | date('H')}}h{{ activity.start_time | date('i')}}
+                                    à
+                                    {{ activity.end_time | date('H')}}h{{ activity.end_time | date('i')}}
+                                </h5>
                             </div>
-                        <div class="d-flex align-items-center activity-time p-2">
-                            <img src="/assets/images/icon_time.svg.png" alt="clock" class="pe-2 clock-icon">
 
-                            <h5 class="align-self-center mt-2">
-                                {{ activity.start_time | date('H')}}h{{ activity.start_time | date('i')}}
-                                à
-                                {{ activity.end_time | date('H')}}h{{ activity.end_time | date('i')}}
-                            </h5>
-
+                            </div>
                         </div>
-
-                        </div>
-                    </div>
+                        {#End card#}
                     {% endif %}
-            {% endfor %}
+                {% endfor %}
+                
+            {% if isActivity == false%}
+                <div class="alert alert-warning" role="alert">
+                    <strong>Aucune activité ce jour</strong>
+                </div>
+            {% endif %}
+
         {% endfor %}
     </section>
 

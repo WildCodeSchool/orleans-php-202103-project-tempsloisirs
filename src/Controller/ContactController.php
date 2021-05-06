@@ -85,11 +85,11 @@ class ContactController extends AbstractController
         $errorsLength = [];
 
         if (strlen($data['firstname']) > self::MAX_LENGTH_NAME) {
-            $errorsLength[] = 'Le prénom ne doit pas dépassé ' . self::MAX_LENGTH_NAME . ' caractères';
+            $errorsLength[] = 'Le prénom ne doit pas dépasser ' . self::MAX_LENGTH_NAME . ' caractères';
         }
 
         if (strlen($data['lastname']) > self::MAX_LENGTH_NAME) {
-            $errorsLength[] = 'Le nom ne doit pas dépassé ' . self::MAX_LENGTH_NAME . ' caractères';
+            $errorsLength[] = 'Le nom ne doit pas dépasser ' . self::MAX_LENGTH_NAME . ' caractères';
         }
 
         return $errorsLength;

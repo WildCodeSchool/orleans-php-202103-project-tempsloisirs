@@ -37,6 +37,7 @@
     background-color: var(--primary-color-transparence);
     overflow-y: scroll;
     max-height: 400px;
+    box-shadow: 0 4px 8px 0 var(--shadow-color);
 
 }
 
@@ -79,6 +80,7 @@
     max-height: 400px;
     width: 70vh;
     overflow-y: scroll;
+    box-shadow: 0 4px 8px 0 var(--shadow-color);
 
 }
 

@@ -1,2 +1,6 @@
 @import 'admin.css';
 
+label {
+    color: var(--dark-color);
+    font-weight: 600;
+}

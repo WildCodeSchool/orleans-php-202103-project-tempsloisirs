@@ -32,6 +32,8 @@
 			</thead>
 			<tbody>
 				{% for information in informations %}
+				
+					{% if information.date|date("Y") == "now"|date("Y") %}
 					<tr>
 					
 						<td>{{information.date|date("d/m/Y") }}</td>
@@ -40,6 +42,7 @@
 						</td>
 						<td>{{information.content}}</td>
 					</tr>
+					{% endif %}
 				{% endfor %}
 
 			</tbody>

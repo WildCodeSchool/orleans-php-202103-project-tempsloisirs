@@ -8,16 +8,23 @@
 
 	<link rel="stylesheet" href="/assets/css/home.css">
 	<link rel="stylesheet" href="/assets/css/admin.css">
+	<link rel="stylesheet" href="/assets/css/listinfo.css">
 {% endblock %}
 
 {% block content %}
 	<main class="container informationTable">
-		<h1 class="fw-bold">Toutes les informations:</h1>
+	<div>
+		<h1 class="fw-bold text-center">Toutes les informations</h1>
+		<div class="year d-flex justify-content-center fw-bold">
+		<span>
+		{{"now"|date("Y")}}
+		</span>
+		</div>
 
 		<table class="table table-hover mt-5">
 			<thead>
 				<tr>
-					<th scope="col">#</th>
+				
 					<th scope="col">Date</th>
 					<th scope="col">Catégorie</th>
 					<th scope="col">Information</th>
@@ -26,7 +33,7 @@
 			<tbody>
 				{% for information in informations %}
 					<tr>
-						<th scope="row">{{information.id}}</th>
+					
 						<td>{{information.date|date("d/m/Y") }}</td>
 						<td>
 							<span class="p-1 fw-bold text-white {{information.type}}-color">{{ constant('App\\Controller\\AdminInformationController::LAST_INFORMATIONS')[information.type] }}</span>
@@ -37,5 +44,6 @@
 
 			</tbody>
 		</table>
+		<a class="btn btn-primary mt-5" href="/home/index">Retourner à la page d'accueil</a>
 	</main>
 {% endblock %}

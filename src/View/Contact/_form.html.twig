@@ -1,4 +1,4 @@
-<form action="" method="POST">
+<form method="POST">
 
 	{% if errors is defined %}
 		{% for error in errors %}
@@ -6,18 +6,18 @@
 		{% endfor %}
 	{% endif %}
 
-	<div class="d-flex justify-content-center form-row mt-sm-0 px-xs-0 py-sm-0">
-		<div class="form-group col col-lg-2 col-md-12 mx-1">
+	<div class="d-flex justify-content-center form-row mx-auto">
+		<div class="form-group col col-lg-1 col-md-12">
 			<label class="col-sm-2 col-form-label col-form-label-lg" for="title">Civilité</label>
-			<select class="form-select-lg" name="title" id="title" aria-label="Default select example">
+			<select class="form-control shadow-sm p-3 mb-1 bg-white rounded me-1" name="title" id="title" aria-label="Default select example">
 				{% for title in constant('App\\Controller\\ContactController::TITLES') %}
 					<option {% if title == data.title %} selected {% endif %} value="{{ title }}">{{ title }}</option>
 				{% endfor %}
 			</select>
 		</div>
-		<div class="form-group col col-lg-4 col-md-12 mx-1">
+		<div class="form-group col col-lg-5 col-md-12">
 			<label class="col-sm-2 col-form-label col-form-label-lg" for="lastname">Nom</label>
-			<input class="form-control shadow-sm p-3 mb-1 bg-white rounded" value="{{ data.lastname }}" type="text" id="lastname" name="lastname" placeholder="Dubois" required>
+			<input class="form-control shadow-sm p-3 mb-1 bg-white rounded ms-1" value="{{ data.lastname }}" type="text" id="lastname" name="lastname" placeholder="Dubois" required>
 		</div>
 	</div>
 	<div class="form-row mt-sm-0 px-xs-0 py-sm-0">
@@ -40,7 +40,7 @@
 			</div>
 
 			<div class="form-group col col-lg-6 col-md-12 mx-auto">
-				<button type="submit" class="btn btn-primary btn-lg w-100" value="Send">Envoyé</button>
+				<button type="submit" class="btn btn-primary btn-lg w-100" value="Send">Soumettre</button>
 			</div>
 		</div>
 	</div>

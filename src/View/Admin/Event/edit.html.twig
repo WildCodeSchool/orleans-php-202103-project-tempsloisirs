@@ -2,9 +2,9 @@
 {% block title %}Admin - Modifier l'évènement
 {% endblock %}
 {% block stylesheet %}
-
 	<link rel="stylesheet" href="/assets/css/adminEvents.css">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link rel="stylesheet" href="/assets/css/admin.css">
 {% endblock %}
 {% block content %}
 	<main class="py-lg-5 px-lg-5 py-3 px-3">
@@ -15,11 +15,11 @@
 					<a class="btn btn-primary mt-3" href="/AdminEvent/index" role="button">Gérer les évènements</a>
 				</div>
 
-				{% include '/Admin/Event/_form.html.twig' %}
+				{% include '/Admin/Event/_form.html.twig'  with {buttonName: "Modifier l'évènement"} %}
 
 				<div class="admin-footer d-flex justify-content-center flex-md-row flex-column mt-lg-5 mt-2">
-					<a class="btn btn-primary btn-lg mx-1 my-1" href="#">Retour au site principal</a>
-					<a class="btn btn-primary btn-lg mx-1 my-1" href="#">Accueil Admin</a>
+					<a class="btn btn-primary btn-lg mx-1 my-1" href="/Home/index">Retour au site principal</a>
+					<a class="btn btn-primary btn-lg mx-1 my-1" href="/admin/home">Accueil Admin</a>
 				</div>
 			</div>
 		</div>

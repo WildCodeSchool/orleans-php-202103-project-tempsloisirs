@@ -32,7 +32,7 @@
             <!--Instructor-->
             <div class="mb-3">
                 <label for="instructor_name" class="form-label">Moniteur :</label>
-                <input type="text" class="form-control" id="instructor_name" name="instructor_name" value="{{activity.instructor_name}}" aria-describedby="instructorHelp" required>
+                <input type="text" class="form-control" id="instructor_name" name="instructor_name" value="{{ activity.instructor_name }}" aria-describedby="instructorHelp" required>
                 <div id="instructorHelp" class="form-text">Veuillez entrer le nom de la personne qui anime cette activité (exemple: Didier Raoult).</div>
             </div>
 
@@ -40,13 +40,13 @@
             <div class="row mb-3">
                 <div class="col">
                     <label for="start_time" class="form-label">Heure de début :</label>
-                    <input type="time" class="form-control" id="start_time" name="start_time" value="{{activity.start_time}}" aria-describedby="startTimeHelp">
+                    <input type="time" class="form-control" id="start_time" name="start_time" value="{{ activity.start_time }}" aria-describedby="startTimeHelp">
                     <div id="startTimeHelp" class="form-text">Veuillez entrer l'heure à laquelle commence cette activité.</div>
                 </div>
                 <!--End time-->
                 <div class="col">
                     <label for="end_time" class="form-label">Heure de fin :</label>
-                    <input type="time" class="form-control" id="end_time" name="end_time" value="{{activity.end_time}}" aria-describedby="endTimeHelp">
+                    <input type="time" class="form-control" id="end_time" name="end_time" value="{{ activity.end_time }}" aria-describedby="endTimeHelp">
                     <div id="endTimeHelp" class="form-text">Veuillez entrer l'heure à laquelle termine cette activité.</div>
                 </div>
             </div>
